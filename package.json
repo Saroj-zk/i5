@@ -7,7 +7,11 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "pnpm run build && wrangler pages deploy dist",
+    "deploy:preview": "pnpm run build && wrangler pages deploy dist --branch preview",
+    "cf:login": "wrangler login",
+    "cf:whoami": "wrangler whoami"
   },
   "dependencies": {
     "@studio-freight/lenis": "^1.0.42",
@@ -25,6 +29,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.6.0",
-    "vite": "^8.0.12"
+    "vite": "^8.0.12",
+    "wrangler": "^3.99.0"
   }
 }
