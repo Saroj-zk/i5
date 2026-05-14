@@ -9,13 +9,13 @@ const SignalSequencer = () => {
   const tracks = [
     {
       name: 'WHALE_FLOW', color: '#5E5CE6', signals: [
-        { type: 'pill', width: '80px', label: 'Institutional Bid' },
+        { type: 'pill', width: '80px' },
         { type: 'dot' },
         { type: 'pill', width: '120px', label: 'Whale Accumulation' },
         { type: 'trigger', label: 'Large Transfer' },
         { type: 'pill', width: '60px' },
         { type: 'dot' },
-        { type: 'pill', width: '100px', label: 'Exchange Outflow' }
+        { type: 'pill', width: '100px' }
       ]
     },
     {
@@ -24,18 +24,18 @@ const SignalSequencer = () => {
         { type: 'trigger', label: 'Alpha Detected' },
         { type: 'pill', width: '70px' },
         { type: 'dot' },
-        { type: 'pill', width: '130px', label: 'Liquidity Gap' },
+        { type: 'pill', width: '130px' },
         { type: 'dot' },
         { type: 'pill', width: '90px' }
       ]
     },
     {
       name: 'EXECUTION_LAYER', color: '#BF5AF2', signals: [
-        { type: 'pill', width: '90px', label: 'Iceberg Order' },
+        { type: 'pill', width: '90px' },
         { type: 'dot' },
         { type: 'pill', width: '110px' },
-        { type: 'trigger', label: 'Limit Execution' },
-        { type: 'pill', width: '80px', label: 'L1 Confirmation' },
+        { type: 'trigger', label: 'Liquidity Gap' },
+        { type: 'pill', width: '80px' },
         { type: 'dot' },
         { type: 'pill', width: '120px' }
       ]
@@ -43,7 +43,7 @@ const SignalSequencer = () => {
     {
       name: 'SENTIMENT_OS', color: '#7EACB5', signals: [
         { type: 'pill', width: '120px', label: 'Social Spike' },
-        { type: 'trigger', label: 'Hype Peak' },
+        { type: 'trigger' },
         { type: 'pill', width: '80px' },
         { type: 'dot' },
         { type: 'pill', width: '100px', label: 'Sentiment Pivot' },
