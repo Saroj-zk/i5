@@ -135,7 +135,7 @@ const CoreFeatures = () => {
             letterSpacing: '0.3em', 
             marginBottom: '2rem'
           }}>
-            [ 03 ] CORE FEATURES
+            CORE FEATURES
           </div>
           
           <h2 style={{ 
@@ -166,12 +166,7 @@ const CoreFeatures = () => {
         </div>
 
         {/* Bento-style Grid — featured card takes up more space */}
-        <div className="scroll-reveal" style={{ 
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gridTemplateRows: 'auto auto',
-          gap: '1.75rem'
-        }}>
+        <div className="scroll-reveal features-grid">
           {features.map((feature, index) => (
             <div key={index} style={{ gridColumn: index === 0 ? 'span 1' : undefined }}>
               <FeatureItem {...feature} />

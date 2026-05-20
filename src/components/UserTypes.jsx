@@ -10,7 +10,7 @@ import {
 
 const UserCard = ({ number, title, desc, icon: Icon, isWide }) => {
   return (
-    <div className="scroll-reveal" style={{ 
+    <div className={`scroll-reveal user-card${isWide ? ' user-card--wide' : ''}`} style={{ 
       background: 'rgba(255, 255, 255, 0.75)', 
       backdropFilter: 'blur(30px)',
       borderRadius: '24px', 
@@ -148,7 +148,7 @@ const UserTypes = () => {
             letterSpacing: '0.3em', 
             marginBottom: '2rem'
           }}>
-            [ 05 ] BUILT FOR EVERY TRADER
+            BUILT FOR EVERY TRADER
           </div>
           
           <h2 style={{ 
@@ -178,11 +178,7 @@ const UserTypes = () => {
         </div>
 
         {/* User Types Grid - 3 top, 2 bottom (with last spanning 2) */}
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(3, 1fr)', 
-          gap: '1.75rem' 
-        }}>
+        <div className="user-types-grid">
           {users.map((user, index) => (
             <UserCard key={index} {...user} />
           ))}

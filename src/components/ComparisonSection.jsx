@@ -11,22 +11,12 @@ import {
   Bell, 
   TrendingUp, 
   Waves, 
-  Target,
-  ArrowRight,
-  ChevronRight
+  Target
 } from 'lucide-react';
 
 const ComparisonRow = ({ tradIcon: TradIcon, tradLabel, i5Icon: I5Icon, i5Label, style }) => {
   return (
-    <div style={{ 
-      display: 'grid', 
-      gridTemplateColumns: '1fr auto 1.2fr', 
-      alignItems: 'center', 
-      padding: '1.75rem 3.5rem',
-      borderBottom: '1px solid rgba(10, 17, 22, 0.05)',
-      transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
-      ...style
-    }}
+    <div className="comparison-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', alignItems: 'center', padding: '1.75rem 3.5rem', borderBottom: '1px solid rgba(10, 17, 22, 0.05)', transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)', ...style }}
     onMouseEnter={(e) => {
       e.currentTarget.style.background = 'rgba(126, 172, 181, 0.03)';
     }}
@@ -50,11 +40,6 @@ const ComparisonRow = ({ tradIcon: TradIcon, tradLabel, i5Icon: I5Icon, i5Label,
           <TradIcon size={20} strokeWidth={1.8} />
         </div>
         <span style={{ fontSize: '1.05rem', color: 'var(--text-muted)', fontWeight: 500, textDecoration: 'line-through', textDecorationColor: 'rgba(143, 156, 174, 0.3)' }}>{tradLabel}</span>
-      </div>
-
-      {/* Arrow */}
-      <div style={{ color: 'var(--accent-secondary)', padding: '0 2rem', display: 'flex', alignItems: 'center', opacity: 0.5 }}>
-        <ChevronRight size={18} strokeWidth={2} />
       </div>
 
       {/* i5 Side */}
@@ -107,7 +92,7 @@ const ComparisonSection = () => {
             letterSpacing: '0.3em', 
             marginBottom: '2rem'
           }}>
-            [ 04 ] THE i5 EDGE
+            THE i5 EDGE
           </div>
           
           <h2 style={{ 
@@ -146,13 +131,7 @@ const ComparisonSection = () => {
           overflow: 'hidden'
         }}>
           {/* Table Header Row */}
-          <div style={{ 
-            display: 'grid', 
-            gridTemplateColumns: '1fr auto 1.2fr', 
-            padding: '2rem 3.5rem',
-            borderBottom: '1px solid rgba(10, 17, 22, 0.06)',
-            background: 'rgba(10, 17, 22, 0.015)'
-          }}>
+          <div className="comparison-header">
             <div style={{ 
               fontSize: '0.75rem', 
               fontWeight: 800, 
@@ -165,7 +144,6 @@ const ComparisonSection = () => {
               <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#DC2626', opacity: 0.5 }}></span>
               TRADITIONAL TRADING
             </div>
-            <div style={{ width: '60px' }}></div>
             <div style={{ 
               fontSize: '0.75rem', 
               fontWeight: 800, 

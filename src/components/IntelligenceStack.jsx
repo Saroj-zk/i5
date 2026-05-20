@@ -6,6 +6,8 @@ import {
   Target, 
   Zap 
 } from 'lucide-react';
+import intelligenceStackImg from '../assets/intelligence-stack.png';
+
 
 const StackLayer = ({ number, title, layerType, desc, items, icon: Icon, isActive }) => {
   return (
@@ -14,22 +16,10 @@ const StackLayer = ({ number, title, layerType, desc, items, icon: Icon, isActiv
       borderBottom: '1px solid rgba(10, 17, 22, 0.06)',
       display: 'flex',
       gap: '2rem',
-      alignItems: 'flex-start',
-      transition: 'all 0.3s ease',
-      cursor: 'default'
-    }}
-    onMouseEnter={(e) => {
-      e.currentTarget.style.paddingLeft = '1rem';
-      e.currentTarget.style.background = 'rgba(126, 172, 181, 0.02)';
-      e.currentTarget.style.borderRadius = '16px';
-    }}
-    onMouseLeave={(e) => {
-      e.currentTarget.style.paddingLeft = '0';
-      e.currentTarget.style.background = 'transparent';
-      e.currentTarget.style.borderRadius = '0';
+      alignItems: 'flex-start'
     }}
     >
-      <div style={{ 
+      <div className="stack-layer-number" style={{ 
         fontSize: '1rem', 
         fontWeight: 800, 
         color: isActive ? 'var(--accent-secondary)' : 'var(--text-muted)', 
@@ -110,67 +100,6 @@ const StackLayer = ({ number, title, layerType, desc, items, icon: Icon, isActiv
   );
 };
 
-const IsometricStack = () => {
-  return (
-    <div style={{ 
-      background: 'rgba(255, 255, 255, 0.75)', 
-      backdropFilter: 'blur(30px)',
-      borderRadius: '24px', 
-      padding: '3rem',
-      boxShadow: '0 30px 80px -20px rgba(10, 17, 22, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9)',
-      border: '1px solid rgba(10, 17, 22, 0.08)',
-      marginTop: '3rem',
-      position: 'relative',
-      height: '380px',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center'
-    }}>
-      <svg width="100%" height="100%" viewBox="0 0 450 350" style={{ overflow: 'visible' }}>
-        {/* Connection Lines with animated dash */}
-        <g opacity="0.15">
-          {[0, 1, 2, 3, 4].map(i => (
-            <path 
-              key={i}
-              d={`M 130 ${80 + i * 45} Q 220 175 320 175`} 
-              fill="none" 
-              stroke="var(--accent-secondary)" 
-              strokeWidth="1.5" 
-              strokeDasharray="4 4" 
-            />
-          ))}
-        </g>
-
-        {/* Isometric Planes */}
-        {[0, 1, 2, 3, 4].map((i) => (
-          <g key={i} transform={`translate(0, ${i * 45})`}>
-            {/* Shadow/Depth */}
-            <path 
-              d="M 50 55 L 150 35 L 175 70 L 75 90 Z" 
-              fill="rgba(10, 17, 22, 0.05)"
-              transform="translate(2, 4)"
-            />
-            {/* Main Plane */}
-            <path 
-              d="M 50 50 L 150 30 L 175 65 L 75 85 Z" 
-              fill={i === 0 ? 'rgba(126, 172, 181, 0.12)' : '#FFFFFF'} 
-              stroke={i === 0 ? 'var(--accent-secondary)' : 'rgba(10, 17, 22, 0.1)'} 
-              strokeWidth="1.5"
-            />
-            <text x="110" y="62" fontSize="12" fontWeight="800" fill={i === 0 ? 'var(--accent-secondary)' : 'var(--text-primary)'} opacity={i === 0 ? 1 : 0.2}>0{i+1}</text>
-          </g>
-        ))}
-
-        {/* Central i5 Node with Pulse Effect */}
-        <g transform="translate(350, 175)">
-          <circle r="45" fill="#FFFFFF" stroke="rgba(10, 17, 22, 0.08)" strokeWidth="1" />
-          <circle r="36" fill="none" stroke="var(--accent-secondary)" strokeWidth="1" strokeDasharray="3 3" opacity="0.4" />
-          <text x="0" y="10" textAnchor="middle" fontSize="28" fontWeight="800" fill="var(--text-primary)">i5</text>
-        </g>
-      </svg>
-    </div>
-  );
-};
 
 const IntelligenceStack = () => {
   const layers = [
@@ -220,15 +149,10 @@ const IntelligenceStack = () => {
   return (
     <section id="platform" className="section-padding" style={{ background: 'transparent' }}>
       <div className="container">
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: '1fr 1.2fr', 
-          gap: '4rem',
-          alignItems: 'flex-start'
-        }}>
+        <div className="intelligence-stack-grid">
           
           {/* Left Column */}
-          <div className="scroll-reveal" style={{ position: 'sticky', top: '6rem' }}>
+          <div className="scroll-reveal intelligence-stack-sticky">
             <div style={{ 
               color: 'var(--accent-secondary)', 
               fontSize: '0.85rem', 
@@ -236,7 +160,7 @@ const IntelligenceStack = () => {
               letterSpacing: '0.3em', 
               marginBottom: '2rem'
             }}>
-              [ 02 ] THE I5 INTELLIGENCE STACK
+              THE I5 INTELLIGENCE STACK
             </div>
             
             <h2 style={{ 
@@ -265,7 +189,9 @@ const IntelligenceStack = () => {
 
             <div style={{ width: '60px', height: '3px', background: 'linear-gradient(90deg, var(--accent-secondary), var(--accent-gold))', borderRadius: '2px', marginBottom: '2rem' }}></div>
 
-            <IsometricStack />
+            <div style={{ marginTop: '3rem', borderRadius: '24px', overflow: 'hidden', border: '1px solid rgba(10, 17, 22, 0.08)', boxShadow: '0 30px 80px -20px rgba(10, 17, 22, 0.08)' }}>
+              <img src={intelligenceStackImg} alt="i5 Intelligence Stack" style={{ width: '100%', height: 'auto', display: 'block' }} />
+            </div>
           </div>
 
           {/* Right Column */}

@@ -84,7 +84,7 @@ const AllocationCol = ({ icon: Icon, label, value, subLabel, isSpecial }) => (
 
 const AllocationSection = () => {
   return (
-    <section id="allocation" className="section-padding" style={{ background: 'transparent' }}>
+    <section id="allocation" className="section-padding" style={{ background: 'transparent', display: 'none' }}>
       <div className="container">
         {/* Header Text */}
         <div className="scroll-reveal" style={{ marginBottom: '5rem' }}>
@@ -95,7 +95,7 @@ const AllocationSection = () => {
             letterSpacing: '0.3em',
             marginBottom: '2rem'
           }}>
-            [ 06 ] TOKEN ECONOMICS
+            TOKEN ECONOMICS
           </div>
 
           <h2 style={{
