@@ -95,7 +95,7 @@ const AllocationSection = () => {
             letterSpacing: '0.3em',
             marginBottom: '2rem'
           }}>
-            [ 06 ] TOKEN ECONOMICS
+            TOKEN ECONOMICS
           </div>
 
           <h2 style={{

@@ -584,3 +584,101 @@ h1, h2, h3 {
   z-index: 100 !important;
 }
 
+/* ─── Section Grids ─────────────────────────────────────────────────────────── */
+
+/* Intelligence Stack — sticky left + scrolling right */
+.intelligence-stack-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 4rem;
+  align-items: flex-start;
+}
+
+.intelligence-stack-sticky {
+  position: sticky;
+  top: 6rem;
+}
+
+/* Core Features — 3-column bento */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+/* Comparison Section rows */
+.comparison-row {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  align-items: center;
+  padding: 1.75rem 3.5rem;
+  border-bottom: 1px solid rgba(10, 17, 22, 0.05);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.comparison-header {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  padding: 2rem 3.5rem;
+  border-bottom: 1px solid rgba(10, 17, 22, 0.06);
+  background: rgba(10, 17, 22, 0.015);
+}
+
+/* User Types — 3-column with last card spanning 2 */
+.user-types-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+/* ─── Mobile (≤ 768px) — Section Grids ─────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Intelligence Stack: stack vertically, remove sticky */
+  .intelligence-stack-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .intelligence-stack-sticky {
+    position: static;
+    top: auto;
+  }
+
+  /* Core Features: single column */
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Comparison: compact 2-column table (Traditional | i5) on mobile */
+  .comparison-row {
+    grid-template-columns: 1fr 1fr;
+    padding: 1rem;
+  }
+
+  .comparison-header {
+    grid-template-columns: 1fr 1fr;
+    padding: 0.85rem 1rem;
+  }
+
+  /* User Types: single column, wide card drops its span */
+  .user-types-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .user-card--wide {
+    grid-column: span 1 !important;
+    flex-direction: column !important;
+    gap: 1.75rem !important;
+  }
+}
+
+/* ─── Small Mobile (≤ 480px) ───────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .comparison-row {
+    padding: 0.85rem 0.75rem;
+  }
+
+  .comparison-header {
+    padding: 0.75rem 0.75rem;
+  }
+}

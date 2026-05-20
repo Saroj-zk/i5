@@ -16,19 +16,7 @@ const StackLayer = ({ number, title, layerType, desc, items, icon: Icon, isActiv
       borderBottom: '1px solid rgba(10, 17, 22, 0.06)',
       display: 'flex',
       gap: '2rem',
-      alignItems: 'flex-start',
-      transition: 'all 0.3s ease',
-      cursor: 'default'
-    }}
-    onMouseEnter={(e) => {
-      e.currentTarget.style.paddingLeft = '1rem';
-      e.currentTarget.style.background = 'rgba(126, 172, 181, 0.02)';
-      e.currentTarget.style.borderRadius = '16px';
-    }}
-    onMouseLeave={(e) => {
-      e.currentTarget.style.paddingLeft = '0';
-      e.currentTarget.style.background = 'transparent';
-      e.currentTarget.style.borderRadius = '0';
+      alignItems: 'flex-start'
     }}
     >
       <div style={{ 
@@ -161,15 +149,10 @@ const IntelligenceStack = () => {
   return (
     <section id="platform" className="section-padding" style={{ background: 'transparent' }}>
       <div className="container">
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: '1fr 1.2fr', 
-          gap: '4rem',
-          alignItems: 'flex-start'
-        }}>
+        <div className="intelligence-stack-grid">
           
           {/* Left Column */}
-          <div className="scroll-reveal" style={{ position: 'sticky', top: '6rem' }}>
+          <div className="scroll-reveal intelligence-stack-sticky">
             <div style={{ 
               color: 'var(--accent-secondary)', 
               fontSize: '0.85rem', 
@@ -177,7 +160,7 @@ const IntelligenceStack = () => {
               letterSpacing: '0.3em', 
               marginBottom: '2rem'
             }}>
-              [ 02 ] THE I5 INTELLIGENCE STACK
+              THE I5 INTELLIGENCE STACK
             </div>
             
             <h2 style={{ 

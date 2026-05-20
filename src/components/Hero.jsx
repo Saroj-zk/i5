@@ -62,11 +62,11 @@ const Hero = () => {
             </p>
 
             <div className="reveal" style={{ display: 'flex', gap: '1.25rem', flexWrap: 'wrap', marginBottom: '3.5rem' }}>
-              <a href="#launch" className="btn btn-primary">
+              {/* <a href="#launch" className="btn btn-primary">
                 Launch i5 <ChevronRight size={18} />
-              </a>
+              </a> */}
               <a href="#signals" className="btn btn-secondary">
-                Explore Live Signals <ArrowRight size={18} />
+                Coming Soon...
               </a>
             </div>
 
@@ -91,11 +91,11 @@ const Hero = () => {
 
           {/* Right: Spline Visual */}
           <div className="reveal hero-spline">
-            <iframe 
-              src="https://my.spline.design/chromaticcopycopy-7vx5SxUc9sQUTgbV5UnxyDvb-nON/" 
-              frameBorder="0" 
-              width="100%" 
-              height="100%" 
+            <iframe
+              src="https://my.spline.design/chromaticcopycopy-7vx5SxUc9sQUTgbV5UnxyDvb-nON/"
+              frameBorder="0"
+              width="100%"
+              height="100%"
               style={{ border: 'none' }}
               title="i5 Spline Visual"
             ></iframe>
@@ -104,7 +104,7 @@ const Hero = () => {
 
         {/* Full-width Signal Sequencer */}
         <div className="reveal" style={{ width: '100%', marginBottom: '2rem' }}>
-          <div style={{ 
+          <div style={{
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -112,10 +112,10 @@ const Hero = () => {
             marginBottom: '1rem'
           }}>
             <div style={{ flex: 1, height: '1px', background: 'linear-gradient(90deg, transparent, rgba(10, 17, 22, 0.08))' }}></div>
-            <span style={{ 
-              fontSize: '0.72rem', 
-              color: 'var(--text-muted)', 
-              fontWeight: 800, 
+            <span style={{
+              fontSize: '0.72rem',
+              color: 'var(--text-muted)',
+              fontWeight: 800,
               letterSpacing: '0.2em',
               whiteSpace: 'nowrap'
             }}>
