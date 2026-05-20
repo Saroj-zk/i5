@@ -10,16 +10,10 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="section-padding" style={{ paddingTop: '10rem', paddingBottom: '6rem' }}>
+    <section className="section-padding" style={{ paddingTop: '10rem', paddingBottom: '2rem' }}>
       <div className="container">
         {/* Main Hero Split Layout */}
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: '1.1fr 0.9fr', 
-          gap: '4rem', 
-          alignItems: 'center',
-          marginBottom: '6rem'
-        }}>
+        <div className="hero-grid">
           {/* Left: Content */}
           <div style={{ textAlign: 'left' }}>
             <div className="reveal" style={{ marginBottom: '2rem' }}>
@@ -77,7 +71,7 @@ const Hero = () => {
             </div>
 
             {/* Mini stats row */}
-            <div className="reveal" style={{ display: 'flex', gap: '3rem' }}>
+            <div className="reveal hero-stats">
               {[
                 { value: '12K+', label: 'Wallets Tracked' },
                 { value: '98.7%', label: 'Signal Accuracy' },
@@ -95,20 +89,27 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right: Protocol Card Visual */}
-          <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-            <ProtocolCard />
+          {/* Right: Spline Visual */}
+          <div className="reveal hero-spline">
+            <iframe 
+              src="https://my.spline.design/chromaticcopycopy-7vx5SxUc9sQUTgbV5UnxyDvb-nON/" 
+              frameBorder="0" 
+              width="100%" 
+              height="100%" 
+              style={{ border: 'none' }}
+              title="i5 Spline Visual"
+            ></iframe>
           </div>
         </div>
 
         {/* Full-width Signal Sequencer */}
-        <div className="reveal" style={{ width: '100%', marginBottom: '6rem' }}>
+        <div className="reveal" style={{ width: '100%', marginBottom: '2rem' }}>
           <div style={{ 
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             gap: '1rem',
-            marginBottom: '2.5rem'
+            marginBottom: '1rem'
           }}>
             <div style={{ flex: 1, height: '1px', background: 'linear-gradient(90deg, transparent, rgba(10, 17, 22, 0.08))' }}></div>
             <span style={{ 

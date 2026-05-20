@@ -19,23 +19,7 @@ function App() {
   const mainRef = useRef(null);
 
   useEffect(() => {
-    // Scroll-triggered fade-up animations
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -60px 0px' }
-    );
-
-    document.querySelectorAll('.fade-up').forEach((el) => {
-      observer.observe(el);
-    });
-
-    return () => observer.disconnect();
+    // Animations removed for instant-load feel
   }, []);
 
   return (

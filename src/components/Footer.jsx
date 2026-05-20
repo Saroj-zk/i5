@@ -35,18 +35,11 @@ const Footer = () => {
       position: 'relative' 
     }}>
       <div className="container">
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: '1.5fr 1fr 1fr 1.5fr', 
-          gap: '3rem', 
-          marginBottom: '5rem' 
-        }}>
+        <div className="footer-grid">
           {/* Brand Column */}
           <div>
             <div className="logo-group" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.75rem' }}>
-              <div className="logo" style={{ fontWeight: 900, fontSize: '1.8rem', letterSpacing: '-0.06em', color: 'var(--text-primary)', lineHeight: 1 }}>
-                i5<span style={{ color: 'var(--accent-gold)' }}>.</span>
-              </div>
+              <img src="/I5_Black.png" alt="i5 Logo" style={{ height: '30px', width: 'auto', display: 'block' }} />
               <div style={{ width: '1px', height: '20px', background: 'rgba(10, 17, 22, 0.1)' }}></div>
               <span style={{ fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--text-muted)', fontWeight: 700 }}>
                 Intelligence Network

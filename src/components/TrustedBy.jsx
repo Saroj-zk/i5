@@ -21,7 +21,8 @@ const TrustedBy = () => {
       padding: '3rem 0 6rem 0', 
       background: 'transparent',
       position: 'relative',
-      overflow: 'hidden'
+      overflow: 'hidden',
+      display: 'none'
     }}>
       {/* Subtle Grid Background */}
       <div style={{
