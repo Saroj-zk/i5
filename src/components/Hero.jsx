@@ -10,13 +10,13 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="section-padding" style={{ paddingTop: '10rem', paddingBottom: '2rem' }}>
+    <section className="section-padding hero-section" style={{ paddingTop: '10rem', paddingBottom: '2rem' }}>
       <div className="container">
         {/* Main Hero Split Layout */}
         <div className="hero-grid">
           {/* Left: Content */}
           <div style={{ textAlign: 'left' }}>
-            <div className="reveal" style={{ marginBottom: '2rem' }}>
+            <div className="reveal" style={{ marginBottom: '1rem' }}>
               <span className="badge">
                 <Activity size={14} style={{ marginRight: '0.5rem', opacity: 0.7 }} />
                 Now in private beta <span style={{ opacity: 0.3, margin: '0 0.5rem' }}>|</span> Built on Hyperliquid
@@ -38,7 +38,7 @@ const Hero = () => {
               marginBottom: '2rem'
             }}>
               <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--accent-gold)' }}></div>
-              <span style={{
+              <span className="hero-os-label" style={{
                 color: 'var(--accent-gold)',
                 fontSize: '0.8rem',
                 fontWeight: 800,

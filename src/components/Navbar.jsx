@@ -29,7 +29,7 @@ const Navbar = () => {
       </ul>
 
       <div className="nav-actions" style={{ display: 'flex', gap: '0.75rem' }}>
-        <a href="#early" className="btn btn-secondary" style={{ padding: '0.6rem 1.2rem', fontSize: '0.8rem' }}>Coming Soon...</a>
+        {/* <a href="#early" className="btn btn-secondary" style={{ padding: '0.6rem 1.2rem', fontSize: '0.8rem' }}>Coming Soon...</a> */}
         {/* <a href="#launch" className="btn btn-primary" style={{ padding: '0.6rem 1.2rem', fontSize: '0.8rem' }}>Launch App</a> */}
       </div>
     </nav>
