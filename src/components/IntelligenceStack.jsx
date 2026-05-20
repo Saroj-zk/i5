@@ -19,7 +19,7 @@ const StackLayer = ({ number, title, layerType, desc, items, icon: Icon, isActiv
       alignItems: 'flex-start'
     }}
     >
-      <div style={{ 
+      <div className="stack-layer-number" style={{ 
         fontSize: '1rem', 
         fontWeight: 800, 
         color: isActive ? 'var(--accent-secondary)' : 'var(--text-muted)', 

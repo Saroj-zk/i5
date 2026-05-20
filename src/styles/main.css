@@ -644,6 +644,11 @@ h1, h2, h3 {
     top: auto;
   }
 
+  /* Hide the 01/02/03 layer numbers on mobile — they waste horizontal space */
+  .stack-layer-number {
+    display: none;
+  }
+
   /* Core Features: single column */
   .features-grid {
     grid-template-columns: 1fr;

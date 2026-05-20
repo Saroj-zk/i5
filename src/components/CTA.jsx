@@ -5,8 +5,8 @@ const CTA = () => {
   return (
     <section className="section-padding" style={{ paddingBottom: '6rem' }}>
       <div className="container">
-        <div className="card scroll-reveal" style={{ 
-          textAlign: 'center', 
+        <div className="card scroll-reveal" style={{
+          textAlign: 'center',
           padding: '7rem 2rem',
           background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.85) 0%, rgba(126, 172, 181, 0.06) 100%)',
           backdropFilter: 'blur(40px)',
@@ -53,7 +53,7 @@ const CTA = () => {
             borderRadius: '0 0 4px 0',
             pointerEvents: 'none'
           }}></div>
-          
+
           <div style={{ position: 'relative', zIndex: 1 }}>
             <div style={{
               fontSize: '0.75rem',
@@ -72,16 +72,16 @@ const CTA = () => {
             <p style={{ color: 'var(--text-secondary)', fontSize: '1.15rem', marginBottom: '3.5rem', maxWidth: '600px', margin: '0 auto 3.5rem', lineHeight: '1.7', fontWeight: 400 }}>
               The intelligence gap is closing. Secure your access to the i5 network today and start trading with an institutional edge.
             </p>
-            
+
             <div style={{ display: 'flex', gap: '1.25rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <a href="#launch" className="btn btn-primary" style={{ padding: '1.15rem 3rem', fontSize: '1rem', fontWeight: 700 }}>
+              {/* <a href="#launch" className="btn btn-primary" style={{ padding: '1.15rem 3rem', fontSize: '1rem', fontWeight: 700 }}>
                 Launch i5 App <ArrowRight size={20} strokeWidth={2.5} />
-              </a>
+              </a> */}
               <a href="#docs" className="btn btn-secondary" style={{ padding: '1.15rem 2.5rem', fontSize: '1rem', fontWeight: 700 }}>
                 <FileText size={18} /> Read Docs
               </a>
             </div>
-            
+
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1.5rem', marginTop: '3.5rem' }}>
               <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#22C55E', boxShadow: '0 0 10px rgba(34, 197, 94, 0.4)' }}></div>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.78rem', fontWeight: 800, letterSpacing: '0.15em' }}>
