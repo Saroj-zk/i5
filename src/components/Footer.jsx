@@ -26,19 +26,7 @@ const FooterLink = ({ href, children }) => (
   </a>
 );
 
-const FooterItem = ({ children }) => (
-  <span
-    style={{
-      color: 'var(--text-muted)',
-      fontSize: '0.9rem',
-      display: 'inline-flex',
-      alignItems: 'center',
-      gap: '0.25rem'
-    }}
-  >
-    {children}
-  </span>
-);
+
 
 const Footer = () => {
   const [email, setEmail] = useState('');
@@ -109,10 +97,10 @@ const Footer = () => {
           {/* Platform Links */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             <span style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.15em', marginBottom: '0.5rem' }}>Platform</span>
-            <FooterItem>Intelligence Stack</FooterItem>
-            <FooterItem>Signal Engine</FooterItem>
-            <FooterItem>Wallet Tracking</FooterItem>
-            <FooterItem>Alerts & Webhooks</FooterItem>
+            <FooterLink href="#">Intelligence Stack</FooterLink>
+            <FooterLink href="#">Signal Engine</FooterLink>
+            <FooterLink href="#">Wallet Tracking</FooterLink>
+            <FooterLink href="#">Alerts & Webhooks</FooterLink>
           </div>
 
           {/* Company Links */}
