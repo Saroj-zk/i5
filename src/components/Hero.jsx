@@ -4,7 +4,7 @@ import gsap from 'gsap';
 import SignalSequencer from './SignalSequencer';
 import ProtocolCard from './ProtocolCard';
 
-const Hero = () => {
+const Hero = ({ onJoinClick }) => {
   useEffect(() => {
     // Hero entry animations could go here if needed
   }, []);
@@ -62,12 +62,9 @@ const Hero = () => {
             </p>
 
             <div className="reveal" style={{ display: 'flex', gap: '1.25rem', flexWrap: 'wrap', marginBottom: '3.5rem' }}>
-              {/* <a href="#launch" className="btn btn-primary">
-                Launch i5 <ChevronRight size={18} />
-              </a> */}
-              <a href="#signals" className="btn btn-secondary">
-                Coming Soon...
-              </a>
+              <button onClick={onJoinClick} className="btn btn-primary">
+                Join Waitlist <ArrowRight size={18} />
+              </button>
             </div>
 
             {/* Mini stats row */}

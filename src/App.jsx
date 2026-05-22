@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './styles/main.css';
@@ -12,11 +12,13 @@ import ComparisonSection from './components/ComparisonSection';
 import UserTypes from './components/UserTypes';
 import AllocationSection from './components/AllocationSection';
 import Footer from './components/Footer';
+import JoinUsModal from './components/JoinUsModal';
 
 gsap.registerPlugin(ScrollTrigger);
 
 function App() {
   const mainRef = useRef(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     // Animations removed for instant-load feel
@@ -32,7 +34,7 @@ function App() {
       <Navbar />
       
       <main>
-        <Hero />
+        <Hero onJoinClick={() => setIsModalOpen(true)} />
         <TrustedBy />
         <div className="section-divider"></div>
         <IntelligenceStack />
@@ -48,6 +50,7 @@ function App() {
       </main>
       
       <Footer />
+      <JoinUsModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
 }

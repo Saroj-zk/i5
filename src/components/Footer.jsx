@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 
 const FooterLink = ({ href, children }) => (
@@ -26,7 +26,63 @@ const FooterLink = ({ href, children }) => (
   </a>
 );
 
+const FooterItem = ({ children }) => (
+  <span
+    style={{
+      color: 'var(--text-muted)',
+      fontSize: '0.9rem',
+      display: 'inline-flex',
+      alignItems: 'center',
+      gap: '0.25rem'
+    }}
+  >
+    {children}
+  </span>
+);
+
 const Footer = () => {
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState('idle'); // idle | loading | success | error
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleSubscribe = async (e) => {
+    e.preventDefault();
+    if (!email || !email.trim()) return;
+
+    setStatus('loading');
+    setErrorMessage('');
+
+    const formUrl = import.meta.env.VITE_FORM_URL || import.meta.env.FORM_URL;
+    const entryEmail = import.meta.env.VITE_ENTRY_EMAIL || import.meta.env.ENTRY_EMAIL;
+
+    if (!formUrl || !entryEmail) {
+      setStatus('error');
+      setErrorMessage('Waitlist configuration is missing.');
+      return;
+    }
+
+    try {
+      const formData = new FormData();
+      formData.append(entryEmail, email);
+
+      await fetch(formUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: formData,
+      });
+
+      setStatus('success');
+      setEmail('');
+      setTimeout(() => {
+        setStatus('idle');
+      }, 5000);
+    } catch (err) {
+      console.error('Newsletter subscription error:', err);
+      setStatus('error');
+      setErrorMessage('Something went wrong. Please try again.');
+    }
+  };
+
   return (
     <footer style={{
       padding: '5rem 0 3rem',
@@ -45,26 +101,26 @@ const Footer = () => {
                 Intelligence Network
               </span>
             </div>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', lineHeight: '1.7', maxWidth: '280px' }}>
-              The intelligence-native trading network for the next generation of institutional markets.
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', lineHeight: '1.6', maxWidth: '280px' }}>
+              The intelligence layer built for traders on Hyperliquid mainnet.
             </p>
           </div>
 
           {/* Platform Links */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             <span style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.15em', marginBottom: '0.5rem' }}>Platform</span>
-            <FooterLink href="#">Intelligence Stack</FooterLink>
-            <FooterLink href="#">Signal Engine</FooterLink>
-            <FooterLink href="#">Wallet Tracking</FooterLink>
-            <FooterLink href="#">Alerts & Webhooks</FooterLink>
+            <FooterItem>Intelligence Stack</FooterItem>
+            <FooterItem>Signal Engine</FooterItem>
+            <FooterItem>Wallet Tracking</FooterItem>
+            <FooterItem>Alerts & Webhooks</FooterItem>
           </div>
 
           {/* Company Links */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             <span style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.15em', marginBottom: '0.5rem' }}>Company</span>
-            <FooterLink href="#">About Us</FooterLink>
+            {/* <FooterLink href="#">About Us</FooterLink>
             <FooterLink href="#">Careers</FooterLink>
-            <FooterLink href="#">Research</FooterLink>
+            <FooterLink href="#">Research</FooterLink> */}
             <FooterLink href="#">Blog <ArrowUpRight size={12} /></FooterLink>
           </div>
 
@@ -72,28 +128,62 @@ const Footer = () => {
           <div>
             <span style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.15em', display: 'block', marginBottom: '1.25rem' }}>Signal Newsletter</span>
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '1.25rem', lineHeight: 1.6 }}>Stay updated with the latest market intelligence and network updates.</p>
-            <div style={{ display: 'flex', gap: '0.5rem' }}>
-              <input
-                type="email"
-                placeholder="email@address.com"
-                style={{
-                  flex: '1 1 160px',
-                  background: 'rgba(255, 255, 255, 0.8)',
-                  border: '1px solid rgba(10, 17, 22, 0.1)',
-                  borderRadius: '100px',
-                  padding: '0.75rem 1.25rem',
-                  color: 'var(--text-primary)',
-                  fontSize: '0.85rem',
-                  outline: 'none',
-                  boxShadow: 'inset 0 2px 4px rgba(10, 17, 22, 0.02)',
-                  fontFamily: 'var(--font-main)',
-                  transition: 'border-color 0.2s'
-                }}
-                onFocus={(e) => e.currentTarget.style.borderColor = 'rgba(126, 172, 181, 0.4)'}
-                onBlur={(e) => e.currentTarget.style.borderColor = 'rgba(10, 17, 22, 0.1)'}
-              />
-              <button className="btn btn-primary" style={{ padding: '0.75rem 1.25rem', fontSize: '0.82rem', flexShrink: 0 }}>Subscribe</button>
-            </div>
+            <form onSubmit={handleSubscribe} style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <div style={{ display: 'flex', gap: '0.5rem' }}>
+                <input
+                  type="email"
+                  placeholder="email@address.com"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    if (status === 'error') setStatus('idle');
+                  }}
+                  disabled={status === 'loading'}
+                  style={{
+                    flex: '1 1 160px',
+                    background: 'rgba(255, 255, 255, 0.8)',
+                    border: status === 'error' ? '1px solid #D92D20' : '1px solid rgba(10, 17, 22, 0.1)',
+                    borderRadius: '100px',
+                    padding: '0.75rem 1.25rem',
+                    color: 'var(--text-primary)',
+                    fontSize: '0.85rem',
+                    outline: 'none',
+                    boxShadow: 'inset 0 2px 4px rgba(10, 17, 22, 0.02)',
+                    fontFamily: 'var(--font-main)',
+                    transition: 'border-color 0.2s'
+                  }}
+                  onFocus={(e) => {
+                    if (status !== 'error') {
+                      e.currentTarget.style.borderColor = 'rgba(126, 172, 181, 0.4)';
+                    }
+                  }}
+                  onBlur={(e) => {
+                    if (status !== 'error') {
+                      e.currentTarget.style.borderColor = 'rgba(10, 17, 22, 0.1)';
+                    }
+                  }}
+                  required
+                />
+                <button
+                  type="submit"
+                  className="btn btn-primary"
+                  disabled={status === 'loading'}
+                  style={{ padding: '0.75rem 1.25rem', fontSize: '0.82rem', flexShrink: 0 }}
+                >
+                  {status === 'loading' ? 'Sending...' : 'Subscribe'}
+                </button>
+              </div>
+              {status === 'success' && (
+                <p style={{ color: 'var(--accent-secondary)', fontSize: '0.8rem', fontWeight: 600, marginTop: '0.25rem' }}>
+                  ✓ Subscribed successfully!
+                </p>
+              )}
+              {status === 'error' && (
+                <p style={{ color: '#D92D20', fontSize: '0.8rem', fontWeight: 600, marginTop: '0.25rem' }}>
+                  {errorMessage || 'Something went wrong. Please try again.'}
+                </p>
+              )}
+            </form>
           </div>
         </div>
 
@@ -113,7 +203,7 @@ const Footer = () => {
           <div style={{ display: 'flex', gap: '2.5rem' }}>
             <FooterLink href="#">Privacy</FooterLink>
             <FooterLink href="#">Terms</FooterLink>
-            <FooterLink href="#">Status</FooterLink>
+            {/* <FooterLink href="#">Status</FooterLink> */}
           </div>
         </div>
       </div>
