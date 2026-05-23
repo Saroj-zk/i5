@@ -329,6 +329,24 @@ h3 {
   top: 0.75rem;
 }
 
+.desktop-nav-divider {
+  display: flex;
+  align-items: center;
+  margin: 0 0.5rem 0 0.75rem;
+  height: 14px;
+  width: 1px;
+  background: rgba(10, 17, 22, 0.15);
+}
+
+@media (max-width: 768px) {
+  .desktop-nav-divider {
+    display: none !important;
+  }
+  .header-socials-container {
+    margin-left: auto !important;
+  }
+}
+
 .nav-links {
   display: flex;
   gap: 2.5rem;
