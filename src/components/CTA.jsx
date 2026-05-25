@@ -3,7 +3,7 @@ import { ArrowRight, FileText } from 'lucide-react';
 
 const CTA = () => {
   return (
-    <section className="section-padding" style={{ paddingBottom: '6rem' }}>
+    <section id="cta" className="section-padding" style={{ paddingBottom: '6rem' }}>
       <div className="container">
         <div className="card scroll-reveal" style={{
           textAlign: 'center',

@@ -172,7 +172,7 @@ const SignalSequencer = () => {
                 willChange: 'transform'
               }}>
                 {[...Array(4)].map((_, loopIdx) => (
-                  <div key={loopIdx} style={{ display: 'flex', gap: '4rem', alignItems: 'center', paddingRight: '4rem' }}>
+                  <div key={loopIdx} className="sequencer-track-loop" style={{ display: 'flex', gap: '4rem', alignItems: 'center', paddingRight: '4rem' }}>
                     {track.signals.map((sig, sigIdx) => {
                       return (
                         <div key={sigIdx} style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -208,7 +208,7 @@ const SignalSequencer = () => {
                             <div style={{ width: '5px', height: '5px', borderRadius: '50%', background: 'rgba(10, 17, 22, 0.15)' }}></div>
                           )}
                           {sig.type === 'trigger' && (
-                            <div style={{
+                            <div className="sequencer-trigger" style={{
                               width: '26px',
                               height: '26px',
                               borderRadius: '50%',
@@ -222,8 +222,8 @@ const SignalSequencer = () => {
                               {/* Concentric Telemetry Pulsing Rings */}
                               <div className="telemetry-halo" style={{ background: `${track.color}18`, border: `1px solid ${track.color}33` }}></div>
                               <div className="telemetry-halo" style={{ background: `${track.color}0a`, border: `1px solid ${track.color}18`, animationDelay: '1.2s' }}></div>
-
-                              <div style={{
+ 
+                              <div className="sequencer-trigger-dot" style={{
                                 width: '8px',
                                 height: '8px',
                                 borderRadius: '50%',
@@ -283,7 +283,7 @@ const PopupLabel = ({ label, color }) => {
       >
         {label}
       </div>
-      <div style={{
+      <div className="popup-label-line" style={{
         width: '1.5px',
         height: '10px',
         background: `linear-gradient(to bottom, ${color}44, transparent)`
