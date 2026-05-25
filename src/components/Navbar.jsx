@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const Navbar = () => {
+const Navbar = ({ onJoinClick }) => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -28,14 +28,16 @@ const Navbar = () => {
         <li><a href="#users">Users</a></li>
       </ul>
 
-      <a href="#cta" className="btn btn-primary" style={{
+      <button onClick={onJoinClick} className="btn btn-primary" style={{
         padding: '0.55rem 1.35rem',
         fontSize: '0.82rem',
         marginLeft: '2.5rem',
-        whiteSpace: 'nowrap'
+        whiteSpace: 'nowrap',
+        border: 'none',
+        cursor: 'pointer'
       }}>
         Join Waitlist
-      </a>
+      </button>
 
 
 

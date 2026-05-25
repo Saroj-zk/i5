@@ -32,13 +32,11 @@ function App() {
         <div className="glow-orb glow-orb-2"></div>
       </div>
 
-      <Navbar />
+      <Navbar onJoinClick={() => setIsModalOpen(true)} />
 
       <main>
         <Hero onJoinClick={() => setIsModalOpen(true)} />
         <TrustedBy />
-        <div className="section-divider"></div>
-        <IntelligenceStack />
         <div className="section-divider"></div>
         {/* Desktop Spline Interactive Section */}
         <div className="spline-desktop-container" style={{ 
@@ -97,6 +95,8 @@ function App() {
             <span style={{ color: 'var(--accent-secondary)', fontWeight: 850 }}>Trade with confidence.</span>
           </div>
         </div>
+        <div className="section-divider"></div>
+        <IntelligenceStack />
         <CoreFeatures />
         <div className="section-divider"></div>
         <ComparisonSection />

@@ -294,11 +294,11 @@ h3 {
   .spline-mobile-text-top {
     display: block;
     position: absolute;
-    top: 4rem;
+    top: 2rem; /* Move top content higher */
     left: 5%;
     right: 5%;
     text-align: center;
-    font-size: clamp(1.1rem, 4vw, 1.4rem);
+    font-size: clamp(0.92rem, 3.2vw, 1.15rem); /* Slightly smaller font size */
     font-weight: 800;
     line-height: 1.45;
     color: var(--text-primary);
@@ -312,11 +312,11 @@ h3 {
   .spline-mobile-text-bottom {
     display: block;
     position: absolute;
-    bottom: 4rem;
+    bottom: 2.5rem; /* Cozy bottom spacing */
     left: 5%;
     right: 5%;
     text-align: center;
-    font-size: clamp(0.85rem, 3.2vw, 1.05rem);
+    font-size: clamp(0.76rem, 2.8vw, 0.92rem); /* Slightly smaller font size */
     font-weight: 500;
     line-height: 1.6;
     color: var(--text-secondary);
