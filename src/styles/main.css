@@ -197,29 +197,11 @@ h3 {
   justify-content: center;
 }
 
-.hero-video-glow {
-  position: absolute;
-  top: 10%;
-  left: 10%;
-  width: 80%;
-  height: 80%;
-  background: rgba(126, 172, 181, 0.22);
-  filter: blur(65px);
-  z-index: 0;
-  pointer-events: none;
-}
-
 .hero-video-mockup {
-  width: 100%;
+  width: 50%;
   height: auto;
-  border-radius: 20px;
-  border: 1px solid rgba(10, 17, 22, 0.1);
-  box-shadow: 0 30px 70px rgba(10, 17, 22, 0.12);
   display: block;
   position: relative;
-  z-index: 1;
-  background: rgba(255, 255, 255, 0.45);
-  backdrop-filter: blur(20px);
 }
 
 .hero-content-col {
@@ -335,6 +317,10 @@ h3 {
     order: -1;
     max-width: 580px;
     margin: 0 auto;
+  }
+
+  .hero-video-mockup {
+    width: 85%;
   }
 
   .hero-content-col {

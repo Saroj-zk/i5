@@ -24,20 +24,7 @@ const Hero = ({ onJoinClick }) => {
 
         <div className="container" style={{ position: 'relative', zIndex: 1, width: '100%' }}>
           <div className="hero-grid">
-            {/* Left Column: Premium WebM video mockup */}
-            <div className="reveal hero-video-col">
-              <div className="hero-video-glow"></div>
-              <video
-                src="/mockup.webm"
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="hero-video-mockup"
-              />
-            </div>
-
-            {/* Right Column: Hero Content */}
+            {/* Left Column: Hero Content */}
             <div className="reveal hero-content-col">
               <div className="hero-badge-row">
                 <span className="badge" style={{ fontSize: '0.65rem', padding: '0.35rem 0.9rem', letterSpacing: '0.12em' }}>
@@ -86,6 +73,18 @@ const Hero = ({ onJoinClick }) => {
                   </div>
                 ))}
               </div>
+            </div>
+
+            {/* Right Column: WebM video mockup */}
+            <div className="reveal hero-video-col">
+              <video
+                src="/mockup.webm"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="hero-video-mockup"
+              />
             </div>
           </div>
         </div>
