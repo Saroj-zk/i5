@@ -1,9 +1,6 @@
-import React, { useEffect, useRef } from 'react';
-import { ArrowRight, ChevronRight, Activity } from 'lucide-react';
-import gsap from 'gsap';
-import Spline from '@splinetool/react-spline';
+import React, { useEffect } from 'react';
+import { ArrowRight, Activity } from 'lucide-react';
 import SignalSequencer from './SignalSequencer';
-import ProtocolCard from './ProtocolCard';
 
 const Hero = ({ onJoinClick }) => {
   useEffect(() => {
@@ -12,125 +9,89 @@ const Hero = ({ onJoinClick }) => {
 
   return (
     <>
-      <section className="hero-section" style={{
-        paddingTop: '6.5rem',
-        paddingBottom: '0',
-        height: '100vh',
-        minHeight: '680px',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        position: 'relative',
-        overflow: 'hidden'
-      }}>
-        <div className="container" style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          {/* Top: Center Aligned Content */}
-          <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            textAlign: 'center',
-            width: '100%',
-            maxWidth: '800px',
-            margin: 'auto 0'
-          }}>
-            <div className="reveal" style={{ marginBottom: '1rem', display: 'flex', justifyContent: 'center' }}>
-              <span className="badge" style={{ fontSize: '0.65rem', padding: '0.35rem 0.9rem', letterSpacing: '0.1em' }}>
-                <Activity size={11} style={{ marginRight: '0.4rem', opacity: 0.7 }} />
-                Now in private beta <span style={{ opacity: 0.3, margin: '0 0.4rem' }}>|</span> Built on Hyperliquid
-              </span>
+      <section className="hero-section">
+        {/* Sleek background orb specific to hero */}
+        <div style={{
+          position: 'absolute',
+          top: '-10%',
+          right: '-5%',
+          width: '50vw',
+          height: '50vw',
+          background: 'radial-gradient(circle, rgba(126, 172, 181, 0.06) 0%, transparent 70%)',
+          zIndex: 0,
+          pointerEvents: 'none'
+        }}></div>
+
+        <div className="container" style={{ position: 'relative', zIndex: 1, width: '100%' }}>
+          <div className="hero-grid">
+            {/* Left Column: Premium WebM video mockup */}
+            <div className="reveal hero-video-col">
+              <div className="hero-video-glow"></div>
+              <video
+                src="/mockup.webm"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="hero-video-mockup"
+              />
             </div>
 
-            <h1 className="hero-title reveal" style={{
-              textAlign: 'center',
-              marginBottom: '1rem',
-              whiteSpace: 'nowrap',
-              fontSize: 'clamp(2rem, 5.8vw, 4.8rem)',
-              letterSpacing: '-0.04em',
-              lineHeight: '1.1'
-            }}>
-              From noise to <span style={{ color: 'var(--accent-secondary)', fontWeight: 800 }}>signals.</span>
-            </h1>
+            {/* Right Column: Hero Content */}
+            <div className="reveal hero-content-col">
+              <div className="hero-badge-row">
+                <span className="badge" style={{ fontSize: '0.65rem', padding: '0.35rem 0.9rem', letterSpacing: '0.12em' }}>
+                  <Activity size={11} style={{ marginRight: '0.4rem', opacity: 0.7 }} />
+                  Now in private beta <span style={{ opacity: 0.3, margin: '0 0.4rem' }}>|</span> Built on Hyperliquid
+                </span>
+              </div>
 
-            <div className="reveal" style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.75rem',
-              background: 'rgba(9, 99, 126, 0.06)',
-              border: '1px solid rgba(9, 99, 126, 0.12)',
-              borderRadius: '8px',
-              padding: '0.5rem 1.1rem',
-              marginBottom: '1.25rem'
-            }}>
-              <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--accent-gold)' }}></div>
-              <span className="hero-os-label" style={{
-                color: 'var(--accent-gold)',
-                fontSize: '0.75rem',
-                fontWeight: 800,
-                letterSpacing: '0.2em',
-                textTransform: 'uppercase',
+              <h1 className="hero-title" style={{
+                fontSize: 'clamp(2rem, 3.8vw, 3.6rem)',
+                letterSpacing: '-0.04em',
+                lineHeight: '1.1',
+                marginBottom: '1rem',
+                fontWeight: 800
               }}>
-                Intelligence OS for Markets
-              </span>
-            </div>
+                From noise to <span className="hero-title-accent">signals.</span>
+              </h1>
 
-            <p className="reveal" style={{
-              color: 'var(--text-secondary)',
-              fontSize: '1.1rem',
-              maxWidth: '600px',
-              marginBottom: '1.75rem',
-              lineHeight: '1.65',
-              fontWeight: 400,
-              textAlign: 'center'
-            }}>
-              i5 is an intelligence-native trading network that aggregates smart-money flows,
-              cohort behavior, and institutional-grade signals into a unified execution layer.
-            </p>
+              <div className="hero-os-label-wrapper">
+                <div className="hero-os-label-dot"></div>
+                <span className="hero-os-label">
+                  Intelligence OS for Markets
+                </span>
+              </div>
 
-            <div className="reveal" style={{ display: 'flex', gap: '1.25rem', flexWrap: 'wrap', marginBottom: '3.5rem' }}>
-              <button onClick={onJoinClick} className="btn btn-primary">
-                Join Waitlist <ArrowRight size={18} />
-              </button>
-            </div>
+              <p className="hero-description">
+                i5 is an intelligence-native trading network that aggregates smart-money flows,
+                cohort behavior, and institutional-grade signals into a unified execution layer.
+              </p>
 
-            {/* Mini stats row - Center aligned */}
-            <div className="reveal hero-stats" style={{ justifyContent: 'center' }}>
-              {[
-                { value: '98.7%', label: 'Signal Accuracy' },
-                { value: '<50ms', label: 'Latency' }
-              ].map((stat, i) => (
-                <div key={i} style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
-                    {stat.value}
+              <div className="hero-cta-row">
+                <button onClick={onJoinClick} className="btn btn-primary">
+                  Join Waitlist <ArrowRight size={18} />
+                </button>
+              </div>
+
+              {/* Mini stats row */}
+              <div className="hero-stats">
+                {[
+                  { value: '98.7%', label: 'Signal Accuracy' },
+                  { value: '<50ms', label: 'Latency' }
+                ].map((stat, i) => (
+                  <div key={i} className="hero-stat-item">
+                    <div className="hero-stat-value">{stat.value}</div>
+                    <div className="hero-stat-label">{stat.label}</div>
                   </div>
-                  <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)', letterSpacing: '0.1em', textTransform: 'uppercase', marginTop: '0.2rem' }}>
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
-
-        {/* Bottom: Spline Visual (Edge to Edge, full viewport width) */}
-        <div className="reveal hero-spline-fullwidth" style={{
-          width: '100vw',
-          height: '350px',
-          position: 'relative',
-          left: '50%',
-          right: '50%',
-          marginLeft: '-50vw',
-          marginRight: '-50vw',
-          overflow: 'hidden',
-          marginTop: '-190px',
-          marginBottom: '0',
-          background: 'transparent'
-        }}>
-          <Spline scene="https://prod.spline.design/x18xVdcAY7tK5oeQ/scene.splinecode" />
-        </div>
       </section>
 
-      {/* Sibling Section: Sits strictly below the fold (100vh) */}
+      {/* Sibling Section: Sits strictly below the fold */}
       <section className="sequencer-section" style={{ padding: '3rem 0', background: 'var(--bg-primary)' }}>
         <div className="container">
           {/* Full-width Signal Sequencer */}

@@ -171,31 +171,211 @@ h3 {
   padding: 8rem 0;
 }
 
-/* Responsive Grid Classes */
+/* Responsive Grid & Hero Layout Classes */
+.hero-section {
+  padding-top: 7.5rem;
+  padding-bottom: 4rem;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 4rem;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 4.5rem;
   align-items: center;
+  width: 100%;
+}
+
+.hero-video-col {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-video-glow {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  background: rgba(126, 172, 181, 0.22);
+  filter: blur(65px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-video-mockup {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  border: 1px solid rgba(10, 17, 22, 0.1);
+  box-shadow: 0 30px 70px rgba(10, 17, 22, 0.12);
+  display: block;
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(20px);
+}
+
+.hero-content-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  width: 100%;
+}
+
+.hero-badge-row {
+  margin-bottom: 1.25rem;
+  display: flex;
+}
+
+.hero-title {
+  text-align: left;
+  margin-bottom: 1rem;
+  font-size: clamp(2rem, 3.8vw, 3.6rem);
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  width: 100%;
+  font-weight: 800;
+}
+
+.hero-title-accent {
+  color: var(--accent-secondary);
+  font-weight: 800;
+}
+
+.hero-os-label-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(9, 99, 126, 0.06);
+  border: 1px solid rgba(9, 99, 126, 0.12);
+  border-radius: 8px;
+  padding: 0.5rem 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-os-label-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-gold);
+}
+
+.hero-os-label {
+  color: var(--accent-gold);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.hero-description {
+  color: var(--text-secondary);
+  font-size: 1.02rem;
+  max-width: 520px;
+  margin-bottom: 2rem;
+  line-height: 1.65;
+  font-weight: 400;
+}
+
+.hero-cta-row {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
   margin-bottom: 2.5rem;
 }
 
-.hero-spline {
+.hero-stats {
   display: flex;
-  justify-content: flex-end;
+  gap: 3.5rem;
+  justify-content: flex-start;
   width: 100%;
-  height: 600px;
-  position: relative;
-  overflow: visible !important;
 }
 
-.hero-spline>div {
-  width: 800px !important;
-  height: 800px !important;
-  position: absolute !important;
-  right: -150px !important;
-  top: -100px !important;
-  overflow: visible !important;
+.hero-stat-item {
+  text-align: left;
+}
+
+.hero-stat-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.hero-stat-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 0.2rem;
+}
+
+@media (max-width: 1024px) {
+  .hero-section {
+    padding-top: 7rem !important;
+    padding-bottom: 3.5rem !important;
+    min-height: auto;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  .hero-video-col {
+    order: -1;
+    max-width: 580px;
+    margin: 0 auto;
+  }
+
+  .hero-content-col {
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-badge-row {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .hero-title {
+    text-align: center;
+    font-size: clamp(1.8rem, 5.5vw, 2.6rem);
+  }
+
+  .hero-os-label-wrapper {
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-description {
+    text-align: center;
+    font-size: 0.96rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-cta-row {
+    justify-content: center;
+    margin-bottom: 2rem;
+    width: 100%;
+  }
+
+  .hero-stats {
+    justify-content: center;
+    gap: 3rem;
+  }
+
+  .hero-stat-item {
+    text-align: center;
+  }
 }
 
 .spline-desktop-container {
