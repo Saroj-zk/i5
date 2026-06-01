@@ -75,16 +75,16 @@ const Hero = ({ onJoinClick }) => {
               </div>
             </div>
 
-            {/* Right Column: WebM video mockup */}
-            <div className="reveal hero-video-col">
-              <video
-                src="/mockup.webm"
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="hero-video-mockup"
-              />
+            {/* Right Column: Spline Visual */}
+            <div className="reveal hero-spline">
+              <iframe
+                src="https://my.spline.design/chromaticcopycopy-7vx5SxUc9sQUTgbV5UnxyDvb-nON/"
+                frameBorder="0"
+                width="100%"
+                height="100%"
+                style={{ border: 'none' }}
+                title="i5 Spline Visual"
+              ></iframe>
             </div>
           </div>
         </div>
