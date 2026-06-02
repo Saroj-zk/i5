@@ -219,7 +219,7 @@ const Footer = () => {
           {/* Newsletter */}
           <div>
             <span style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.15em', display: 'block', marginBottom: '1.25rem' }}>Signal Newsletter</span>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '1.25rem', lineHeight: 1.6 }}>Stay updated with the latest market intelligence and network updates.</p>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '1.25rem', lineHeight: 1.6 }}>Stay updated with the latest market intelligence, and network updates from I5 Labs.</p>
             <form onSubmit={handleSubscribe} style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
               <div style={{ display: 'flex', gap: '0.5rem' }}>
                 <input
@@ -290,7 +290,7 @@ const Footer = () => {
           gap: '1.5rem'
         }}>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.82rem', fontWeight: 500 }}>
-            © 2026 i5 Intelligence Network. Built on Hyperliquid.
+            © 2026 i5 Labs Intelligence Network. Built on Hyperliquid.
           </p>
           <div style={{ display: 'flex', gap: '2.5rem' }}>
             <FooterLink href="#">Privacy</FooterLink>
