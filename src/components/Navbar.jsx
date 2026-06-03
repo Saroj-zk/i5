@@ -147,7 +147,7 @@ const Navbar = ({ onJoinClick }) => {
           </svg>
         </a>
         <a
-          href="https://discord.gg/rf3FTS7F"
+          href="https://discord.gg/UASPfWuvAA"
           target="_blank"
           rel="noopener noreferrer"
           style={socialStyle}
@@ -244,7 +244,7 @@ const Navbar = ({ onJoinClick }) => {
               </svg>
             </a>
             <a
-              href="https://discord.gg/rf3FTS7F"
+              href="https://discord.gg/UASPfWuvAA"
               target="_blank"
               rel="noopener noreferrer"
               style={socialStyle}
