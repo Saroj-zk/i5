@@ -16,7 +16,8 @@ pipelines:
           script:
             - corepack enable
             - corepack prepare pnpm@9 --activate
-            - pnpm config set store-dir .pnpm-store
-            - pnpm install --frozen-lockfile
+            - export PNPM_HOME="$BITBUCKET_CLONE_DIR/.pnpm"
+            - export PATH="$PNPM_HOME:$PATH"
+            - pnpm install --frozen-lockfile --store-dir .pnpm-store
             - pnpm run build
             - pnpm run deploy:production
