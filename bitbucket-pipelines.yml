@@ -1,0 +1,23 @@
+image: node:22
+
+definitions:
+  caches:
+    pnpm: .pnpm-store
+
+pipelines:
+  branches:
+    release/mainnet:
+      - step:
+          name: Build & Deploy to Cloudflare Pages
+          deployment: production
+          caches:
+            - node
+            - pnpm
+          script:
+            - corepack enable
+            - corepack prepare pnpm@9 --activate
+            - export PNPM_HOME="$BITBUCKET_CLONE_DIR/.pnpm"
+            - export PATH="$PNPM_HOME:$PATH"
+            - pnpm install --frozen-lockfile --store-dir .pnpm-store
+            - pnpm run build
+            - pnpm run deploy:production
