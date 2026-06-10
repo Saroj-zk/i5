@@ -22,7 +22,7 @@ const router = createBrowserRouter([
     ],
   },
 ], {
-  basename: import.meta.env.DEV ? '/' : '/i5_20',
+  basename: import.meta.env.BASE_URL,
 });
 
 function App() {

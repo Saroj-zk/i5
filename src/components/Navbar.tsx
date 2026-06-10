@@ -1,30 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { ThemeToggleButton } from '@/components/ThemeToggleButton';
-import { Radio, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import logo from '../assets/logo.png';
 
 export function Navbar() {
-  const [tradersCount, setTradersCount] = useState(12482);
-  const [time, setTime] = useState('');
   const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTradersCount((prev) => prev + Math.floor(Math.random() * 5) - 2);
-    }, 4000);
-
-    const updateTime = () => {
-      const now = new Date();
-      setTime(now.toISOString().replace('T', ' ').substring(0, 19) + ' UTC');
-    };
-    updateTime();
-    const timeInterval = setInterval(updateTime, 1000);
-
-    return () => {
-      clearInterval(interval);
-      clearInterval(timeInterval);
-    };
-  }, []);
 
   const scrollToSection = (id: string) => {
     setIsOpen(false);

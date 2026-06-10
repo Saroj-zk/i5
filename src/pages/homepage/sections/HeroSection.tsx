@@ -10,7 +10,7 @@ interface HeroSectionProps {
   triggerShake: () => void;
 }
 
-export function HeroSection({ triggerShake }: HeroSectionProps) {
+export function HeroSection({ triggerShake: _triggerShake }: HeroSectionProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [currentSignal, setCurrentSignal] = useState(1);
@@ -178,19 +178,6 @@ export function HeroSection({ triggerShake }: HeroSectionProps) {
 
     return () => ctx.revert();
   }, []);
-
-  const scrollToSection = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      const navOffset = 80;
-      const elementPosition = el.getBoundingClientRect().top + window.scrollY;
-      const offsetPosition = elementPosition - navOffset;
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
 
   return (
     <section ref={containerRef} className="relative min-h-[92vh] flex flex-col justify-center px-6 sm:px-12 md:px-16 lg:px-20 pt-8 sm:pt-8 lg:pt-10 select-none pb-0 sm:pb-8 lg:pb-16 overflow-x-hidden">
