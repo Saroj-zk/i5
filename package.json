@@ -33,12 +33,17 @@
   },
   "name": "offpkg-vite-react",
   "private": true,
+  "packageManager": "pnpm@9.15.9",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "build": "tsc -b && vite build",
     "cf:login": "wrangler login",
     "cf:whoami": "wrangler whoami",
     "deploy": "wrangler pages deploy dist",
     "deploy:preview": "wrangler pages deploy dist --branch preview",
+    "deploy:production": "wrangler pages deploy dist --project-name=i5-xyz --branch release/mainnet",
     "dev": "vite",
     "lint": "eslint .",
     "preview": "vite preview"
