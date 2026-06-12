@@ -330,14 +330,14 @@ export function HeroSection({ triggerShake: _triggerShake }: HeroSectionProps) {
                 LATENCY
               </div>
             </div>
-            <div className="hero-stat-item cursor-pointer">
+            {/* <div className="hero-stat-item cursor-pointer">
               <div className="stat-val text-3xl sm:text-4xl font-display font-black text-white tracking-tight origin-center lg:origin-left transition-transform duration-300">
                 21M
               </div>
               <div className="stat-lbl text-[10px] sm:text-xs font-mono font-bold tracking-widest text-primary uppercase mt-1 transition-all duration-300">
                 SUPPLIES
               </div>
-            </div>
+            </div> */}
           </div>
 
         </div>
