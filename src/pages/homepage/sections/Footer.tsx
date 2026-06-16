@@ -79,7 +79,7 @@ export function Footer() {
       <div className="max-w-7xl mx-auto">
         {/* Main Footer Content Grid */}
         <div className="flex flex-col lg:flex-row items-start lg:items-start justify-start lg:justify-between gap-8 lg:gap-8 pb-16">
-          
+
           {/* Col 1: Logo & Tagline (Col span 4) */}
           <div className="footer-column lg:col-span-4 flex flex-col gap-4 text-left">
             <div className="flex items-center gap-2.5">
@@ -115,7 +115,7 @@ export function Footer() {
               <a href="https://x.com/ifivelabs" target="_blank" rel="noopener noreferrer" className="cursor-pointer">X (Twitter)</a>
               <a href="https://t.me/I5Labs" target="_blank" rel="noopener noreferrer" className="cursor-pointer">Telegram</a>
               <a href="https://discord.gg/UASPfWuvAA" target="_blank" rel="noopener noreferrer" className="cursor-pointer">Discord</a>
-              <a href="#" className="cursor-pointer">Blog</a>
+              <a href="/blog" target='_blank' className="cursor-pointer">Blog</a>
               {/* <a href="#" className="cursor-pointer">Newsletter</a> */}
             </div>
           </div>
@@ -130,9 +130,9 @@ export function Footer() {
             </p>
             {/* Optional premium email signup element */}
             <div className="flex max-w-sm border border-white/10 focus-within:border-primary transition-colors">
-              <input 
-                type="email" 
-                placeholder="ENTER EMAIL ADDRESS" 
+              <input
+                type="email"
+                placeholder="ENTER EMAIL ADDRESS"
                 className="bg-transparent border-0 outline-none px-3 py-2 text-xs sm:text-sm font-mono flex-1 text-white placeholder-white/20 uppercase"
               />
               <button className="footer-signup-btn bg-primary/10 border-l border-white/10 px-5 text-xs sm:text-sm font-mono font-bold text-primary uppercase cursor-pointer">

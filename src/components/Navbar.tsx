@@ -62,6 +62,13 @@ export function Navbar() {
               >
                 COMPARE
               </button>
+              <a
+                href="/blog"
+                target='_blank'
+                className="text-white/60 hover:text-primary hover:before:content-['>_'] transition-colors cursor-pointer tracking-wider shrink-0"
+              >
+                BLOG
+              </a>
               {/* <button
                 onClick={() => scrollToSection('intelligence-network')}
                 className="text-white/60 hover:text-primary hover:before:content-['>_'] transition-colors cursor-pointer tracking-wider shrink-0"
@@ -196,6 +203,12 @@ export function Navbar() {
           >
             &gt; COMPARE
           </button>
+          <a
+            href="/blog"
+            className="block text-left py-2 text-white/60 hover:text-primary hover:pl-2 transition-all cursor-pointer tracking-wider border-b border-white/5"
+          >
+            &gt; NEWSROOM
+          </a>
           <button
             onClick={() => scrollToSection('intelligence-network')}
             className="text-left py-2 text-white/60 hover:text-primary hover:pl-2 transition-all cursor-pointer tracking-wider border-b border-white/5"
@@ -251,4 +264,3 @@ export function Navbar() {
     </>
   );
 }
-

@@ -19,6 +19,10 @@ export default defineConfig({
         target: 'https://docs.google.com',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api\/waitlist/, '/forms/d/e/1FAIpQLSfqqaFxJvirBAT3tn6JeELA_DzjlCRytQww3HzfEJNo1kKLGw/formResponse')
+      },
+      '/blog': {
+        target: 'http://35.207.229.184',
+        changeOrigin: true,
       }
     }
   },
