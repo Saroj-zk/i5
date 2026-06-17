@@ -24,11 +24,7 @@ export default defineConfig({
         target: 'https://docs.google.com',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api\/newsletter/, '/forms/d/e/1FAIpQLSdTpqBqtljF654WnIQV0D7MAxG1OzMU02dAITHLNf2BmrGJew/formResponse')
-      },
-      // '/blog': {
-      //   target: 'http://35.207.229.184',
-      //   changeOrigin: true,
-      // }
+      }
     }
   },
   resolve: {
