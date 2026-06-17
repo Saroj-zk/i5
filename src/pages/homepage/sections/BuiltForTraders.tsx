@@ -488,12 +488,12 @@ export function BuiltForTraders() {
                 {/* Custom micro-widget */}
                 {renderWidget(idx, hoveredCardIndex === idx)}
               </div>
-              <a href="#" className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase text-primary hover:text-white transition-colors mt-8 self-start group/link">
+              {/* <a href="#" className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase text-primary hover:text-white transition-colors mt-8 self-start group/link">
                 <span>Learn more</span>
                 <ArrowRight className={`trader-arrow-icon w-3.5 h-3.5 transition-transform duration-300 ${
                   hoveredCardIndex === idx ? 'translate-x-1 text-white' : ''
                 }`} />
-              </a>
+              </a> */}
             </div>
           ))}
         </div>
