@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import logo from '../../../assets/logo.png';
@@ -7,6 +7,37 @@ gsap.registerPlugin(ScrollTrigger);
 
 export function Footer() {
   const containerRef = useRef<HTMLElement>(null);
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+
+    setStatus('loading');
+    try {
+      const formData = new URLSearchParams();
+      formData.append('entry.723733063', email);
+
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: formData.toString(),
+      });
+
+      if (response.ok || response.type === 'opaque') {
+        setStatus('success');
+        setEmail('');
+      } else {
+        setStatus('error');
+      }
+    } catch (err) {
+      console.error('Newsletter subscription error:', err);
+      setStatus('error');
+    }
+  };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -115,7 +146,7 @@ export function Footer() {
               <a href="https://x.com/ifivelabs" target="_blank" rel="noopener noreferrer" className="cursor-pointer">X (Twitter)</a>
               <a href="https://t.me/I5Labs" target="_blank" rel="noopener noreferrer" className="cursor-pointer">Telegram</a>
               <a href="https://discord.gg/UASPfWuvAA" target="_blank" rel="noopener noreferrer" className="cursor-pointer">Discord</a>
-              <a href="/blog" target='_blank' className="cursor-pointer">Blog</a>
+              <a href="https://i5.xyz/blog/" target="_blank" rel="noopener noreferrer" className="cursor-pointer">Blog</a>
               {/* <a href="#" className="cursor-pointer">Newsletter</a> */}
             </div>
           </div>
@@ -129,16 +160,26 @@ export function Footer() {
               Stay updated with the latest market intelligence, and network updates from I5 Labs.
             </p>
             {/* Optional premium email signup element */}
-            <div className="flex max-w-sm border border-white/10 focus-within:border-primary transition-colors">
+            <form onSubmit={handleSubscribe} className="flex max-w-sm border border-white/10 focus-within:border-primary transition-colors">
               <input
                 type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="ENTER EMAIL ADDRESS"
-                className="bg-transparent border-0 outline-none px-3 py-2 text-xs sm:text-sm font-mono flex-1 text-white placeholder-white/20 uppercase"
+                required
+                disabled={status === 'loading' || status === 'success'}
+                className="bg-transparent border-0 outline-none px-3 py-2 text-xs sm:text-sm font-mono flex-1 text-white placeholder-white/20 uppercase disabled:opacity-50"
               />
-              <button className="footer-signup-btn bg-primary/10 border-l border-white/10 px-5 text-xs sm:text-sm font-mono font-bold text-primary uppercase cursor-pointer">
-                SUBMIT
+              <button 
+                type="submit" 
+                disabled={status === 'loading' || status === 'success'}
+                className="footer-signup-btn bg-primary/10 border-l border-white/10 px-5 text-xs sm:text-sm font-mono font-bold text-primary uppercase cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {status === 'loading' ? 'WAIT' : status === 'success' ? 'DONE' : 'SUBMIT'}
               </button>
-            </div>
+            </form>
+            {status === 'success' && <p className="text-primary text-xs font-mono mt-2">Subscribed successfully!</p>}
+            {status === 'error' && <p className="text-red-500 text-xs font-mono mt-2">Something went wrong. Please try again.</p>}
           </div>
 
         </div>

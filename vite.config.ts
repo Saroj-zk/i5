@@ -20,10 +20,15 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api\/waitlist/, '/forms/d/e/1FAIpQLSfqqaFxJvirBAT3tn6JeELA_DzjlCRytQww3HzfEJNo1kKLGw/formResponse')
       },
-      '/blog': {
-        target: 'http://35.207.229.184',
+      '/api/newsletter': {
+        target: 'https://docs.google.com',
         changeOrigin: true,
-      }
+        rewrite: (path) => path.replace(/^\/api\/newsletter/, '/forms/d/e/1FAIpQLSdTpqBqtljF654WnIQV0D7MAxG1OzMU02dAITHLNf2BmrGJew/formResponse')
+      },
+      // '/blog': {
+      //   target: 'http://35.207.229.184',
+      //   changeOrigin: true,
+      // }
     }
   },
   resolve: {
