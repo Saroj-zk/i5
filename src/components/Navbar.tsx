@@ -24,7 +24,7 @@ export function Navbar() {
   return (
     <>
       <nav className="fixed top-0 left-0 right-0 h-20 border-b border-white/10 bg-black/90 backdrop-blur-md z-50 font-mono select-none flex items-center">
-        <div className="w-full h-full flex items-center justify-between px-3 sm:pl-[72px] sm:pr-[72px] md:pl-[112px] md:pr-[112px] lg:pl-[160px] lg:pr-[120px] xl:pl-[208px] xl:pr-[120px]">
+        <div className="w-full h-full flex items-center justify-between px-3 sm:pl-[72px] sm:pr-[72px] md:pl-[112px] md:pr-[112px] lg:pl-[160px] lg:pr-[120px] xl:pr-[120px]">
 
           {/* Left Column: Brand Logo, Name, Divider, Links */}
           <div className="flex items-center gap-2.5 lg:gap-3.5 xl:gap-6 shrink-0 h-full">
