@@ -207,7 +207,7 @@ export function HeroSection({ triggerShake: _triggerShake }: HeroSectionProps) {
             muted
             playsInline
             preload="auto"
-            className="absolute top-0 bottom-0 left-0 right-0 lg:right-[120px] w-full lg:w-[calc(100%-120px)] h-full object-cover lg:object-contain lg:object-right object-center filter brightness-95 opacity-30 lg:opacity-100 pointer-events-none"
+            className="absolute top-0 bottom-0 left-0 right-0 lg:right-[120px] w-full h-full object-cover lg:object-contain lg:object-right object-center filter brightness-95 opacity-30 lg:opacity-100 pointer-events-none"
           >
             <source src="libst.webm" type="video/webm" />
             <source src="libst.mp4" type="video/mp4" />
@@ -217,7 +217,7 @@ export function HeroSection({ triggerShake: _triggerShake }: HeroSectionProps) {
       )}
 
       {/* Asymmetrical Grid layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-8 items-center relative z-10 w-full max-w-7xl self-start sm:ml-6 md:ml-12 lg:ml-20 xl:ml-32">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-8 items-center relative z-10 w-full max-w-7xl self-start lg:ml-20 xl:ml-32">
         
         {/* Slogans and CTAs */}
         <div className="lg:col-span-8 xl:col-span-7 flex flex-col gap-4 sm:gap-6 text-center lg:text-left items-center lg:items-start w-full">
@@ -330,14 +330,14 @@ export function HeroSection({ triggerShake: _triggerShake }: HeroSectionProps) {
                 LATENCY
               </div>
             </div>
-            {/* <div className="hero-stat-item cursor-pointer">
+            <div className="hero-stat-item cursor-pointer">
               <div className="stat-val text-3xl sm:text-4xl font-display font-black text-white tracking-tight origin-center lg:origin-left transition-transform duration-300">
                 21M
               </div>
               <div className="stat-lbl text-[10px] sm:text-xs font-mono font-bold tracking-widest text-primary uppercase mt-1 transition-all duration-300">
                 SUPPLIES
               </div>
-            </div> */}
+            </div>
           </div>
 
         </div>
