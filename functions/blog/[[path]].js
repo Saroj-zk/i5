@@ -2,9 +2,9 @@ export async function onRequest(context) {
   try {
     const url = new URL(context.request.url);
 
-    // Strip /blog prefix: /blog/foo -> /foo, /blog -> /
-    const blogPath = url.pathname.replace(/^\/blog/, "") || "/";
-    const targetUrl = new URL(blogPath + url.search, "https://blog.i5.xyz");
+    // Keep /blog prefix: www.i5.xyz/blog/foo -> blog.i5.xyz/blog/foo
+    // WordPress is installed at blog.i5.xyz/blog/ (not root)
+    const targetUrl = new URL(url.pathname + url.search, "https://blog.i5.xyz");
 
     // Forward all headers but set Host to the upstream WordPress host.
     // Also strip CF-injected headers that should not be forwarded upstream.
@@ -34,12 +34,9 @@ export async function onRequest(context) {
     if (cookies.length > 0) {
       resHeaders.delete("set-cookie");
       for (const cookie of cookies) {
-        const rewritten = cookie
-          .replace(/;\s*domain=[^;]*/i, "")
-          .replace(/;\s*path=([^;]*)/i, (_, p) => {
-            const normalized = p.replace(/^\/blog/, "") || "/";
-            return `; Path=/blog${normalized === "/" ? "" : normalized}`;
-          });
+        // Change domain to www.i5.xyz; path stays as-is since
+        // WordPress already sets path=/blog/ which matches our proxy path.
+        const rewritten = cookie.replace(/;\s*domain=[^;]*/i, "");
         resHeaders.append("set-cookie", rewritten);
       }
     }
