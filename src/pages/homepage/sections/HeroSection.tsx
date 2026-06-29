@@ -35,14 +35,14 @@ export function HeroSection({ triggerShake: _triggerShake }: HeroSectionProps) {
     // Programmatically ensure all videos inside the container are muted and playing
     // This is crucial for autoplay compatibility across many devices (e.g. iOS Safari, low-power mode browser states)
     const videos = containerRef.current?.querySelectorAll('video');
-    
+
     const playAll = () => {
       videos?.forEach((video) => {
         video.defaultMuted = true;
         video.muted = true;
         video.playsInline = true;
         video.setAttribute('playsinline', 'true');
-        
+
         const playPromise = video.play();
         if (playPromise !== undefined) {
           playPromise.catch((error) => {
@@ -92,12 +92,12 @@ export function HeroSection({ triggerShake: _triggerShake }: HeroSectionProps) {
         duration: 1,
         ease: 'power4.out',
       })
-      .to('.hero-fade-in', {
-        opacity: 1,
-        y: 0,
-        stagger: 0.1,
-        duration: 0.8,
-      }, '-=0.6');
+        .to('.hero-fade-in', {
+          opacity: 1,
+          y: 0,
+          stagger: 0.1,
+          duration: 0.8,
+        }, '-=0.6');
 
       // Mouse parallax on the background video container (only active on desktop)
       const handleMouseMove = (e: MouseEvent) => {
@@ -105,7 +105,7 @@ export function HeroSection({ triggerShake: _triggerShake }: HeroSectionProps) {
         const { clientX, clientY } = e;
         const xPercent = (clientX / window.innerWidth - 0.5) * 15;
         const yPercent = (clientY / window.innerHeight - 0.5) * 15;
-        
+
         gsap.to('.hero-bg-video', {
           x: xPercent,
           y: yPercent,
@@ -181,7 +181,7 @@ export function HeroSection({ triggerShake: _triggerShake }: HeroSectionProps) {
 
   return (
     <section ref={containerRef} className="relative min-h-[92vh] flex flex-col justify-center px-6 sm:px-12 md:px-16 lg:px-20 pt-8 sm:pt-8 lg:pt-10 select-none pb-0 sm:pb-8 lg:pb-16 overflow-x-hidden">
-      
+
       {/* Background Video (Desktop only) */}
       {!isMobile && (
         <div className="absolute inset-0 w-full h-full overflow-hidden z-0 select-none hero-bg-video pointer-events-none">
@@ -198,7 +198,7 @@ export function HeroSection({ triggerShake: _triggerShake }: HeroSectionProps) {
             <source src="libst.webm" type="video/webm" />
             <source src="libst.mp4" type="video/mp4" />
           </video>
-          
+
           {/* Crisp Video Background (Contained and right-aligned to remain fully visible and uncropped) */}
           <video
             key="crisp-video"
@@ -218,10 +218,10 @@ export function HeroSection({ triggerShake: _triggerShake }: HeroSectionProps) {
 
       {/* Asymmetrical Grid layout */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-8 items-center relative z-10 w-full max-w-7xl self-start lg:ml-20 xl:ml-32">
-        
+
         {/* Slogans and CTAs */}
         <div className="lg:col-span-8 xl:col-span-7 flex flex-col gap-4 sm:gap-6 text-center lg:text-left items-center lg:items-start w-full">
-          
+
           {/* Top Badge: Now in Private Beta | Built on Hyperliquid */}
           <div className="self-center lg:self-start hero-fade-in max-w-full">
             <div className="inline-flex flex-wrap items-center justify-center gap-2 bg-primary/10 border border-primary/20 px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-mono font-bold tracking-wider text-primary uppercase backdrop-blur-sm">
@@ -254,7 +254,7 @@ export function HeroSection({ triggerShake: _triggerShake }: HeroSectionProps) {
                 </span>
               </span>
             </h1>
-            
+
             {/* Intelligence OS for Markets Badge */}
             <div className="self-center lg:self-start mt-2 hero-fade-in">
               <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/35 px-4 py-1.5 rounded-full text-[10px] sm:text-xs font-mono font-bold tracking-widest text-primary uppercase">
@@ -266,7 +266,7 @@ export function HeroSection({ triggerShake: _triggerShake }: HeroSectionProps) {
 
           {/* Mobile Waitlist CTA Button */}
           <div className="flex lg:hidden justify-center mt-3 hero-fade-in w-full">
-            <button 
+            <button
               onClick={() => {
                 openWaitlistModal();
               }}
@@ -275,6 +275,8 @@ export function HeroSection({ triggerShake: _triggerShake }: HeroSectionProps) {
               <span>Join Waitlist</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </button>
+
+
           </div>
 
           {/* Mobile Video (rendered directly after the badge) */}
@@ -300,8 +302,8 @@ export function HeroSection({ triggerShake: _triggerShake }: HeroSectionProps) {
           </p>
 
           {/* Waitlist CTA Button */}
-          <div className="hidden lg:flex flex-wrap justify-center lg:justify-start gap-4 mt-2 hero-fade-in">
-            <button 
+          <div className="flex flex-wrap justify-center lg:justify-start gap-4 mt-2 hero-fade-in">
+            <button
               onClick={() => {
                 openWaitlistModal();
               }}
@@ -309,6 +311,11 @@ export function HeroSection({ triggerShake: _triggerShake }: HeroSectionProps) {
             >
               <span>Join Waitlist</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </button>
+
+            <button className="animate-pulse bg-primary text-black text-xs sm:text-sm md:text-base font-body font-bold tracking-wider px-3 sm:px-6 py-3 sm:py-2 rounded-full items-center gap-2 transition-transform duration-300 shadow-[0_4px_12px_rgba(0,0,0,0.5)] cursor-pointer active:scale-95">
+              <p>TESTNET</p>
+              <span>COMING SOON</span>
             </button>
           </div>
 
@@ -335,7 +342,7 @@ export function HeroSection({ triggerShake: _triggerShake }: HeroSectionProps) {
                 21M
               </div>
               <div className="stat-lbl text-[10px] sm:text-xs font-mono font-bold tracking-widest text-primary uppercase mt-1 transition-all duration-300">
-                SUPPLIES
+                SUPPLY
               </div>
             </div>
           </div>

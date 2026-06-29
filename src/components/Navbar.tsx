@@ -43,7 +43,7 @@ export function Navbar() {
             <div className="hidden md:block w-px h-10 bg-white/10 shrink-0" />
 
             {/* Desktop Navigation Links */}
-            <div className="hidden md:flex items-center gap-2 lg:gap-4 xl:gap-6 text-[9px] lg:text-[10px] xl:text-xs font-bold uppercase tracking-wider shrink-0">
+            <div className="hidden lg:flex items-center gap-2 lg:gap-4 xl:gap-6 text-[9px] lg:text-[10px] xl:text-xs font-bold uppercase tracking-wider shrink-0">
               <button
                 onClick={() => scrollToSection('why-we-win')}
                 className="text-white/60 hover:text-primary hover:before:content-['>_'] transition-colors cursor-pointer tracking-wider shrink-0"
@@ -112,7 +112,7 @@ export function Navbar() {
           {/* Right Column: Socials, CTA, Divider, Theme Toggle */}
           <div className="flex items-center gap-2 lg:gap-4 xl:gap-5 shrink-0 h-full">
             {/* Social Links: Hidden below xl (1280px) to save space on tablets/laptops */}
-            <div className="hidden xl:flex items-center gap-2 lg:gap-3.5 xl:gap-4 shrink-0">
+            <div className="hidden lg:flex items-center gap-2 lg:gap-3.5 xl:gap-4 shrink-0">
               <a
                 href="https://x.com/ifivelabs"
                 target="_blank"
@@ -166,10 +166,16 @@ export function Navbar() {
 
             {/* Theme Toggle Button & Hamburger */}
             <div className="flex items-center gap-2 shrink-0">
-              <ThemeToggleButton />
+              {/* <ThemeToggleButton /> */}
+              <button
+                onClick={() => window.open("https://forms.gle/dHNpTFpUBFaHvhME9", "_blank")}
+                className="bg-primary text-black text-xs sm:text-sm md:text-base font-body font-bold tracking-wider px-2 sm:px-4 py-3 sm:py-2 rounded-full inline-flex items-center gap-2 transition-transform duration-300 shadow-[0_4px_12px_rgba(0,0,0,0.5)] cursor-pointer active:scale-95"
+              >
+                Join Whitelist
+              </button>
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="md:hidden text-white/80 hover:text-primary transition-colors p-1 focus:outline-none cursor-pointer animate-[flicker_0.15s_infinite]"
+                className="lg:hidden text-white/80 hover:text-primary transition-colors p-1 focus:outline-none cursor-pointer animate-[flicker_0.15s_infinite]"
                 aria-label="Toggle navigation menu"
               >
                 {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -182,7 +188,7 @@ export function Navbar() {
 
       {/* Mobile Navigation Drawer */}
       <div
-        className={`fixed inset-x-0 top-20 bg-black/95 backdrop-blur-xl border-b border-white/10 z-40 md:hidden transition-all duration-300 ease-in-out select-none font-mono ${isOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-4 invisible pointer-events-none'
+        className={`min-h-screen fixed inset-x-0 top-20 bg-black/95 backdrop-blur-xl border-b border-white/10 z-40 transition-all duration-300 ease-in-out select-none font-mono ${isOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-4 invisible pointer-events-none'
           }`}
       >
         <div className="flex flex-col p-6 sm:p-8 gap-5 text-base font-bold">
@@ -210,14 +216,8 @@ export function Navbar() {
             rel="noopener noreferrer"
             className="block text-left py-2 text-white/60 hover:text-primary hover:pl-2 transition-all cursor-pointer tracking-wider border-b border-white/5"
           >
-            &gt; NEWSROOM
+            &gt; BLOG
           </a>
-          <button
-            onClick={() => scrollToSection('intelligence-network')}
-            className="text-left py-2 text-white/60 hover:text-primary hover:pl-2 transition-all cursor-pointer tracking-wider border-b border-white/5"
-          >
-            &gt; USERS
-          </button>
 
           {/* <button 
             onClick={() => scrollToSection('intelligence-network')}
