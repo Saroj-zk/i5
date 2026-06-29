@@ -2,6 +2,12 @@ export async function onRequest(context) {
   try {
     const url = new URL(context.request.url);
 
+    // Normalise: /blog → /blog/ to avoid Nginx issuing a redirect to the
+    // upstream domain (blog.i5.xyz) which would leak out to the browser.
+    if (url.pathname === "/blog") {
+      return Response.redirect("https://www.i5.xyz/blog/", 301);
+    }
+
     // Keep /blog prefix: www.i5.xyz/blog/foo -> blog.i5.xyz/blog/foo
     // WordPress is installed at blog.i5.xyz/blog/ (not root)
     const targetUrl = new URL(url.pathname + url.search, "https://blog.i5.xyz");
@@ -41,12 +47,14 @@ export async function onRequest(context) {
       }
     }
 
-    // Rewrite Location header on redirects (e.g. after wp-login.php)
+    // Rewrite Location header on redirects (e.g. after wp-login.php).
+    // Replace just the domain (handles both http:// and https://) so that
+    // blog.i5.xyz/blog/foo becomes www.i5.xyz/blog/foo — not double /blog.
     const location = upstream.headers.get("location");
     if (location) {
       resHeaders.set(
         "location",
-        location.replace("https://blog.i5.xyz", "https://www.i5.xyz/blog")
+        location.replace(/^https?:\/\/blog\.i5\.xyz/, "https://www.i5.xyz")
       );
     }
 
