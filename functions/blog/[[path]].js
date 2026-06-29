@@ -5,7 +5,7 @@ export async function onRequest(context) {
     // Normalise: /blog → /blog/ to avoid Nginx issuing a redirect to the
     // upstream domain (blog.i5.xyz) which would leak out to the browser.
     if (url.pathname === "/blog") {
-      return Response.redirect("https://www.i5.xyz/blog/", 301);
+      return Response.redirect("https://www.i5.xyz/blog/", 302);
     }
 
     // Keep /blog prefix: www.i5.xyz/blog/foo -> blog.i5.xyz/blog/foo
