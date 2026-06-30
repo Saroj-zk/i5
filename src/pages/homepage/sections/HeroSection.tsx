@@ -1,6 +1,6 @@
 import { ArrowRight } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
-import { openWaitlistModal } from '@/components/JoinWaitlistModal';
+// import { openWaitlistModal } from '@/components/JoinWaitlistModal';
 import gsap from 'gsap';
 import heroVideoMob from '../../../assets/herovideomob.mp4';
 import signal1 from '../../../assets/signal1.png';
@@ -267,12 +267,10 @@ export function HeroSection({ triggerShake: _triggerShake }: HeroSectionProps) {
           {/* Mobile Waitlist CTA Button */}
           <div className="flex lg:hidden justify-center mt-3 hero-fade-in w-full">
             <button
-              onClick={() => {
-                openWaitlistModal();
-              }}
-              className="hero-btn group relative bg-primary text-black text-xs sm:text-sm font-body font-bold tracking-wider px-6 sm:px-8 py-3 rounded-full inline-flex items-center gap-2 transition-transform duration-300 shadow-[0_4px_12px_rgba(0,0,0,0.5)] cursor-pointer active:scale-95"
+              onClick={() => window.open("https://forms.gle/dHNpTFpUBFaHvhME9", "_blank")}
+              className="bg-primary text-black text-xs sm:text-sm md:text-base font-body font-bold tracking-wider px-2 sm:px-4 py-3 sm:py-2 rounded-full inline-flex items-center gap-2 transition-transform duration-300 shadow-[0_4px_12px_rgba(0,0,0,0.5)] cursor-pointer active:scale-95"
             >
-              <span>Join Waitlist</span>
+              Whitelist Now
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </button>
 
@@ -304,18 +302,31 @@ export function HeroSection({ triggerShake: _triggerShake }: HeroSectionProps) {
           {/* Waitlist CTA Button */}
           <div className="flex flex-wrap justify-center lg:justify-start gap-4 mt-2 hero-fade-in">
             <button
-              onClick={() => {
-                openWaitlistModal();
-              }}
-              className="hero-btn group relative bg-primary text-black text-xs sm:text-sm md:text-base font-body font-bold tracking-wider px-6 sm:px-8 py-3 sm:py-3.5 rounded-full inline-flex items-center gap-2 transition-transform duration-300 shadow-[0_4px_12px_rgba(0,0,0,0.5)] cursor-pointer active:scale-95"
+              onClick={() => window.open("https://forms.gle/dHNpTFpUBFaHvhME9", "_blank")}
+              className="bg-primary text-black text-xs sm:text-sm md:text-base font-body font-bold tracking-wider px-2 sm:px-4 py-3 sm:py-2 rounded-full inline-flex items-center gap-2 transition-transform duration-300 shadow-[0_4px_12px_rgba(0,0,0,0.5)] cursor-pointer active:scale-95"
             >
-              <span>Join Waitlist</span>
+              Whitelist Now
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </button>
 
-            <button className="animate-pulse bg-primary text-black text-xs sm:text-sm md:text-base font-body font-bold tracking-wider px-3 sm:px-6 py-3 sm:py-2 rounded-full items-center gap-2 transition-transform duration-300 shadow-[0_4px_12px_rgba(0,0,0,0.5)] cursor-pointer active:scale-95">
-              <p>TESTNET</p>
-              <span>COMING SOON</span>
+
+
+            <button 
+              disabled
+              className="relative group bg-black/40 border border-primary/40 text-primary text-xs sm:text-sm md:text-base font-body font-bold tracking-wider px-4 sm:px-6 py-3 sm:py-2 rounded-full inline-flex items-center gap-3 cursor-not-allowed overflow-hidden shadow-[0_0_15px_rgba(0,0,0,0.5)]"
+            >
+              {/* Animated subtle background */}
+              <div className="absolute inset-0 bg-primary/10 animate-pulse"></div>
+              
+              <span className="relative z-10">TESTNET</span>
+              
+              <div className="relative z-10 flex items-center gap-2 border-l border-primary/30 pl-3">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                </span>
+                <span className="text-[9px] sm:text-[10px] text-primary font-black uppercase tracking-widest mt-px animate-pulse">COMING SOON</span>
+              </div>
             </button>
           </div>
 

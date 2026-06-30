@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight } from 'lucide-react';
-import { openWaitlistModal } from '@/components/JoinWaitlistModal';
+// import { openWaitlistModal } from '@/components/JoinWaitlistModal';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -107,10 +107,10 @@ export function IntelligenceNetwork() {
 
         <div className="flex flex-col sm:flex-row gap-4 items-center justify-center mt-4">
           <button 
-            onClick={() => openWaitlistModal()} 
+            onClick={() => window.open("https://forms.gle/dHNpTFpUBFaHvhME9", "_blank")}
             className="network-btn inline-flex items-center justify-center gap-2 border border-primary/30 px-6 py-3 bg-primary/5 text-primary font-bold font-mono text-xs uppercase cursor-pointer select-none"
           >
-            <span>JOIN THE WAITLIST</span>
+            <span>GET WHITELIST</span>
             <ArrowRight className="network-arrow w-3.5 h-3.5" />
           </button>
         </div>

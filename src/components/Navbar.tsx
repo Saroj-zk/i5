@@ -171,7 +171,7 @@ export function Navbar() {
                 onClick={() => window.open("https://forms.gle/dHNpTFpUBFaHvhME9", "_blank")}
                 className="bg-primary text-black text-xs sm:text-sm md:text-base font-body font-bold tracking-wider px-2 sm:px-4 py-3 sm:py-2 rounded-full inline-flex items-center gap-2 transition-transform duration-300 shadow-[0_4px_12px_rgba(0,0,0,0.5)] cursor-pointer active:scale-95"
               >
-                Join Whitelist
+                Whitelist Now
               </button>
               <button
                 onClick={() => setIsOpen(!isOpen)}
