@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800;900&family=Share+Tech+Mono&family=Space+Grotesk:wght@300..700&family=Syne:wght@700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800;900&family=Share+Tech+Mono&family=Space+Grotesk:wght@300..700&family=Syne:wght@700;800&family=VT323&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -182,21 +182,7 @@
   opacity: 0.045;
 }
 
-/* Custom scrollbars */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #000000;
-}
-::-webkit-scrollbar-thumb {
-  background: #00ffcc;
-  border-radius: 0px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #00ccaa;
-}
+/* Custom scrollbars - Removed per user request */
 
 /* Tilted grids and elements */
 .tilted-element {
@@ -239,5 +225,20 @@
 @media (min-width: 1024px) and (max-width: 1600px) {
   .zoom-content {
     zoom: 0.82;
+  }
+  .full-height-slider {
+    min-height: calc((100vh - 80px) / 0.82);
+  }
+}
+
+@media (min-width: 1601px) {
+  .full-height-slider {
+    min-height: calc(100vh - 80px);
+  }
+}
+
+@media (max-width: 1023px) {
+  .full-height-slider {
+    min-height: calc(100vh - 80px);
   }
 }

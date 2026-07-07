@@ -1,10 +1,11 @@
 import { useState } from 'react';
-// import { ThemeToggleButton } from '@/components/ThemeToggleButton';
+import { useThemeStore } from '../store/useThemeStore';
 import { Menu, X } from 'lucide-react';
 import logo from '../assets/logo.png';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { crtMode, toggleCrtMode } = useThemeStore();
 
   const scrollToSection = (id: string) => {
     setIsOpen(false);
@@ -166,10 +167,22 @@ export function Navbar() {
 
             {/* Theme Toggle Button & Hamburger */}
             <div className="flex items-center gap-2 shrink-0">
+              <button
+                onClick={toggleCrtMode}
+                className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 border ${
+                  crtMode 
+                    ? 'bg-primary border-primary text-black shadow-[0_0_10px_rgba(0,255,204,0.3)]' 
+                    : 'bg-transparent border-white/20 text-white/60 hover:border-white/40 hover:text-white'
+                }`}
+                title="Toggle CRT Mode"
+              >
+                <span className="text-[9px] font-bold tracking-wider">CRT</span>
+              </button>
+              
               {/* <ThemeToggleButton /> */}
               <button
                 onClick={() => window.open("https://forms.gle/dHNpTFpUBFaHvhME9", "_blank")}
-                className="bg-primary text-black text-xs sm:text-sm md:text-base font-body font-bold tracking-wider px-2 sm:px-4 py-3 sm:py-2 rounded-full inline-flex items-center gap-2 transition-transform duration-300 shadow-[0_4px_12px_rgba(0,0,0,0.5)] cursor-pointer active:scale-95"
+                className="bg-primary text-black text-xs sm:text-sm md:text-base font-body font-bold tracking-wider px-2 sm:px-4 py-3 sm:py-2 rounded-full inline-flex items-center gap-2 transition-transform duration-300 shadow-[0_4px_12px_rgba(0,0,0,0.5)] cursor-pointer active:scale-95 ml-1 lg:ml-2"
               >
                 Whitelist Now
               </button>
