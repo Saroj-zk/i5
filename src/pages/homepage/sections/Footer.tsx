@@ -146,6 +146,7 @@ export function Footer() {
               <a href="https://x.com/ifivelabs" target="_blank" rel="noopener noreferrer" className="cursor-pointer">X (Twitter)</a>
               <a href="https://t.me/I5Labs" target="_blank" rel="noopener noreferrer" className="cursor-pointer">Telegram</a>
               <a href="https://discord.gg/UASPfWuvAA" target="_blank" rel="noopener noreferrer" className="cursor-pointer">Discord</a>
+              <a href="https://www.instagram.com/i5labs/" target="_blank" rel="noopener noreferrer" className="cursor-pointer">Instagram</a>
               <a href="https://i5.xyz/blog/" target="_blank" rel="noopener noreferrer" className="cursor-pointer">Blog</a>
               {/* <a href="#" className="cursor-pointer">Newsletter</a> */}
             </div>
@@ -170,8 +171,8 @@ export function Footer() {
                 disabled={status === 'loading' || status === 'success'}
                 className="bg-transparent border-0 outline-none px-3 py-2 text-xs sm:text-sm font-mono flex-1 text-white placeholder-white/20 uppercase disabled:opacity-50"
               />
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 disabled={status === 'loading' || status === 'success'}
                 className="footer-signup-btn bg-primary/10 border-l border-white/10 px-5 text-xs sm:text-sm font-mono font-bold text-primary uppercase cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
               >
