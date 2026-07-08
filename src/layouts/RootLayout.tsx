@@ -22,12 +22,12 @@ export function RootLayout() {
       <div className="fixed inset-0 pointer-events-none z-0 dapp-grid-cyan-green" />
 
       {/* CRT overlay elements */}
-      {crtMode && (
+      {/* {crtMode && (
         <>
           <div className="fixed inset-0 pointer-events-none z-[10000] bg-gradient-to-b from-transparent via-primary/5 to-transparent animate-scanline" />
           <div className="fixed inset-0 pointer-events-none z-[10001] crt-scanline animate-flicker" />
         </>
-      )}
+      )} */}
 
       <Navbar />
       <main className="pt-20 relative z-10">

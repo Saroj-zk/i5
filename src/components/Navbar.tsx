@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { useThemeStore } from '../store/useThemeStore';
+// import { useThemeStore } from '../store/useThemeStore';
 import { Menu, X } from 'lucide-react';
 import logo from '../assets/logo.png';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const { crtMode, toggleCrtMode } = useThemeStore();
+  // const { crtMode, toggleCrtMode } = useThemeStore();
 
   const scrollToSection = (id: string) => {
     setIsOpen(false);
@@ -167,7 +167,7 @@ export function Navbar() {
 
             {/* Theme Toggle Button & Hamburger */}
             <div className="flex items-center gap-2 shrink-0">
-              <button
+              {/* <button
                 onClick={toggleCrtMode}
                 className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 border ${
                   crtMode 
@@ -177,7 +177,7 @@ export function Navbar() {
                 title="Toggle CRT Mode"
               >
                 <span className="text-[9px] font-bold tracking-wider">CRT</span>
-              </button>
+              </button> */}
               
               {/* <ThemeToggleButton /> */}
               <button
