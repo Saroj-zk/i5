@@ -279,7 +279,7 @@ export function Navbar() {
               <span>TELEGRAM</span>
             </a>
             <a
-              href=""
+              href="https://discord.gg/SxX8VxQG2n"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white/60 hover:text-primary transition-colors flex items-center gap-2 text-sm"

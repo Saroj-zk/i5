@@ -145,7 +145,7 @@ export function Footer() {
             <div className="footer-col-links flex flex-col gap-2 font-mono text-xs sm:text-base text-white/60">
               <a href="https://x.com/ifivelabs" target="_blank" rel="noopener noreferrer" className="cursor-pointer">X (Twitter)</a>
               <a href="https://t.me/I5Labs" target="_blank" rel="noopener noreferrer" className="cursor-pointer">Telegram</a>
-              <a href="https://discord.gg/UASPfWuvAA" target="_blank" rel="noopener noreferrer" className="cursor-pointer">Discord</a>
+              <a href="https://discord.gg/SxX8VxQG2n" target="_blank" rel="noopener noreferrer" className="cursor-pointer">Discord</a>
               <a href="https://www.instagram.com/i5labs/" target="_blank" rel="noopener noreferrer" className="cursor-pointer">Instagram</a>
               <a href="https://i5.xyz/blog/" target="_blank" rel="noopener noreferrer" className="cursor-pointer">Blog</a>
               {/* <a href="#" className="cursor-pointer">Newsletter</a> */}
