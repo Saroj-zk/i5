@@ -12,7 +12,7 @@ import { Footer } from './sections/Footer';
 
 export function HomePage() {
   const [isShaking, setIsShaking] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentSlide] = useState(0);
 
   const triggerShake = () => {
     setIsShaking(true);
