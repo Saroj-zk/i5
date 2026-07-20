@@ -255,7 +255,7 @@ export function Navbar() {
           </button> */}
 
           {/* Mobile Social Links */}
-          <div className="flex items-center justify-center gap-6 mt-4 pt-4 border-t border-white/5">
+          <div className="flex items-center justify-center gap-2 mt-4 pt-4 border-t border-white/5">
             <a
               href="https://x.com/ifivelabs"
               target="_blank"
