@@ -143,7 +143,7 @@ export function CoreFeatures() {
                 <Cpu className="feature-icon w-8 h-8 text-primary" />
               </div>
               <h3 className="text-xl font-display font-black text-white uppercase tracking-tight mb-3">
-                AI Signal Engine
+                AI Insights Engine
               </h3>
               <p className="text-xs sm:text-base text-white/60 font-body leading-relaxed">
                 Order flow + wallet behavior + funding + sentiment fused into ranked, conviction-scored trade setups with explainable reasoning.

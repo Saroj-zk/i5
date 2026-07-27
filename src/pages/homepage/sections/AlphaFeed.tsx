@@ -172,7 +172,7 @@ export function AlphaFeed() {
         <div className="flex items-center gap-3">
           <div className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse shadow-[0_0_8px_#00ffcc]" />
           <h2 className="text-xl font-display font-black text-white uppercase tracking-widest">
-            Live Signal Diagnostics (Alpha Feed)
+            Live Insights Diagnostics (Alpha Feed)
           </h2>
         </div>
         <p className="text-xs font-mono text-white/50 mt-1 uppercase tracking-wider">

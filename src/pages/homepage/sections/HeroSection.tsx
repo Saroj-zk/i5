@@ -337,7 +337,7 @@ export function HeroSection({ triggerShake: _triggerShake }: HeroSectionProps) {
                 98.7%
               </div>
               <div className="stat-lbl text-[10px] sm:text-xs font-mono font-bold tracking-widest text-primary uppercase mt-1 transition-all duration-300">
-                SIGNAL ACCURACY
+                INSIGHTS ACCURACY
               </div>
             </div>
             <div className="hero-stat-item cursor-pointer">

@@ -9,32 +9,34 @@ export function BannerSection() {
   });
 
   useEffect(() => {
-    // Target date: July 22nd, 2026, 5:00 PM (Adapts to User's Local Timezone)
-    const targetDate = new Date(2026, 6, 31, 17, 0, 0);
+    // Target date: August 6, 2026, 11:30 AM UTC
+    const targetDate = new Date('2026-08-06T11:30:00Z');
 
     const updateTimer = () => {
       const now = new Date();
       const difference = targetDate.getTime() - now.getTime();
 
       if (difference <= 0) {
-        return; // Timer finished
+        return;
       }
 
       const days = Math.floor(difference / (1000 * 60 * 60 * 24));
       const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((difference / 1000 / 60) % 60);
+      const minutes = Math.floor((difference / (1000 * 60)) % 60);
       const seconds = Math.floor((difference / 1000) % 60);
 
       setTimeLeft({
-        days: days.toString().padStart(2, '0'),
-        hours: hours.toString().padStart(2, '0'),
-        minutes: minutes.toString().padStart(2, '0'),
-        seconds: seconds.toString().padStart(2, '0'),
+        days: String(days).padStart(2, "0"),
+        hours: String(hours).padStart(2, "0"),
+        minutes: String(minutes).padStart(2, "0"),
+        seconds: String(seconds).padStart(2, "0"),
       });
     };
 
     updateTimer();
+
     const timer = setInterval(updateTimer, 1000);
+
     return () => clearInterval(timer);
   }, []);
 
@@ -75,7 +77,8 @@ export function BannerSection() {
             </div>
 
             <p className="text-[#C5C5C5] text-[1rem] sm:text-[1.1rem] lg:text-[1.25rem] font-light leading-snug max-w-md lg:max-w-[33rem] mt-6" style={{ fontFamily: '"M PLUS 1 Code", monospace' }}>
-              Trade before the crowd with AI-powered market intelligence, real-time alerts, and actionable trading insights. Everything you need to stay ahead, in one platform.
+              The AI Exchange for Smarter Trading.
+              Powering every trade with millisecond market intelligence, hyper-relevant insights, precision.
             </p>
 
             {/* Countdown Timer */}

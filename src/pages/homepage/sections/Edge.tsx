@@ -210,7 +210,7 @@ function I5DeltaAnalyzer({ activeRow }: DeltaAnalyzerProps) {
       status: "INTEGRATION_SYNCED"
     },
     {
-      metric: "SIGNAL PROPAGATION",
+      metric: "INSIGHTS PROPAGATION",
       traditional: "45,000ms [DELAYED]",
       i5: "3.4ms [REAL-TIME]",
       delta: "-99.99% LATENCY",

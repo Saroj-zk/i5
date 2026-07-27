@@ -644,7 +644,7 @@ export function IntelligenceStack() {
                     </span>
                   </div>
                   <p className="text-xs sm:text-base text-white/50 font-body leading-relaxed max-w-xl">
-                    Specialized agents — Signal, Narrative, Risk, Execution, Learning — coordinate across the entire trading workflow.
+                    Specialized agents — insights, Narrative, Risk, Execution, Learning — coordinate across the entire trading workflow.
                   </p>
                 </div>
                 
@@ -654,7 +654,7 @@ export function IntelligenceStack() {
                     <Layer2Visual hovered={hoveredIndex === 2} />
                   </div>
                   <div className="flex flex-col gap-y-1 font-mono text-xs sm:text-sm text-emerald-400 font-bold w-full">
-                    <div className="hover:text-white transition-colors">&gt; Signal agents</div>
+                    <div className="hover:text-white transition-colors">&gt; Insights agents</div>
                     <div className="hover:text-white transition-colors">&gt; Narrative agents</div>
                     <div className="hover:text-white transition-colors">&gt; Risk agents</div>
                     <div className="hover:text-white transition-colors">&gt; Execution agents</div>
@@ -703,7 +703,7 @@ export function IntelligenceStack() {
                     </span>
                   </div>
                   <p className="text-xs sm:text-base text-white/50 font-body leading-relaxed max-w-xl">
-                    Traders publish signals, validate setups, and earn transparent on-chain reputation. Merit-based intelligence at scale.
+                    Traders publish insights, validate setups, and earn transparent on-chain reputation. Merit-based intelligence at scale.
                   </p>
                 </div>
                 
@@ -714,7 +714,7 @@ export function IntelligenceStack() {
                   </div>
                   <div className="flex flex-col gap-y-1 font-mono text-xs sm:text-sm text-emerald-400 font-bold w-full">
                     <div className="hover:text-white transition-colors">&gt; Reputation scores</div>
-                    <div className="hover:text-white transition-colors">&gt; Signal marketplace</div>
+                    <div className="hover:text-white transition-colors">&gt; Insights marketplace</div>
                     <div className="hover:text-white transition-colors">&gt; Copy trading</div>
                     <div className="hover:text-white transition-colors">&gt; Watchlists</div>
                   </div>
@@ -821,7 +821,7 @@ export function IntelligenceStack() {
                     </span>
                   </div>
                   <p className="text-xs sm:text-base text-white/50 font-body leading-relaxed max-w-xl">
-                    From signal to fill in one workflow. One-click trades, dynamic stops, scaling, and policy-bound automation.
+                    From insights to fill in one workflow. One-click trades, dynamic stops, scaling, and policy-bound automation.
                   </p>
                 </div>
                 

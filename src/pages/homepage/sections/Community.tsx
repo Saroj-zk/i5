@@ -11,7 +11,7 @@ export function Community() {
 
   // Discord Chat Simulator State
   const [discordMessages, setDiscordMessages] = useState([
-    { user: 'Sol_Sniper', avatar: '#00FF66', time: '14:02', text: 'bro that SOL leverage signal went straight to TP3' },
+    { user: 'Sol_Sniper', avatar: '#00FF66', time: '14:02', text: 'bro that SOL leverage insights went straight to TP3' },
     { user: 'DegenLord', avatar: '#FF3366', time: '14:02', text: 'Printed $3,400 today off i5. literal cheating' },
     { user: 'WhaleWatcher', avatar: '#33CCFF', time: '14:03', text: 'Anyone monitoring the wallet tracker feed? Insiders are loading PEPE' },
     { user: 'PnL_Flexer', avatar: '#00FFCC', time: '14:03', text: '12 wins streak! VIP subscription paid for itself in 10 minutes' },

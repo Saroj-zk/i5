@@ -220,7 +220,7 @@ const cardsData = [
   {
     num: "01",
     title: "Scalpers",
-    desc: "React to momentum and volatility shifts the moment they form. Sub-second signal delivery for high-frequency edge."
+    desc: "React to momentum and volatility shifts the moment they form. Sub-second insights delivery for high-frequency edge."
   },
   {
     num: "02",
@@ -230,11 +230,11 @@ const cardsData = [
   {
     num: "03",
     title: "Quant Desks",
-    desc: "Structured market intelligence and behavioral signal feeds via API. Integrate i5 intelligence into your automated workflows."
+    desc: "Structured market intelligence and behavioral insights feeds via API. Integrate i5 intelligence into your automated workflows."
   },
   {
     num: "04",
-    title: "Signal Providers",
+    title: "Insight Providers",
     desc: "Build audiences and monetize verified, on-chain performance metrics. Share telemetry triggers directly."
   },
   {
