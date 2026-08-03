@@ -10,7 +10,7 @@ export function BannerSection() {
 
   useEffect(() => {
     // Target date: August 6, 2026, 11:30 AM UTC
-    const targetDate = new Date('2026-08-06T11:30:00Z');
+    const targetDate = new Date('2026-08-10T11:30:00Z');
 
     const updateTimer = () => {
       const now = new Date();

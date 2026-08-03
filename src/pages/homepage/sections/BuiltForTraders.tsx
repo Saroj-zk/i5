@@ -83,17 +83,17 @@ function SwingWidget({ active }: { active: boolean }) {
 
 // 03. Quant API Query stream
 function QuantWidget({ active }: { active: boolean }) {
-  const [stream, setStream] = useState<string>('GET /v2/market/signal');
+  const [stream, setStream] = useState<string>('GET /v2/market');
   
   useEffect(() => {
     if (!active) {
-      setStream('GET /v2/market/signal');
+      setStream('GET /v2/market');
       return;
     }
     const samples = [
       '{"ask": 93240.2, "vol": 12.8, "lat": 0.4}',
       '{"bid": 93238.5, "delta": +0.02, "seq": 492}',
-      '{"signal": "BUY", "confidence": 0.982}',
+      '{ "BUY", "confidence": 0.982}',
       '{"risk_score": 0.12, "volatility": "HIGH"}',
       '{"latency_warp": 0.02, "threads": 128}'
     ];

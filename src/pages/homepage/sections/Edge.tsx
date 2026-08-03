@@ -183,7 +183,7 @@ function HudWaveform({ activeRow }: { activeRow: number | null }) {
   return (
     <div className="relative h-20 w-full bg-black/90 border border-primary/20 overflow-hidden mt-4">
       <div className="absolute top-1.5 left-2 text-[7px] tracking-wider font-mono text-primary/50">// HUD_WAVEFORM_MONITOR</div>
-      <div className="absolute top-1.5 right-2 text-[7px] tracking-wider font-mono text-primary/50">[ SIGNAL_WARP_LOCKED ]</div>
+      <div className="absolute top-1.5 right-2 text-[7px] tracking-wider font-mono text-primary/50">[ WARP_LOCKED ]</div>
       <canvas ref={canvasRef} className="w-full h-full block" />
     </div>
   );
