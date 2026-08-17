@@ -1,44 +1,44 @@
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 
 export function BannerSection() {
-  const [timeLeft, setTimeLeft] = useState({
-    days: '00',
-    hours: '00',
-    minutes: '00',
-    seconds: '00',
-  });
+  // const [timeLeft, setTimeLeft] = useState({
+  //   days: '00',
+  //   hours: '00',
+  //   minutes: '00',
+  //   seconds: '00',
+  // });
 
-  useEffect(() => {
-    // Target date: August 17, 2026, 11:30 AM UTC
-    const targetDate = new Date('2026-08-17T11:30:00Z');
+  // useEffect(() => {
+  //   // Target date: August 17, 2026, 11:30 AM UTC
+  //   const targetDate = new Date('2026-08-17T11:30:00Z');
 
-    const updateTimer = () => {
-      const now = new Date();
-      const difference = targetDate.getTime() - now.getTime();
+  //   const updateTimer = () => {
+  //     const now = new Date();
+  //     const difference = targetDate.getTime() - now.getTime();
 
-      if (difference <= 0) {
-        return;
-      }
+  //     if (difference <= 0) {
+  //       return;
+  //     }
 
-      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((difference / (1000 * 60)) % 60);
-      const seconds = Math.floor((difference / 1000) % 60);
+  //     const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+  //     const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+  //     const minutes = Math.floor((difference / (1000 * 60)) % 60);
+  //     const seconds = Math.floor((difference / 1000) % 60);
 
-      setTimeLeft({
-        days: String(days).padStart(2, "0"),
-        hours: String(hours).padStart(2, "0"),
-        minutes: String(minutes).padStart(2, "0"),
-        seconds: String(seconds).padStart(2, "0"),
-      });
-    };
+  //     setTimeLeft({
+  //       days: String(days).padStart(2, "0"),
+  //       hours: String(hours).padStart(2, "0"),
+  //       minutes: String(minutes).padStart(2, "0"),
+  //       seconds: String(seconds).padStart(2, "0"),
+  //     });
+  //   };
 
-    updateTimer();
+  //   updateTimer();
 
-    const timer = setInterval(updateTimer, 1000);
+  //   const timer = setInterval(updateTimer, 1000);
 
-    return () => clearInterval(timer);
-  }, []);
+  //   return () => clearInterval(timer);
+  // }, []);
 
   return (
     <section className="relative w-full min-h-[92vh] flex items-center justify-center bg-black overflow-hidden select-none py-8 lg:py-0">
@@ -82,7 +82,7 @@ export function BannerSection() {
             </p>
 
             {/* Countdown Timer */}
-            <div className="flex items-start gap-1.5 sm:gap-2 md:gap-3 lg:gap-4 mt-8 lg:mt-12" style={{ fontFamily: '"M PLUS 1 Code", monospace' }}>
+            {/* <div className="flex items-start gap-1.5 sm:gap-2 md:gap-3 lg:gap-4 mt-8 lg:mt-12" style={{ fontFamily: '"M PLUS 1 Code", monospace' }}>
               <div className="flex flex-col items-center gap-1.5 sm:gap-2">
                 <div className="w-[60px] h-[55px] sm:w-[80px] sm:h-[65px] md:w-[95px] lg:w-[110px] lg:h-[75px] rounded-md bg-gradient-to-b from-[#021815] to-[#010907] border border-[#00ffaa]/10 shadow-[inset_0_0_15px_rgba(0,255,170,0.05)] flex items-center justify-center">
                   <span className="text-primary text-3xl sm:text-4xl lg:text-5xl font-bold font-mono tracking-widest drop-shadow-[0_0_12px_rgba(0,255,170,0.6)]">
@@ -130,7 +130,7 @@ export function BannerSection() {
                 </div>
                 <span className="text-[#00ffaa]/60 text-[9px] sm:text-[10px] md:text-xs tracking-[0.2em] font-medium">SECONDS</span>
               </div>
-            </div>
+            </div> */}
 
             <div className="mt-10 lg:mt-14">
               <button
