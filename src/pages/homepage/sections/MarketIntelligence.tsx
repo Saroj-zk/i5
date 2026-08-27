@@ -599,7 +599,7 @@ const GRID_ITEMS = [
   {
     title: "Discover & Trade Memes.",
     description:
-      "Discover new and trending meme tokens, track smart money and on-chain activity, analyze what’s gaining momentum, and move from discovery to trade in one place.",
+      "Scan new launches, track bonding curves and migrations, follow smart wallets, and snipe memes with real-time on-chain context.",
     visual: <Card2 />,
     col: "span 1",
     h: 460,
