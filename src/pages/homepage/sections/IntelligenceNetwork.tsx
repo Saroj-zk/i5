@@ -120,7 +120,7 @@ export function IntelligenceNetwork() {
             onClick={() => window.open("https://forms.gle/dHNpTFpUBFaHvhME9", "_blank")}
             className="network-btn inline-flex items-center justify-center gap-2 border border-primary/30 px-6 py-3 bg-primary/5 text-primary font-bold font-mono text-xs uppercase cursor-pointer select-none"
           >
-            <span>LOCK IN</span>
+            <span>EXPLORE TESTNET</span>
             <ArrowRight className="network-arrow w-3.5 h-3.5" />
           </button>
         </div>

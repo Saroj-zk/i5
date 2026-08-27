@@ -21,11 +21,13 @@ import {
 } from "@phosphor-icons/react";
 import { cn } from "../../../lib/utils";
 
-/* ──────────────────────────────────────────────────────
-   i5 — Intelligence Built for Every Market
-   Grid: 3 cards top row · 2 cards bottom row
-   Original Visual Structures with Adapted Internal Content
-────────────────────────────────────────────────────── */
+/* ------------------------------------------------------
+   i5 - Intelligence Built for Every Market
+   Responsive Bento Grid:
+   Desktop (lg): 3 top row, 2 bottom row (Card 4 spans 2 cols)
+   Tablet (md): 2 columns (cards 1,2 then 3,5 then 4 spans 2)
+   Mobile: 1 column
+------------------------------------------------------ */
 
 interface FeatCardProps {
   title: string;
@@ -42,48 +44,41 @@ function FeatCard({ title, description, children, className = "" }: FeatCardProp
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
       className={cn(
-        "group relative flex flex-col",
-        "transition-all duration-500",
-        className,
+        "group relative flex flex-col w-full h-full",
+        "transition-all duration-500 rounded-2xl bg-[#0a0a0a] border border-white/[0.06] hover:border-[#13c38f]/30 hover:shadow-[0_0_40px_rgba(19,195,143,0.08)] overflow-hidden",
+        className
       )}
-      style={{
-        overflow: 'hidden',
-        borderRadius: '16px',
-        background: '#0a0a0a',
-        border: '1px solid rgba(255,255,255,0.06)',
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.borderColor = 'rgba(19,195,143,0.25)';
-        e.currentTarget.style.boxShadow = '0 0 40px rgba(19,195,143,0.08), 0 4px 16px rgba(0,0,0,0.6)';
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)';
-        e.currentTarget.style.boxShadow = 'none';
-      }}
     >
       {/* Top glow line on hover */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-transparent to-transparent group-hover:via-[rgba(19,195,143,0.5)] transition-all duration-500 z-20" />
 
-      <div style={{ padding: '24px 26px 12px 26px', position: 'relative', zIndex: 10, fontFamily: "'Inter', sans-serif", minHeight: '124px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
-        <h3 style={{ fontWeight: 600, color: '#fff', fontSize: '17px', letterSpacing: '-0.02em', lineHeight: 1.3, fontFamily: "'Inter', sans-serif", textTransform: 'none', marginBottom: '8px' }}>{title}</h3>
-        <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '13px', lineHeight: 1.55, fontFamily: "'Inter', sans-serif" }}>{description}</p>
+      {/* Card Header */}
+      <div className="p-5 sm:p-6 pb-3 sm:pb-4 relative z-10 flex flex-col justify-start">
+        <h3 className="font-semibold text-white text-[16px] sm:text-[17px] tracking-tight leading-snug mb-2 font-display">
+          {title}
+        </h3>
+        <p className="text-white/50 text-[13px] sm:text-[13.5px] leading-relaxed">
+          {description}
+        </p>
       </div>
-      <div style={{ position: 'relative', flex: 1, overflow: 'hidden', background: 'rgba(0,0,0,0.35)', margin: '0 16px 16px 16px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.04)', display: 'flex', flexDirection: 'column' }}>
+
+      {/* Card Visual Content Container */}
+      <div className="relative flex-1 overflow-hidden bg-black/40 mx-3.5 sm:mx-4 mb-3.5 sm:mb-4 rounded-xl border border-white/[0.04] flex flex-col min-h-[220px] sm:min-h-[240px]">
         {children}
       </div>
     </motion.div>
   );
 }
 
-/* ─────────────────────────────────────────────
-   Card 1 — One-Tap Social Trading (Original Pipeline Flow)
-   Adapted labels: SOCIAL -> ROUTER -> 1-TAP -> LONG / SHORT
-   ───────────────────────────────────────────── */
+/* ---------------------------------------------
+   Card 1 - One-Tap Social Trading (Pipeline Flow)
+   SOCIAL -> ROUTER -> 1-TAP -> LONG / SHORT
+--------------------------------------------- */
 
 type FlowStep = "source" | "ingest" | "analyze" | "signal" | "execute" | "report";
 
 const VW = 320;
-const VH = 240;
+const VH = 220;
 
 interface NodeConfig {
   id: string;
@@ -95,11 +90,11 @@ interface NodeConfig {
 }
 
 const NODES: NodeConfig[] = [
-  { id: "A", x: 50, y: 120, icon: Broadcast, label: "SOCIAL", type: "box" },
-  { id: "Router", x: 125, y: 120, icon: Eye, label: "", type: "circle" },
-  { id: "C", x: 200, y: 120, icon: Brain, label: "1-TAP", type: "box" },
-  { id: "B", x: 280, y: 50, icon: TrendUp, label: "LONG", type: "box" },
-  { id: "D", x: 280, y: 190, icon: Target, label: "SHORT", type: "box" },
+  { id: "A", x: 44, y: 110, icon: Broadcast, label: "SOCIAL", type: "box" },
+  { id: "Router", x: 114, y: 110, icon: Eye, label: "", type: "circle" },
+  { id: "C", x: 184, y: 110, icon: Brain, label: "1-TAP", type: "box" },
+  { id: "B", x: 266, y: 48, icon: TrendUp, label: "LONG", type: "box" },
+  { id: "D", x: 266, y: 172, icon: Target, label: "SHORT", type: "box" },
 ];
 
 interface FlowPath {
@@ -109,12 +104,12 @@ interface FlowPath {
 }
 
 const PATHS: FlowPath[] = [
-  { id: "a-to-router", d: "M 78 120 L 113 120", activeSteps: ["source"] },
-  { id: "router-to-analyze", d: "M 137 120 L 172 120", activeSteps: ["analyze"] },
-  { id: "analyze-to-signal", d: "M 200 92 L 200 50 L 252 50", activeSteps: ["signal"] },
-  { id: "analyze-to-execute", d: "M 200 148 L 200 190 L 252 190", activeSteps: ["execute"] },
-  { id: "response-1", d: "M 172 120 L 137 120", activeSteps: ["report"] },
-  { id: "response-2", d: "M 113 120 L 78 120", activeSteps: ["report"] },
+  { id: "a-to-router", d: "M 68 110 L 102 110", activeSteps: ["source"] },
+  { id: "router-to-analyze", d: "M 126 110 L 160 110", activeSteps: ["analyze"] },
+  { id: "analyze-to-signal", d: "M 184 86 L 184 48 L 242 48", activeSteps: ["signal"] },
+  { id: "analyze-to-execute", d: "M 184 134 L 184 172 L 242 172", activeSteps: ["execute"] },
+  { id: "response-1", d: "M 160 110 L 126 110", activeSteps: ["report"] },
+  { id: "response-2", d: "M 102 110 L 68 110", activeSteps: ["report"] },
 ];
 
 const NODE_BG: Record<string, string> = {
@@ -155,17 +150,17 @@ function Card1() {
       {/* Dot grid */}
       <svg className="absolute inset-0 w-full h-full" aria-hidden>
         <defs>
-          <pattern id="i5-grid" width="16" height="16" patternUnits="userSpaceOnUse">
+          <pattern id="i5-grid-c1" width="16" height="16" patternUnits="userSpaceOnUse">
             <circle cx="1.5" cy="1.5" r="0.6" fill="rgba(255,255,255,0.06)" />
           </pattern>
         </defs>
-        <rect width="100%" height="100%" fill="url(#i5-grid)" />
+        <rect width="100%" height="100%" fill="url(#i5-grid-c1)" />
       </svg>
 
-      <svg className="absolute inset-0 w-full h-full" viewBox={`0 0 ${VW} ${VH}`} preserveAspectRatio="xMidYMid meet" aria-hidden>
+      <svg className="w-full h-full max-h-[220px]" viewBox={`0 0 ${VW} ${VH}`} preserveAspectRatio="xMidYMid meet" aria-hidden>
         {/* Static path lines */}
-        {["M 78 120 L 113 120", "M 137 120 L 172 120", "M 200 92 L 200 50 L 252 50", "M 200 148 L 200 190 L 252 190"].map((d, i) => (
-          <path key={i} d={d} fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="1" />
+        {["M 68 110 L 102 110", "M 126 110 L 160 110", "M 184 86 L 184 48 L 242 48", "M 184 134 L 184 172 L 242 172"].map((d, i) => (
+          <path key={i} d={d} fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="1.2" strokeDasharray="3 3" />
         ))}
 
         {/* Active flow */}
@@ -173,9 +168,9 @@ function Card1() {
           if (!p.activeSteps.includes(step)) return null;
           return (
             <g key={p.id}>
-              <motion.path d={p.d} fill="none" stroke="#13c38f" strokeWidth="3" strokeOpacity="0.2"
+              <motion.path d={p.d} fill="none" stroke="#13c38f" strokeWidth="3.5" strokeOpacity="0.25"
                 initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.8, ease: "easeInOut" }} />
-              <motion.path d={p.d} fill="none" stroke="#13c38f" strokeWidth="1.5"
+              <motion.path d={p.d} fill="none" stroke="#13c38f" strokeWidth="1.8"
                 initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.8, ease: "easeInOut" }} />
             </g>
           );
@@ -184,8 +179,8 @@ function Card1() {
         {/* Node boxes */}
         {NODES.map((node) => {
           const isBox = node.type === "box";
-          const w = isBox ? 56 : 24;
-          const h = isBox ? 56 : 24;
+          const w = isBox ? 48 : 24;
+          const h = isBox ? 48 : 24;
           const active = isNodeActive(node.id);
 
           return (
@@ -193,8 +188,8 @@ function Card1() {
               <div className="w-full h-full flex items-center justify-center">
                 {isBox ? (
                   <div className={cn(
-                    "w-full h-full rounded-[14px] border flex flex-col items-center justify-center text-white shadow-lg",
-                    active ? `${NODE_BG[node.id]} border-[rgba(19,195,143,0.5)] shadow-[0_0_20px_rgba(19,195,143,0.3)]` : "bg-[#111] border-[rgba(255,255,255,0.08)]",
+                    "w-full h-full rounded-[12px] border flex flex-col items-center justify-center text-white shadow-lg",
+                    active ? `${NODE_BG[node.id]} border-[rgba(19,195,143,0.6)] shadow-[0_0_20px_rgba(19,195,143,0.35)]` : "bg-[#111] border-[rgba(255,255,255,0.08)]",
                     "transition-all duration-500"
                   )}>
                     <node.icon className="w-4 h-4 mb-0.5" weight="fill" />
@@ -221,10 +216,10 @@ function Card1() {
   );
 }
 
-/* ─────────────────────────────────────────────
-   Card 2 — Discover & Trade Memes (Original Stats & Bars)
-   Adapted labels: $PEPE/USD, MEME VOL, with animated volume bars
-   ───────────────────────────────────────────── */
+/* ---------------------------------------------
+   Card 2 - Discover & Trade Memes (Stats & Bars)
+   $PEPE/USD, MEME VOL, animated volume bars
+--------------------------------------------- */
 function Card2() {
   const bars = [45, 75, 35, 85, 60, 95, 50];
   const days = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
@@ -238,46 +233,35 @@ function Card2() {
   }, []);
 
   return (
-    <div className="w-full h-full flex flex-col gap-3 justify-between p-4">
+    <div className="w-full h-full flex flex-col gap-2.5 justify-between p-3.5 sm:p-4">
       {/* Stat cards */}
-      <div className="flex gap-3">
+      <div className="grid grid-cols-2 gap-2 sm:gap-3">
         {[
           { label: "$PEPE/USD", value: "$0.00012", trend: "+342%" },
           { label: "Meme Vol", value: "$4.2M", trend: "+88%" },
         ].map((s, i) => {
           const isActive = i === activeIdx || hoveredIdx === i;
           return (
-            <div key={i} className="flex-1 h-[68px] relative select-none">
-              <div className="absolute inset-0 rounded-xl border border-[rgba(255,255,255,0.04)] bg-[rgba(255,255,255,0.02)]"
-                style={{ backgroundImage: "repeating-linear-gradient(45deg, transparent, transparent 6px, rgba(255,255,255,0.03) 6px, rgba(255,255,255,0.03) 7px)" }} />
+            <div key={i} className="h-[62px] sm:h-[66px] relative select-none">
+              <div className="absolute inset-0 rounded-xl border border-[rgba(255,255,255,0.04)] bg-[rgba(255,255,255,0.02)]" />
               <motion.div
-                className="absolute inset-0 w-full h-full rounded-xl bg-[#0d0d0d] border border-[rgba(255,255,255,0.08)] p-3 hover:border-[rgba(19,195,143,0.2)] transition-colors duration-300 flex items-center justify-between gap-3 cursor-pointer"
-                animate={{ x: isActive ? "4px" : "0px", y: isActive ? "-4px" : "0px" }}
+                className="absolute inset-0 w-full h-full rounded-xl bg-[#0d0d0d] border border-[rgba(255,255,255,0.08)] p-2.5 sm:p-3 hover:border-[rgba(19,195,143,0.2)] transition-colors duration-300 flex items-center justify-between gap-1.5 sm:gap-3 cursor-pointer"
+                animate={{ x: isActive ? "3px" : "0px", y: isActive ? "-3px" : "0px" }}
                 transition={{ type: "spring", stiffness: 200, damping: 16 }}
                 onMouseEnter={() => setHoveredIdx(i)} onMouseLeave={() => setHoveredIdx(null)}
               >
                 <div className="flex flex-col min-w-0">
-                  <span className="text-[8px] text-muted-foreground font-mono uppercase tracking-widest leading-none">{s.label}</span>
-                  <span className="text-base font-bold font-mono text-white leading-none mt-1.5 tracking-tight">{s.value}</span>
-                  <span className={cn("text-[8px] font-mono font-bold mt-1.5", s.trend.startsWith("+") ? "text-[#13c38f]" : "text-red-400")}>{s.trend}</span>
+                  <span className="text-[7.5px] sm:text-[8px] text-muted-foreground font-mono uppercase tracking-widest leading-none truncate">{s.label}</span>
+                  <span className="text-sm sm:text-base font-bold font-mono text-white leading-none mt-1 sm:mt-1.5 tracking-tight">{s.value}</span>
+                  <span className={cn("text-[7.5px] sm:text-[8px] font-mono font-bold mt-1 sm:mt-1.5", s.trend.startsWith("+") ? "text-[#13c38f]" : "text-red-400")}>{s.trend}</span>
                 </div>
-                <div className="w-12 h-6 flex items-center justify-center shrink-0">
+                <div className="w-10 sm:w-12 h-5 sm:h-6 flex items-center justify-center shrink-0">
                   <svg className="w-full h-full overflow-visible" viewBox="0 0 48 24">
                     <motion.path
                       d={i === 0 ? "M 0 18 L 16 11 L 32 14 L 48 4" : "M 0 4 L 16 12 L 32 8 L 48 18"}
-                      fill="none" stroke="#13c38f" strokeWidth="1" strokeLinecap="round" strokeOpacity={0.5}
+                      fill="none" stroke="#13c38f" strokeWidth="1.2" strokeLinecap="round" strokeOpacity={0.6}
                       initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.8, delay: 0.2 + i * 0.15, ease: "easeOut" }}
                     />
-                    {(i === 0
-                      ? [{ x: 0, y: 18 }, { x: 16, y: 11 }, { x: 32, y: 14 }, { x: 48, y: 4 }]
-                      : [{ x: 0, y: 4 }, { x: 16, y: 12 }, { x: 32, y: 8 }, { x: 48, y: 18 }]
-                    ).map((pt, idx) => (
-                      <motion.circle key={idx} cx={pt.x} cy={pt.y} r="1.5"
-                        fill="#000" stroke="rgba(19,195,143,0.5)" strokeWidth="1"
-                        initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
-                        transition={{ delay: 0.5 + idx * 0.08, duration: 0.25 }}
-                      />
-                    ))}
                   </svg>
                 </div>
               </motion.div>
@@ -287,13 +271,11 @@ function Card2() {
       </div>
 
       {/* Animated bars */}
-      <div className="flex-1 flex items-end gap-2 min-h-[80px]">
+      <div className="flex-1 flex items-end gap-1.5 sm:gap-2 min-h-[75px] sm:min-h-[85px] my-1">
         {bars.map((h, i) => (
-          <div key={i} className="flex-1 h-full rounded-xl bg-[#080808] border border-[rgba(255,255,255,0.05)] relative overflow-hidden"
-            style={{ backgroundImage: "repeating-linear-gradient(45deg, transparent, transparent 6px, rgba(255,255,255,0.015) 6px, rgba(255,255,255,0.015) 7px)" }}
-          >
+          <div key={i} className="flex-1 h-full rounded-xl bg-[#080808] border border-[rgba(255,255,255,0.05)] relative overflow-hidden">
             <motion.div
-              className="absolute bottom-0 left-0 right-0 bg-[#13c38f] rounded-t-[10px] shadow-[0_0_12px_rgba(19,195,143,0.3)]"
+              className="absolute bottom-0 left-0 right-0 bg-[#13c38f] rounded-t-[8px] sm:rounded-t-[10px] shadow-[0_0_12px_rgba(19,195,143,0.3)]"
               initial={{ height: "0%" }}
               animate={{ height: [`${h}%`, `${Math.min(95, h + 15)}%`, `${Math.max(10, h - 20)}%`, `${h}%`] }}
               transition={{ repeat: Infinity, duration: 3 + (i % 3) * 0.8, ease: "easeInOut", delay: i * 0.1 }}
@@ -305,17 +287,17 @@ function Card2() {
       {/* Day labels */}
       <div className="flex justify-between px-1">
         {days.map((d) => (
-          <span key={d} className="text-[7.5px] font-mono text-muted-foreground/60">{d}</span>
+          <span key={d} className="text-[7px] sm:text-[7.5px] font-mono text-muted-foreground/60">{d}</span>
         ))}
       </div>
     </div>
   );
 }
 
-/* ─────────────────────────────────────────────
-   Card 3 — Trade Crypto & Global Stocks (Original 3D Stacked Carousel)
-   Adapted labels: BTC/USD, NVDA, ETH/USD, TSLA, SPX
-   ───────────────────────────────────────────── */
+/* ---------------------------------------------
+   Card 3 - Trade Crypto & Global Stocks (3D Carousel Stack)
+   BTC/USD, NVDA, ETH/USD, TSLA, SPX
+--------------------------------------------- */
 const SIGNAL_STATUS: Record<string, { icon: React.ElementType; color: string; bg: string; gradient: string; border: string }> = {
   bullish: { icon: ArrowUp, color: "text-[#13c38f]", bg: "bg-[rgba(19,195,143,0.15)]", gradient: "bg-gradient-to-b from-[#13c38f] to-emerald-600", border: "border-emerald-600" },
   active: { icon: CircleNotch, color: "text-cyan-400", bg: "bg-cyan-400/15", gradient: "bg-gradient-to-b from-cyan-400 to-cyan-600", border: "border-cyan-600" },
@@ -326,11 +308,11 @@ const SIGNAL_STATUS: Record<string, { icon: React.ElementType; color: string; bg
 
 function Card3() {
   const signals = [
-    { source: "BTC/USD", action: "Breaks $68.5k — +4.2% intraday", status: "bullish", t: "2s ago" },
-    { source: "NVDA", action: "Gap up to $138.50 — +5.8% earnings", status: "confirmed", t: "15s ago" },
-    { source: "ETH/USD", action: "Staking inflow +$42M — +3.1%", status: "bullish", t: "1m ago" },
-    { source: "TSLA", action: "Breakout past $248 — +4.5%", status: "active", t: "3m ago" },
-    { source: "SPX 500", action: "All-time high reached — risk on", status: "bullish", t: "5m ago" },
+    { source: "BTC/USD", action: "Breaks $68.5k - +4.2% intraday", status: "bullish", t: "2s ago" },
+    { source: "NVDA", action: "Gap up to $138.50 - +5.8% earnings", status: "confirmed", t: "15s ago" },
+    { source: "ETH/USD", action: "Staking inflow +$42M - +3.1%", status: "bullish", t: "1m ago" },
+    { source: "TSLA", action: "Breakout past $248 - +4.5%", status: "active", t: "3m ago" },
+    { source: "SPX 500", action: "All-time high reached - risk on", status: "bullish", t: "5m ago" },
   ];
 
   const [activeIdx, setActiveIdx] = useState(0);
@@ -348,10 +330,10 @@ function Card3() {
     return rel;
   };
 
-  const Y: Record<string, number> = { "-2": -68, "-1": -38, "0": 0, "1": 38, "2": 68 };
+  const Y: Record<string, number> = { "-2": -64, "-1": -36, "0": 0, "1": 36, "2": 64 };
 
   return (
-    <div className="w-full h-full relative flex items-center justify-center overflow-hidden">
+    <div className="w-full h-full relative flex items-center justify-center overflow-hidden p-2 sm:p-3">
       {signals.map((l, i) => {
         const slot = getSlot(i);
         const si = SIGNAL_STATUS[l.status];
@@ -359,11 +341,11 @@ function Card3() {
         const isActive = slot === 0;
         const isVisible = abs <= 2;
         const yOffset = Y[String(slot)] ?? (slot < 0 ? -120 : 120);
-        const scale = isActive ? 1 : abs === 1 ? 0.93 : 0.87;
-        const opacity = isActive ? 1 : abs === 1 ? 0.65 : 0.38;
+        const scale = isActive ? 1 : abs === 1 ? 0.93 : 0.86;
+        const opacity = isActive ? 1 : abs === 1 ? 0.65 : 0.35;
 
         return (
-          <motion.div key={l.source} className="absolute left-0 right-0 mx-auto px-2"
+          <motion.div key={l.source} className="absolute left-0 right-0 mx-auto px-2 max-w-[95%]"
             style={{ zIndex: isActive ? 30 : abs === 1 ? 20 : 10 }}
             animate={{
               y: isVisible ? yOffset : slot < 0 ? -150 : 150,
@@ -376,31 +358,31 @@ function Card3() {
             }}
           >
             <div className={cn(
-              "w-full rounded-2xl border flex items-center gap-2.5",
-              isActive ? "px-3 py-2.5 bg-[#0d0d0d] border-[rgba(255,255,255,0.1)]" : "px-2.5 py-1.5 bg-[#080808] border-[rgba(255,255,255,0.05)]"
+              "w-full rounded-2xl border flex items-center gap-2 sm:gap-2.5 transition-all duration-300",
+              isActive ? "px-3 py-2 sm:py-2.5 bg-[#0d0d0d] border-[rgba(255,255,255,0.12)] shadow-xl" : "px-2.5 py-1.5 bg-[#080808] border-[rgba(255,255,255,0.05)]"
             )}>
               <div className={cn(
                 "shrink-0 rounded-[8px] flex items-center justify-center font-bold text-white shadow-lg",
                 si.gradient, "border", si.border,
-                isActive ? "w-8 h-8" : "w-5 h-5",
+                isActive ? "w-7 h-7 sm:w-8 sm:h-8" : "w-5 h-5"
               )}>
-                <si.icon weight="bold" className={cn(isActive ? "w-4 h-4" : "w-2.5 h-2.5", l.status === "active" && "animate-spin")} />
+                <si.icon weight="bold" className={cn(isActive ? "w-3.5 h-3.5 sm:w-4 sm:h-4" : "w-2.5 h-2.5", l.status === "active" && "animate-spin")} />
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-1.5">
-                  <span className={cn("font-mono font-semibold text-white leading-none", isActive ? "text-[10px]" : "text-[9px]")}>{l.source}</span>
+                  <span className={cn("font-mono font-semibold text-white leading-none", isActive ? "text-[10px] sm:text-[11px]" : "text-[9px]")}>{l.source}</span>
                   <span className={cn("font-mono uppercase tracking-wide rounded px-1 py-0.5", si.bg, si.color, isActive ? "text-[7px]" : "text-[6px]")}>{l.status}</span>
                 </div>
-                {isActive && <p className="text-[9px] text-muted-foreground truncate mt-0.5 leading-tight">{l.action}</p>}
+                {isActive && <p className="text-[8.5px] sm:text-[9.5px] text-muted-foreground truncate mt-0.5 leading-tight">{l.action}</p>}
               </div>
-              {isActive && <span className="text-[9px] font-mono text-muted-foreground shrink-0">{l.t}</span>}
+              {isActive && <span className="text-[8px] sm:text-[9px] font-mono text-muted-foreground shrink-0">{l.t}</span>}
             </div>
           </motion.div>
         );
       })}
 
       {/* Dots */}
-      <div className="absolute bottom-1.5 left-0 right-0 flex justify-center gap-1">
+      <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-1">
         {signals.map((_, i) => (
           <motion.div key={i} className="rounded-full bg-white/25"
             animate={{ width: i === activeIdx ? 14 : 4, opacity: i === activeIdx ? 0.7 : 0.2 }}
@@ -411,10 +393,10 @@ function Card3() {
   );
 }
 
-/* ─────────────────────────────────────────────
-   Card 4 — Trade with Agentic AI (Original Scanner Bars & Log)
-   Adapted labels: AI Scanning, crypto/stocks/memes/ai agents & AI queries
-   ───────────────────────────────────────────── */
+/* ---------------------------------------------
+   Card 4 - Trade with Agentic AI (Multi-Market Scanner & Stream)
+   Responsive layout for desktop & mobile
+--------------------------------------------- */
 const MKT_ICONS: Record<string, React.ElementType> = {
   crypto: CurrencyBtc,
   stocks: ChartLineUp,
@@ -457,76 +439,88 @@ function Card4() {
   const recentQueries = [0, 1, 2, 3].map((offset) => SCAN_QUERIES[(tick - offset + SCAN_QUERIES.length) % SCAN_QUERIES.length]);
 
   return (
-    <div className="w-full h-full flex gap-4 py-4 px-5">
-      {/* Left: Market bars */}
-      <div className="flex-1 flex flex-col gap-0 min-w-0 pr-2">
-        <p className="text-[8px] font-mono uppercase tracking-widest text-muted-foreground mb-3">AI Agent Scanning</p>
-        <div className="flex flex-col gap-3 flex-1">
-          {markets.map((ns, i) => {
-            const c = MKT_COLORS[ns.name];
-            const isActive = ns.name === activeNs;
-            const Icon = MKT_ICONS[ns.name] as React.ComponentType<{ size?: number; weight?: string; className?: string }>;
-            return (
-              <div key={ns.name} className="flex items-center gap-3 group relative">
-                <div className={cn(
-                  "relative flex shrink-0 items-center justify-center w-[34px] h-[34px] rounded-[10px] border transition-all duration-500",
-                  isActive ? `shadow-lg text-white ${c.btnBg} ${c.btnBorder} scale-105` : "bg-[#111] border-[rgba(255,255,255,0.06)] text-[rgba(255,255,255,0.35)]"
-                )}>
-                  <Icon size={16} weight={isActive ? "fill" : "regular"} className="relative z-10" />
+    <div className="w-full h-full flex flex-col sm:flex-row gap-4 p-4 sm:p-5">
+      {/* Left: Market scan bars */}
+      <div className="flex-1 flex flex-col justify-between min-w-0">
+        <div>
+          <p className="text-[8px] sm:text-[8.5px] font-mono uppercase tracking-widest text-muted-foreground mb-2.5 sm:mb-3">
+            AI Agent Scanning
+          </p>
+          <div className="flex flex-col gap-2.5 sm:gap-3">
+            {markets.map((ns, i) => {
+              const c = MKT_COLORS[ns.name];
+              const isActive = ns.name === activeNs;
+              const Icon = MKT_ICONS[ns.name] as React.ComponentType<{ size?: number; weight?: string; className?: string }>;
+              return (
+                <div key={ns.name} className="flex items-center gap-2 sm:gap-3 group relative">
+                  <div className={cn(
+                    "relative flex shrink-0 items-center justify-center w-7 h-7 sm:w-[32px] sm:h-[32px] rounded-[8px] sm:rounded-[10px] border transition-all duration-500",
+                    isActive ? `shadow-lg text-white ${c.btnBg} ${c.btnBorder} scale-105` : "bg-[#111] border-[rgba(255,255,255,0.06)] text-[rgba(255,255,255,0.35)]"
+                  )}>
+                    <Icon size={14} weight={isActive ? "fill" : "regular"} className="relative z-10" />
+                  </div>
+                  <span className={cn("text-[9px] sm:text-[10px] font-mono w-14 sm:w-16 shrink-0 transition-colors duration-400 capitalize", isActive ? "text-white font-semibold" : "text-muted-foreground")}>
+                    {ns.name}
+                  </span>
+                  <div className="flex-1 h-1.5 bg-[rgba(255,255,255,0.03)] rounded-full overflow-hidden relative">
+                    <motion.div
+                      className={cn("absolute left-0 top-0 bottom-0 rounded-full bg-gradient-to-r", c.bar)}
+                      initial={{ width: "0%" }}
+                      animate={{ width: `${ns.fill}%`, opacity: isActive ? 1 : 0.25 }}
+                      transition={{ width: { duration: 1.2, delay: i * 0.1, type: "spring", bounce: 0.2 }, opacity: { duration: 0.4 } }}
+                    >
+                      {isActive && (
+                        <motion.div className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-transparent via-white/40 to-transparent"
+                          initial={{ x: "-100%" }} animate={{ x: "100%" }} transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }} />
+                      )}
+                    </motion.div>
+                  </div>
+                  <div className={cn("flex items-center gap-1 w-8 sm:w-10 justify-end transition-all duration-500 shrink-0", isActive ? "opacity-100" : "opacity-50")}>
+                    <span className={cn("text-[8.5px] sm:text-[9px] font-mono font-medium", isActive ? "text-white" : "text-muted-foreground")}>{ns.hits}</span>
+                    {isActive && <motion.div className={cn("w-1 h-1 rounded-full", c.dot)}
+                      animate={{ opacity: [1, 0.2, 1], scale: [1, 1.5, 1] }} transition={{ repeat: Infinity, duration: 1 }} />}
+                  </div>
                 </div>
-                <span className={cn("text-[10px] font-mono w-16 shrink-0 transition-colors duration-400", isActive ? "text-white font-semibold" : "text-muted-foreground")}>{ns.name}</span>
-                <div className="flex-1 h-1.5 bg-[rgba(255,255,255,0.03)] rounded-full overflow-hidden relative">
-                  <motion.div
-                    className={cn("absolute left-0 top-0 bottom-0 rounded-full bg-gradient-to-r", c.bar)}
-                    initial={{ width: "0%" }}
-                    animate={{ width: `${ns.fill}%`, opacity: isActive ? 1 : 0.25 }}
-                    transition={{ width: { duration: 1.2, delay: i * 0.1, type: "spring", bounce: 0.2 }, opacity: { duration: 0.4 } }}
-                  >
-                    {isActive && (
-                      <motion.div className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-transparent via-white/40 to-transparent"
-                        initial={{ x: "-100%" }} animate={{ x: "100%" }} transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }} />
-                    )}
-                  </motion.div>
-                </div>
-                <div className={cn("flex items-center gap-1.5 w-10 justify-end transition-all duration-500", isActive ? "opacity-100" : "opacity-50")}>
-                  <span className={cn("text-[9px] font-mono font-medium", isActive ? "text-white" : "text-muted-foreground")}>{ns.hits}</span>
-                  {isActive && <motion.div className={cn("w-1 h-1 rounded-full", c.dot)}
-                    animate={{ opacity: [1, 0.2, 1], scale: [1, 1.5, 1] }} transition={{ repeat: Infinity, duration: 1 }} />}
-                </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
-        <div className="flex items-center gap-2 pt-3 mt-auto">
+
+        <div className="flex items-center gap-2 pt-3 mt-2 border-t border-white/[0.04]">
           <div className="relative flex items-center justify-center w-2 h-2">
             <motion.div className="absolute inset-0 rounded-full bg-[rgba(19,195,143,0.4)]"
               animate={{ scale: [1, 2.5, 1], opacity: [0.5, 0, 0.5] }} transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }} />
             <div className="w-1.5 h-1.5 rounded-full bg-[#13c38f]" />
           </div>
-          <span className="text-[8px] font-mono text-muted-foreground font-medium tracking-wide">AI Agent scanning active</span>
+          <span className="text-[7.5px] sm:text-[8px] font-mono text-muted-foreground font-medium tracking-wide">
+            AI Agent scanning active
+          </span>
         </div>
       </div>
 
-      <div className="w-px bg-[rgba(255,255,255,0.05)] self-stretch shrink-0" />
+      {/* Middle Vertical Divider (Desktop & Tablet) */}
+      <div className="hidden sm:block w-px bg-[rgba(255,255,255,0.06)] self-stretch shrink-0" />
 
-      {/* Right: Scan log */}
-      <div className="w-[172px] shrink-0 flex flex-col gap-0">
-        <p className="text-[8px] font-mono uppercase tracking-widest text-muted-foreground mb-2.5">AI Agent Log</p>
+      {/* Right: Scan log stream */}
+      <div className="w-full sm:w-[180px] lg:w-[210px] shrink-0 flex flex-col">
+        <p className="text-[8px] sm:text-[8.5px] font-mono uppercase tracking-widest text-muted-foreground mb-2 sm:mb-2.5">
+          AI Agent Log
+        </p>
         <div className="flex flex-col gap-1.5 flex-1 overflow-hidden">
           {recentQueries.map((q, qi) => {
             const c = MKT_COLORS[q.ns];
             return (
               <motion.div key={`${q.ns}-${q.q}-${qi}`}
-                className="rounded-xl border border-[rgba(255,255,255,0.05)] bg-[#080808] px-2.5 py-2"
+                className="rounded-xl border border-[rgba(255,255,255,0.05)] bg-[#080808] px-2.5 py-1.5 sm:py-2"
                 initial={{ opacity: 0, y: -8 }}
                 animate={{ opacity: qi === 0 ? 1 : qi === 1 ? 0.8 : qi === 2 ? 0.5 : 0.25, y: 0 }}
                 transition={{ type: "spring", stiffness: 500, damping: 35, delay: qi * 0.05 }}
               >
-                <div className="flex items-center gap-1 mb-1">
-                  <span className={cn("text-[6.5px] font-mono font-semibold uppercase px-1.5 py-0.5 rounded-md", c.badge)}>{q.ns}</span>
-                  <span className="text-[7px] font-mono text-muted-foreground/50 ml-auto tabular-nums">{q.t}</span>
+                <div className="flex items-center gap-1 mb-0.5 sm:mb-1">
+                  <span className={cn("text-[6px] sm:text-[6.5px] font-mono font-semibold uppercase px-1.5 py-0.5 rounded-md", c.badge)}>{q.ns}</span>
+                  <span className="text-[6.5px] sm:text-[7px] font-mono text-muted-foreground/50 ml-auto tabular-nums">{q.t}</span>
                 </div>
-                <p className="text-[8px] text-[rgba(255,255,255,0.6)] leading-tight font-mono truncate">{q.q}</p>
+                <p className="text-[7.5px] sm:text-[8px] text-[rgba(255,255,255,0.7)] leading-tight font-mono truncate">{q.q}</p>
               </motion.div>
             );
           })}
@@ -536,10 +530,10 @@ function Card4() {
   );
 }
 
-/* ─────────────────────────────────────────────
-   Card 5 — Real-Time News Intelligence (Original 4-Tile Dashboard)
-   Adapted labels: Fed Signals, SEC Filings, Macro Alerts, News Impact
-   ───────────────────────────────────────────── */
+/* ---------------------------------------------
+   Card 5 - Real-Time News Intelligence (4-Tile Dashboard)
+   Fed Signals, SEC Filings, Macro Alerts, News Impact
+--------------------------------------------- */
 function Card5() {
   const tools = [
     { name: "Fed Signals", calls: 14, icon: Broadcast, latency: "12ms", color: "bg-gradient-to-b from-[#13c38f] to-emerald-600", borderColor: "border-emerald-600" },
@@ -549,29 +543,29 @@ function Card5() {
   ];
 
   return (
-    <div className="w-full h-full flex items-center justify-center p-3">
-      <div className="grid grid-cols-2 gap-2 w-full">
+    <div className="w-full h-full flex items-center justify-center p-3 sm:p-4">
+      <div className="grid grid-cols-2 gap-2 sm:gap-2.5 w-full">
         {tools.map((t, i) => (
           <motion.div key={i}
-            className="relative rounded-[14px] border border-[rgba(255,255,255,0.06)] bg-[#0a0a0a] hover:border-[rgba(19,195,143,0.2)] transition-all duration-300 flex flex-col justify-between p-2.5 group"
+            className="relative rounded-[12px] sm:rounded-[14px] border border-[rgba(255,255,255,0.06)] bg-[#0a0a0a] hover:border-[rgba(19,195,143,0.2)] transition-all duration-300 flex flex-col justify-between p-2 sm:p-2.5 group"
             initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.1, type: "spring", stiffness: 300, damping: 25 }}
           >
             <div className="flex items-start justify-between">
-              <div className={cn("w-[26px] h-[26px] rounded-[8px] flex items-center justify-center text-white shadow-lg border group-hover:scale-105 transition-transform duration-300", t.color, t.borderColor)}>
-                <t.icon weight="fill" className="w-3 h-3 relative z-10" />
+              <div className={cn("w-6 h-6 sm:w-[26px] sm:h-[26px] rounded-[7px] sm:rounded-[8px] flex items-center justify-center text-white shadow-lg border group-hover:scale-105 transition-transform duration-300", t.color, t.borderColor)}>
+                <t.icon weight="fill" className="w-2.5 h-2.5 sm:w-3 sm:h-3 relative z-10" />
               </div>
               <div className="flex flex-col items-end gap-0.5 mt-0.5">
-                <span className="text-[12px] font-mono font-bold text-white leading-none">{t.calls}</span>
-                <span className="text-[7px] font-mono text-muted-foreground uppercase tracking-widest leading-none">Alerts</span>
+                <span className="text-[11px] sm:text-[12px] font-mono font-bold text-white leading-none">{t.calls}</span>
+                <span className="text-[6.5px] sm:text-[7px] font-mono text-muted-foreground uppercase tracking-widest leading-none">Alerts</span>
               </div>
             </div>
-            <div className="mt-2 flex flex-col gap-1.5">
+            <div className="mt-1.5 sm:mt-2 flex flex-col gap-1 sm:gap-1.5">
               <div className="flex items-center justify-between">
-                <span className="text-[10px] font-mono font-medium text-white tracking-tight">{t.name}</span>
-                <span className="text-[8px] font-mono text-muted-foreground tabular-nums">{t.latency}</span>
+                <span className="text-[9px] sm:text-[10px] font-mono font-medium text-white tracking-tight truncate mr-1">{t.name}</span>
+                <span className="text-[7.5px] sm:text-[8px] font-mono text-muted-foreground tabular-nums shrink-0">{t.latency}</span>
               </div>
-              <div className="w-full h-1.5 bg-[rgba(255,255,255,0.03)] rounded-full overflow-hidden relative">
+              <div className="w-full h-1 sm:h-1.5 bg-[rgba(255,255,255,0.03)] rounded-full overflow-hidden relative">
                 <motion.div className={cn("absolute left-0 top-0 bottom-0 rounded-full", t.color)}
                   initial={{ width: "0%" }} animate={{ width: `${(t.calls / 31) * 100}%` }}
                   transition={{ delay: 0.4 + i * 0.1, duration: 0.8, ease: "easeOut" }} />
@@ -584,110 +578,94 @@ function Card5() {
   );
 }
 
-/* ─────────────────────────────────────────────
-   Main Bento Section — 3 top · 2 bottom
-   ───────────────────────────────────────────── */
-const GRID_ITEMS = [
-  {
-    title: "One-Tap Social Trading.",
-    description:
-      "Go Long or Short from the i5 terminal or Telegram. Share live trades with your group, see how others are positioned, and take your side in a single tap.",
-    visual: <Card1 />,
-    col: "span 1",
-    h: 460,
-  },
-  {
-    title: "Discover & Trade Memes.",
-    description:
-      "Discover new and trending meme tokens, track smart money and on-chain activity, analyze what’s gaining momentum, and move from discovery to trade in one place.",
-    visual: <Card2 />,
-    col: "span 1",
-    h: 460,
-  },
-  {
-    title: "Trade Crypto & Global Stocks.",
-    description:
-      "Access stocks alongside crypto in one trading experience. Follow real-time price action, understand what’s moving, and execute without switching platforms.",
-    visual: <Card3 />,
-    col: "span 1",
-    h: 460,
-  },
-  {
-    title: "Trade with Agentic AI.",
-    description:
-      "Ask anything about a token, stock, wallet, or narrative. Get instant market context, compare assets, analyze trends, and uncover opportunities through AI.",
-    visual: <Card4 />,
-    col: "span 2",
-    h: 440,
-  },
-  {
-    title: "Real-Time News Intelligence.",
-    description:
-      "Surface the developments that matter as they happen. Understand the market impact, see which assets could react, and act on relevant information faster.",
-    visual: <Card5 />,
-    col: "span 1",
-    h: 440,
-  },
-];
-
+/* ---------------------------------------------
+   Main Bento Section Component
+--------------------------------------------- */
 export function MarketIntelligence() {
-  const [cols, setCols] = useState(3);
-
-  useEffect(() => {
-    const checkSize = () => {
-      const w = window.innerWidth;
-      setCols(w < 640 ? 1 : w < 1024 ? 2 : 3);
-    };
-    checkSize();
-    window.addEventListener('resize', checkSize);
-    return () => window.removeEventListener('resize', checkSize);
-  }, []);
-
-  /* Adjust grid col spans & heights per breakpoint */
-  const getColSpan = (baseCol: string) => {
-    if (cols === 1) return 'span 1';
-    if (cols === 2) return baseCol === 'span 2' ? 'span 2' : 'span 1';
-    return baseCol;
-  };
-
-  const getHeight = (baseH: number) => {
-    if (cols === 1) return 400;
-    if (cols === 2) return 430;
-    return baseH;
-  };
-
   return (
-    <section id="market-intelligence" style={{ paddingTop: '6rem', paddingBottom: '6rem', overflow: 'hidden', fontFamily: "'Inter', sans-serif" }}>
-      <div style={{ maxWidth: '1200px', marginLeft: 'auto', marginRight: 'auto', paddingLeft: cols === 1 ? '1rem' : '2rem', paddingRight: cols === 1 ? '1rem' : '2rem', fontFamily: "'Inter', sans-serif" }}>
+    <section id="market-intelligence" className="py-20 sm:py-24 px-4 sm:px-8 md:px-12 lg:px-20 overflow-hidden bg-black select-none border-b border-white/10">
+      <div className="max-w-7xl mx-auto">
+        
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          style={{ textAlign: 'center', marginBottom: '3.5rem', fontFamily: "'Inter', sans-serif" }}
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center mb-12 sm:mb-16"
         >
-          <div className="inline-flex items-center gap-2 text-[11px] font-mono tracking-widest uppercase text-[rgba(255,255,255,0.35)] border border-[rgba(255,255,255,0.08)] rounded-full px-4 py-2 mb-6" style={{ fontFamily: "'Inter', sans-serif" }}>
+          <div className="inline-flex items-center gap-2 text-[11px] font-mono tracking-widest uppercase text-white/40 border border-white/10 rounded-full px-4 py-1.5 mb-5 bg-white/[0.02]">
             <span className="w-1.5 h-1.5 rounded-full bg-[#13c38f] animate-pulse inline-block" />
             Platform Intelligence
           </div>
-          <h2 style={{ fontSize: 'clamp(1.75rem, 4.5vw, 3.25rem)', fontWeight: 700, color: '#fff', lineHeight: 1.15, marginBottom: '1rem', letterSpacing: '-0.025em', fontFamily: "'Inter', sans-serif", textTransform: 'none' }}>
+          
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white tracking-tight leading-[1.1] mb-4">
             Intelligence Built for{" "}
-            <span style={{ color: '#13c38f', textShadow: '0 0 40px rgba(19,195,143,0.35)' }}>Every Market</span>
+            <span className="text-[#13c38f]" style={{ textShadow: "0 0 40px rgba(19,195,143,0.35)" }}>
+              Every Market
+            </span>
           </h2>
-          <p style={{ fontSize: cols === 1 ? '0.9rem' : '1rem', color: 'rgba(255,255,255,0.45)', maxWidth: '34rem', marginLeft: 'auto', marginRight: 'auto', lineHeight: 1.65, fontFamily: "'Inter', sans-serif" }}>
+          
+          <p className="text-white/60 text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed" style={{ textWrap: "balance" }}>
             Everything you need to discover, understand, and execute the next market opportunity across crypto, stocks, memes, AI, and breaking news.
           </p>
         </motion.div>
 
-        {/* Bento Grid — responsive */}
-        <div style={{ display: 'grid', gridTemplateColumns: `repeat(${cols}, 1fr)`, gap: cols === 1 ? '12px' : '16px' }}>
-          {GRID_ITEMS.map((card, idx) => (
-            <div key={idx} style={{ gridColumn: getColSpan(card.col), height: getHeight(card.h) }}>
-              <FeatCard title={card.title} description={card.description} className="h-full">
-                {card.visual}
-              </FeatCard>
-            </div>
-          ))}
+        {/* Fully Responsive Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          
+          {/* Card 1: One-Tap Social Trading */}
+          <div className="col-span-1 min-h-[440px] sm:min-h-[460px] flex">
+            <FeatCard
+              title="One-Tap Social Trading."
+              description="Go Long or Short from the i5 terminal or Telegram. Share live trades with your group, see how others are positioned, and take your side in a single tap."
+            >
+              <Card1 />
+            </FeatCard>
+          </div>
+
+          {/* Card 2: Discover & Trade Memes */}
+          <div className="col-span-1 min-h-[440px] sm:min-h-[460px] flex">
+            <FeatCard
+              title="Discover & Trade Memes."
+              description="Discover new and trending meme tokens, track smart money and on-chain activity, analyze what’s gaining momentum, and move from discovery to trade in one place."
+            >
+              <Card2 />
+            </FeatCard>
+          </div>
+
+          {/* Card 3: Trade Crypto & Global Stocks */}
+          <div className="col-span-1 md:col-span-2 lg:col-span-1 min-h-[440px] sm:min-h-[460px] flex">
+            <FeatCard
+              title="Trade Crypto & Global Stocks."
+              description="Access stocks alongside crypto in one trading experience. Follow real-time price action, understand what’s moving, and execute without switching platforms."
+            >
+              <Card3 />
+            </FeatCard>
+          </div>
+
+          {/* Card 4: Trade with Agentic AI */}
+          <div className="col-span-1 md:col-span-2 lg:col-span-2 min-h-[440px] sm:min-h-[460px] flex">
+            <FeatCard
+              title="Trade with Agentic AI."
+              description="Ask anything about a token, stock, wallet, or narrative. Get instant market context, compare assets, analyze trends, and uncover opportunities through AI."
+            >
+              <Card4 />
+            </FeatCard>
+          </div>
+
+          {/* Card 5: Real-Time News Intelligence */}
+          <div className="col-span-1 md:col-span-2 lg:col-span-1 min-h-[440px] sm:min-h-[460px] flex">
+            <FeatCard
+              title="Real-Time News Intelligence."
+              description="Surface the developments that matter as they happen. Understand the market impact, see which assets could react, and act on relevant information faster."
+            >
+              <Card5 />
+            </FeatCard>
+          </div>
+
         </div>
+
       </div>
     </section>
   );

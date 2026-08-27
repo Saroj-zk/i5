@@ -103,7 +103,7 @@ export function WallStreetStack() {
     >
       {/* ── STICKY FULL-VIEWPORT CONTAINER ── */}
       <div className="sticky top-0 h-screen w-full flex flex-col justify-start items-center pt-3 sm:pt-5 pb-4 px-4 sm:px-8 lg:px-12 overflow-hidden z-10">
-        
+
         {/* ── 1. Top Section Header (Single Line with WALL STREET & EVERY MARKET Highlighted) ── */}
         <div
           style={{
@@ -126,7 +126,7 @@ export function WallStreetStack() {
             }}
             className="uppercase whitespace-normal sm:whitespace-nowrap"
           >
-            BRING <span style={{ color: ACCENT, textShadow: '0 0 35px rgba(19,195,143,0.45)' }}>WALL STREET</span> TO <span style={{ color: ACCENT, textShadow: '0 0 35px rgba(19,195,143,0.45)' }}>EVERY MARKET</span>
+            BRING <span style={{ color: ACCENT, textShadow: '0 0 35px rgba(19,195,143,0.45)' }}>WALL STREET</span> TO <span style={{ color: ACCENT, textShadow: '0 0 35px rgba(19,195,143,0.45)' }}>EVERY TRADER</span>
           </h2>
           <p
             style={{
