@@ -9,7 +9,6 @@ import {
   Newspaper,
   Brain,
   TrendUp,
-  TrendDown,
   Eye,
   Broadcast,
   Target,
