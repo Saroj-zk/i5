@@ -46,7 +46,7 @@ export function Navbar() {
             {/* Desktop Navigation Links */}
             <div className="hidden lg:flex items-center gap-2 lg:gap-4 xl:gap-6 text-[9px] lg:text-[10px] xl:text-xs font-bold uppercase tracking-wider shrink-0">
               <button
-                onClick={() => scrollToSection('why-we-win')}
+                onClick={() => scrollToSection('market-intelligence')}
                 className="text-white/60 hover:text-primary hover:before:content-['>_'] transition-colors cursor-pointer tracking-wider shrink-0"
               >
                 PLATFORM
@@ -221,7 +221,7 @@ export function Navbar() {
       >
         <div className="flex flex-col p-6 sm:p-8 gap-5 text-base font-bold">
           <button
-            onClick={() => scrollToSection('why-we-win')}
+            onClick={() => scrollToSection('market-intelligence')}
             className="text-left py-2 text-white/60 hover:text-primary hover:pl-2 transition-all cursor-pointer tracking-wider border-b border-white/5"
           >
             &gt; PLATFORM

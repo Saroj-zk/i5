@@ -242,3 +242,107 @@
     min-height: calc(100vh - 80px);
   }
 }
+
+/* Animations from i5 new */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes floatSlowAlt {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  33% { transform: translateY(-6px) translateX(3px); }
+  66% { transform: translateY(4px) translateX(-2px); }
+}
+
+@keyframes dotPulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+@keyframes aiPulse {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+@keyframes aiOrbit1 {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes aiOrbit2 {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes connectorPulse {
+  0% { top: -4px; opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+
+
+.float-label-slow {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+.float-label-alt {
+  animation: floatSlowAlt 7s ease-in-out infinite;
+}
+
+/* WS Layer styles */
+.ws-layer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 76px;
+  border-radius: 14px;
+  background: linear-gradient(160deg, rgba(20, 20, 20, 0.95), rgba(8, 8, 8, 0.92));
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+.ws-layer.ws-active {
+  transform: translateZ(130px) scale(1.04) !important;
+  border-color: rgba(19, 195, 143, 0.45) !important;
+  background: linear-gradient(160deg, rgba(24, 24, 24, 0.98), rgba(12, 12, 12, 0.95));
+  box-shadow:
+    0 0 30px rgba(19, 195, 143, 0.18),
+    0 0 80px rgba(19, 195, 143, 0.08),
+    0 12px 40px rgba(0, 0, 0, 0.6),
+    inset 0 0 40px rgba(19, 195, 143, 0.04);
+  z-index: 20 !important;
+}
+
+.ws-layer.ws-dimmed {
+  opacity: 0.25;
+  filter: brightness(0.6);
+}
+
+.ws-content-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.45s ease, transform 0.45s ease, visibility 0s linear 0.45s;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.ws-content-item.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  visibility: visible;
+  transition: opacity 0.45s ease 0.1s, transform 0.45s ease 0.1s, visibility 0s linear 0s;
+}
+

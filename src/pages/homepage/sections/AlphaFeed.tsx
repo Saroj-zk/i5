@@ -77,7 +77,7 @@ export function AlphaFeed() {
       // Fade-in entry of the header content
       gsap.from('.feed-header > *', {
         scrollTrigger: {
-          trigger: '#alpha-feed',
+          trigger: containerRef.current,
           start: 'top 85%',
           toggleActions: 'play none none none',
         },
@@ -91,7 +91,7 @@ export function AlphaFeed() {
       // Fade-in entry of the ticker rows
       gsap.from('.feed-ticker-row', {
         scrollTrigger: {
-          trigger: '#alpha-feed',
+          trigger: containerRef.current,
           start: 'top 80%',
           toggleActions: 'play none none none',
         },
@@ -102,7 +102,7 @@ export function AlphaFeed() {
         ease: 'power2.out',
       });
 
-      // GSAP driven infinite marquee rows
+      // GSAP driven infinite marquee rows at CONSTANT, steady velocity (no scroll acceleration)
       const row1 = containerRef.current?.querySelector('.marquee-row-1') as HTMLElement;
       const row2 = containerRef.current?.querySelector('.marquee-row-2') as HTMLElement;
 
@@ -111,12 +111,12 @@ export function AlphaFeed() {
         const w1 = row1.scrollWidth / 2;
         const w2 = row2.scrollWidth / 2;
 
-        // Dynamic duration based on width to keep scrolling speed identical
-        const speed = 100; // pixels per second
+        // Steady pixels per second (smooth, continuous, unaffected by scroll)
+        const speed = 45;
         const duration1 = w1 / speed;
         const duration2 = w2 / speed;
 
-        const tween1 = gsap.to(row1, {
+        gsap.to(row1, {
           x: -w1,
           duration: duration1,
           ease: 'none',
@@ -125,37 +125,11 @@ export function AlphaFeed() {
 
         // Set initial offset for row 2 so reverse direction loops seamlessly
         gsap.set(row2, { x: -w2 });
-        const tween2 = gsap.to(row2, {
+        gsap.to(row2, {
           x: 0,
           duration: duration2,
           ease: 'none',
           repeat: -1,
-        });
-
-        // Adjust timeScale based on scroll velocity
-        ScrollTrigger.create({
-          trigger: '#alpha-feed',
-          start: 'top bottom',
-          end: 'bottom top',
-          onUpdate: (self) => {
-            const velocity = Math.abs(self.getVelocity() / 150);
-            const speedScale = 1 + Math.min(velocity, 4);
-
-            gsap.to([tween1, tween2], {
-              timeScale: speedScale,
-              duration: 0.3,
-              overwrite: 'auto',
-            });
-
-            // Decelerate back to normal
-            gsap.to([tween1, tween2], {
-              timeScale: 1,
-              delay: 0.3,
-              duration: 0.6,
-              ease: 'power1.out',
-              overwrite: 'auto',
-            });
-          },
         });
       }
     }, containerRef);
@@ -238,3 +212,5 @@ export function AlphaFeed() {
     </section>
   );
 }
+
+export default AlphaFeed;
