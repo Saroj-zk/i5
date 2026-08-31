@@ -7,6 +7,7 @@ import { BannerSection } from './sections/banner-section';
 import { MarketIntelligence } from './sections/MarketIntelligence';
 import { WallStreetStack } from './sections/WallStreetStack';
 import { CoreFeatures } from './sections/CoreFeatures';
+import { LeaderboardConviction } from './sections/LeaderboardConviction';
 import { Edge } from './sections/Edge';
 import { BuiltForTraders } from './sections/BuiltForTraders';
 // import { BuildWithI5 } from './sections/BuildWithI5';
@@ -119,6 +120,7 @@ export function HomePage() {
         {/* <AlphaFeed /> */}
         <MarketIntelligence />
         <WallStreetStack />
+        <LeaderboardConviction />
         <CoreFeatures />
         <Edge />
         <BuiltForTraders />

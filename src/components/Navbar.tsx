@@ -1,9 +1,33 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import logo from '../assets/logo.png';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      // Always show at top of page or if mobile menu is open
+      if (currentScrollY < 50 || isOpen) {
+        setIsVisible(true);
+      } else if (currentScrollY > lastScrollY && currentScrollY - lastScrollY > 6) {
+        // Scrolling Down -> Hide
+        setIsVisible(false);
+      } else if (currentScrollY < lastScrollY && lastScrollY - currentScrollY > 6) {
+        // Scrolling Up -> Show
+        setIsVisible(true);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY, isOpen]);
 
   const scrollToSection = (id: string) => {
     setIsOpen(false);
@@ -22,7 +46,13 @@ export function Navbar() {
   return (
     <>
       {/* Floating Capsule Glass Navbar */}
-      <header className="fixed top-3.5 sm:top-5 left-1/2 -translate-x-1/2 z-50 w-[94%] max-w-6xl pointer-events-auto select-none">
+      <header
+        className={`fixed top-3.5 sm:top-5 left-1/2 -translate-x-1/2 z-50 w-[94%] max-w-6xl pointer-events-auto select-none transition-all duration-300 ease-out ${
+          isVisible
+            ? 'translate-y-0 opacity-100'
+            : '-translate-y-24 opacity-0 pointer-events-none'
+        }`}
+      >
         <nav className="w-full rounded-full border border-white/15 bg-black/40 backdrop-blur-2xl px-4 sm:px-6 py-2 sm:py-2.5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15),0_10px_35px_rgba(0,0,0,0.6)] flex items-center justify-between transition-all duration-300">
           
           {/* Left Column: Brand Logo + Nav Links */}
