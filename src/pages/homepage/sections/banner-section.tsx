@@ -41,7 +41,7 @@ export function BannerSection() {
   // }, []);
 
   return (
-    <section className="relative w-full min-h-[92vh] flex items-center justify-center bg-black overflow-hidden select-none py-8 lg:py-0">
+    <section className="relative w-full h-full min-h-screen flex items-center justify-center bg-black overflow-hidden select-none py-16 lg:py-0">
 
       {/* Overlay (First Layer / Topmost Background) */}
       <div className="absolute inset-0 z-10 pointer-events-none flex items-center justify-center">

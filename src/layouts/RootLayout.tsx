@@ -30,7 +30,7 @@ export function RootLayout() {
       )} */}
 
       <Navbar />
-      <main className="pt-20 relative z-10">
+      <main className="relative z-10">
         <Outlet />
       </main>
       <JoinWaitlistModal />
