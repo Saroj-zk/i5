@@ -8,9 +8,14 @@ import { MarketIntelligence } from './sections/MarketIntelligence';
 import { WallStreetStack } from './sections/WallStreetStack';
 import { CoreFeatures } from './sections/CoreFeatures';
 import { LeaderboardConviction } from './sections/LeaderboardConviction';
+import { SmartMoneyConviction } from './sections/SmartMoneyConviction';
+import { SocialTradingClans } from './sections/SocialTradingClans';
+import { AITradingAgents } from './sections/AITradingAgents';
 import { UserWinsWall } from './sections/UserWinsWall';
+import { RevenueEngine } from './sections/RevenueEngine';
 import { Edge } from './sections/Edge';
 import { BuiltForTraders } from './sections/BuiltForTraders';
+import { ProductRoadmap } from './sections/ProductRoadmap';
 // import { BuildWithI5 } from './sections/BuildWithI5';
 import { IntelligenceNetwork } from './sections/IntelligenceNetwork';
 import { Footer } from './sections/Footer';
@@ -80,7 +85,7 @@ export function HomePage() {
   return (
     <div className={`w-full overflow-x-clip ${isShaking ? 'animate-[shake_0.4s_ease-in-out_infinite]' : ''}`}>
       <div className="zoom-content">
-        
+
         {/* Interactive Hero Slider Container */}
         <div
           className="relative w-full overflow-hidden bg-black grid full-height-slider group/slider"
@@ -108,11 +113,10 @@ export function HomePage() {
                 key={slide.id}
                 onClick={() => goToSlide(idx)}
                 aria-label={`Go to slide ${idx + 1}`}
-                className={`transition-all duration-400 rounded-full cursor-pointer relative ${
-                  currentSlide === idx
+                className={`transition-all duration-400 rounded-full cursor-pointer relative ${currentSlide === idx
                     ? 'w-6 sm:w-7 h-1.5 bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)]'
                     : 'w-1.5 h-1.5 bg-white/30 hover:bg-white/70'
-                }`}
+                  }`}
               />
             ))}
           </div>
@@ -121,11 +125,16 @@ export function HomePage() {
         {/* <AlphaFeed /> */}
         <MarketIntelligence />
         <LeaderboardConviction />
+        <SmartMoneyConviction />
+        <SocialTradingClans />
+        <AITradingAgents />
         <UserWinsWall />
-        <WallStreetStack />
-        <CoreFeatures />
+        <RevenueEngine />
+        {/* <WallStreetStack /> */}
+        {/* <CoreFeatures /> */}
         <Edge />
         <BuiltForTraders />
+        <ProductRoadmap />
         {/* <BuildWithI5 /> */}
         <IntelligenceNetwork />
       </div>

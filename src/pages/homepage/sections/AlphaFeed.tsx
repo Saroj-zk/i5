@@ -1,213 +1,258 @@
-import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowUpRight, ArrowDownRight, AlertTriangle, TrendingUp } from 'lucide-react';
-
-gsap.registerPlugin(ScrollTrigger);
-
-const feedRow1 = [
-  { pair: 'BTCUSD PERP', type: 'LONG', lev: '100x', status: 'TARGET 3 HIT', profit: '+842.3%', isBullish: true },
-  { pair: 'SOLUSD PERP', type: 'SHORT', lev: '50x', status: 'ENTRY ACQUIRED', profit: '+12.4%', isBullish: false },
-  { pair: 'ETHUSD PERP', type: 'LONG', lev: '75x', status: 'LIQUIDATION SWEPT', profit: '+184.2%', isBullish: true },
-  { pair: 'AVAXUSD PERP', type: 'SHORT', lev: '25x', status: 'TARGET 1 HIT', profit: '+64.5%', isBullish: false },
-  { pair: 'LINKUSD PERP', type: 'LONG', lev: '50x', status: 'TARGET 2 HIT', profit: '+142.9%', isBullish: true },
-  { pair: 'NEARUSD PERP', type: 'LONG', lev: '30x', status: 'SL HIT', profit: '-15.4%', isBullish: false }
-];
-
-const feedRow2 = [
-  // Group 1
-  { msg: 'Momentum Shift', isAlert: false },
-  { msg: 'Liquidity Gap', isAlert: false },
-  { msg: 'Whale Accumulation', isAlert: false },
-  { msg: 'Alpha Detected', isAlert: true },
-  { msg: 'Momentum Shift', isAlert: false },
-  { msg: 'Liquidity Gap', isAlert: false },
-  { msg: 'Whale Accumulation', isAlert: false },
-  { msg: 'Alpha Detected', isAlert: true },
-  { msg: 'Momentum Shift', isAlert: false },
-  { msg: 'Liquidity Gap', isAlert: false },
-  { msg: 'Whale Accumulation', isAlert: false },
-  { msg: 'Alpha Detected', isAlert: true },
-  { msg: 'Momentum Shift', isAlert: false },
-  { msg: 'Liquidity Gap', isAlert: false },
-  { msg: 'Whale Accumulation', isAlert: false },
-
-  // Group 2
-  { msg: 'Sentiment Flip', isAlert: false },
-  { msg: 'Large Transfer', isAlert: false },
-  { msg: 'Breakout Triggered', isAlert: false },
-  { msg: 'Smart Money Inflow', isAlert: false },
-  { msg: 'Sentiment Flip', isAlert: false },
-  { msg: 'Large Transfer', isAlert: false },
-  { msg: 'Breakout Triggered', isAlert: false },
-  { msg: 'Smart Money Inflow', isAlert: false },
-  { msg: 'Sentiment Flip', isAlert: false },
-  { msg: 'Large Transfer', isAlert: false },
-  { msg: 'Breakout Triggered', isAlert: false },
-  { msg: 'Smart Money Inflow', isAlert: false },
-  { msg: 'Sentiment Flip', isAlert: false },
-  { msg: 'Large Transfer', isAlert: false },
-  { msg: 'Breakout Triggered', isAlert: false },
-  { msg: 'Smart Money Inflow', isAlert: false },
-
-  // Group 3
-  { msg: 'Volatility Spike', isAlert: false },
-  { msg: 'Capital Rotation', isAlert: false },
-  { msg: 'Order Flow Surge', isAlert: false },
-  { msg: 'Trend Reversal', isAlert: false },
-  { msg: 'Volatility Spike', isAlert: false },
-  { msg: 'Capital Rotation', isAlert: false },
-  { msg: 'Order Flow Surge', isAlert: false },
-  { msg: 'Trend Reversal', isAlert: false },
-  { msg: 'Volatility Spike', isAlert: false },
-  { msg: 'Capital Rotation', isAlert: false },
-  { msg: 'Order Flow Surge', isAlert: false },
-  { msg: 'Trend Reversal', isAlert: false },
-  { msg: 'Volatility Spike', isAlert: false },
-  { msg: 'Capital Rotation', isAlert: false },
-  { msg: 'Order Flow Surge', isAlert: false },
-  { msg: 'Trend Reversal', isAlert: false }
-];
+import { ArrowRight } from '@phosphor-icons/react';
 
 export function AlphaFeed() {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Fade-in entry of the header content
-      gsap.from('.feed-header > *', {
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top 85%',
-          toggleActions: 'play none none none',
-        },
-        opacity: 0,
-        y: 20,
-        stagger: 0.1,
-        duration: 0.8,
-        ease: 'power2.out',
-      });
-
-      // Fade-in entry of the ticker rows
-      gsap.from('.feed-ticker-row', {
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none none',
-        },
-        opacity: 0,
-        y: 20,
-        stagger: 0.15,
-        duration: 0.8,
-        ease: 'power2.out',
-      });
-
-      // GSAP driven infinite marquee rows at CONSTANT, steady velocity (no scroll acceleration)
-      const row1 = containerRef.current?.querySelector('.marquee-row-1') as HTMLElement;
-      const row2 = containerRef.current?.querySelector('.marquee-row-2') as HTMLElement;
-
-      if (row1 && row2) {
-        // Calculate scroll widths (half of total width since we duplicated)
-        const w1 = row1.scrollWidth / 2;
-        const w2 = row2.scrollWidth / 2;
-
-        // Steady pixels per second (smooth, continuous, unaffected by scroll)
-        const speed = 45;
-        const duration1 = w1 / speed;
-        const duration2 = w2 / speed;
-
-        gsap.to(row1, {
-          x: -w1,
-          duration: duration1,
-          ease: 'none',
-          repeat: -1,
-        });
-
-        // Set initial offset for row 2 so reverse direction loops seamlessly
-        gsap.set(row2, { x: -w2 });
-        gsap.to(row2, {
-          x: 0,
-          duration: duration2,
-          ease: 'none',
-          repeat: -1,
-        });
-      }
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <section ref={containerRef} id="alpha-feed" className="pt-4 sm:pt-16 pb-16 bg-[#030304] border-y-2 border-white/10 overflow-hidden select-none relative z-20">
-      {/* Background neon grid line */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,204,0.015)_1px,transparent_1px)] bg-[size:100%_16px] pointer-events-none" />
+    <section id="alpha-feed" className="py-24 bg-[#050505] relative overflow-hidden select-none z-20">
+      
+      {/* Subtle ambient glow behind cards */}
+      <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-[#00FFCC]/[0.02] blur-[100px] rounded-full pointer-events-none" />
 
-      <div className="feed-header max-w-7xl mx-auto px-4 sm:px-8 md:px-12 lg:px-20 mb-8 text-left relative z-10">
-        <div className="flex items-center gap-3">
-          <div className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse shadow-[0_0_8px_#00ffcc]" />
-          <h2 className="text-xl font-display font-black text-white uppercase tracking-widest">
-            Live Insights Diagnostics (Alpha Feed)
-          </h2>
-        </div>
-        <p className="text-xs font-mono text-white/50 mt-1 uppercase tracking-wider">
-          Real-time order routing logs flowing directly from lit & dark matching engines.
-        </p>
-      </div>
-
-      {/* Row 1: Signals Ticker (Scrolling Left) */}
-      <div className="feed-ticker-row flex overflow-hidden w-full gap-6 mb-6 relative z-10">
-        <div className="marquee-row-1 whitespace-nowrap flex gap-6">
-          {[...feedRow1, ...feedRow1].map((item, idx) => (
-            <div 
-              key={idx}
-              className="inline-flex items-center gap-3 border-2 border-white/15 bg-black px-4 py-3 rounded-none shadow-[3px_3px_0px_rgba(0,255,204,0.3)] hover:border-primary transition-all duration-300"
-            >
-              <span className="font-mono text-xs font-black text-white">{item.pair}</span>
-              <span className={`text-[10px] font-mono font-black px-2 py-0.5 rounded-none ${
-                item.isBullish ? 'bg-primary/10 text-primary border border-primary/30' : 'bg-red-500/10 text-red-500 border border-red-500/30'
-              }`}>
-                {item.lev} {item.type}
-              </span>
-              <span className="font-mono text-xs font-bold text-white/50">{item.status}</span>
-              <span className={`font-mono text-xs font-black flex items-center gap-0.5 ${
-                item.isBullish ? 'text-primary' : 'text-red-500'
-              }`}>
-                {item.profit}
-                {item.isBullish ? <ArrowUpRight className="w-3.5 h-3.5" /> : <ArrowDownRight className="w-3.5 h-3.5" />}
+      <div className="max-w-[1280px] mx-auto px-6 md:px-12 relative z-10">
+        
+        {/* Header Section */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10 mb-12">
+          <div className="max-w-2xl">
+            
+            {/* Top Label */}
+            <div className="flex items-center gap-3 mb-6 font-mono text-[10px] tracking-widest font-bold uppercase">
+              <span className="text-[#00FFCC]">✦ Social Intelligence Layer</span>
+              <span className="flex items-center gap-1.5 text-red-500">
+                <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse shadow-[0_0_8px_rgba(239,68,68,0.8)]" />
+                Live Now
               </span>
             </div>
-          ))}
-        </div>
-      </div>
 
-      {/* Row 2: Diagnostics Ticker (Scrolling Right) */}
-      <div className="feed-ticker-row flex overflow-hidden w-full gap-6 relative z-10">
-        <div className="marquee-row-2 whitespace-nowrap flex gap-6">
-          {[...feedRow2, ...feedRow2].map((item, idx) => {
-            const isAlpha = item.msg === 'Alpha Detected';
-            return (
-              <div 
-                key={idx}
-                className={`inline-flex items-center gap-3 border-2 px-7 py-4 rounded-none font-mono text-sm font-black transition-all duration-300 ${
-                  isAlpha
-                    ? 'bg-emerald-950/40 border-emerald-400 text-emerald-400 shadow-[0_0_15px_rgba(52,211,153,0.4)] animate-pulse'
-                    : item.isAlert 
-                      ? 'bg-red-950/30 border-red-500 text-red-500 shadow-[3px_3px_0px_rgba(239,68,68,0.3)]' 
-                      : 'bg-black border-white/15 text-primary shadow-[3px_3px_0px_rgba(0,255,204,0.2)] hover:border-primary'
-                }`}
-              >
-                {isAlpha ? (
-                  <TrendingUp className="w-5 h-5 text-emerald-400 animate-bounce" />
-                ) : item.isAlert ? (
-                  <AlertTriangle className="w-5 h-5 text-red-500 animate-pulse" />
-                ) : (
-                  <TrendingUp className="w-5 h-5 text-primary" />
-                )}
-                <span>{item.msg}</span>
+            <h2 
+              className="text-4xl sm:text-5xl md:text-[52px] font-medium text-white tracking-tight leading-[1.05] mb-5 uppercase"
+              style={{ fontFamily: '"Plus Jakarta Sans", "Inter", sans-serif' }}
+            >
+              YOUR GROUP CHAT <br />
+              <span className="text-[#00FFCC]">
+                JUST GOT PROFITABLE.
+              </span>
+            </h2>
+            <p className="text-[#71717a] text-sm md:text-base leading-relaxed max-w-xl font-sans">
+              Longs, Shorts and fresh positions keep hitting the group. See what's live, 
+              check the numbers, and copy the trades you rate with your own size and risk.
+            </p>
+          </div>
+          
+          <div className="pb-2">
+            <button className="group px-6 py-3.5 rounded-full bg-[#111111] border border-[#00FFCC]/30 hover:border-[#00FFCC] text-white text-xs font-bold tracking-widest flex items-center gap-3 transition-all duration-300 shadow-[0_0_15px_rgba(0,255,204,0.05)] hover:shadow-[0_0_20px_rgba(0,255,204,0.15)] uppercase">
+              ENTER ALPHA TRADE
+              <div className="w-5 h-5 rounded-full bg-[#00FFCC]/20 flex items-center justify-center group-hover:bg-[#00FFCC] transition-colors">
+                <ArrowRight size={12} weight="bold" className="text-[#00FFCC] group-hover:text-black" />
               </div>
-            );
-          })}
+            </button>
+          </div>
         </div>
+
+        {/* Main Bento Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          
+          {/* LEFT COLUMN */}
+          <div className="lg:col-span-5 flex flex-col gap-6">
+            
+            {/* Card 1: Leaderboard/Feed */}
+            <div className="rounded-3xl p-7 bg-[#0d0d0d] border border-white/[0.03] shadow-lg flex flex-col">
+              
+              {/* Card Header Stats */}
+              <div className="flex items-start justify-between mb-8">
+                <div>
+                  <div className="text-[32px] font-bold text-[#00FFCC] tracking-tight mb-1 font-mono">
+                    $128.4M
+                  </div>
+                  <div className="text-[9px] text-[#71717a] font-mono tracking-[0.2em] uppercase">
+                    Position Volume
+                  </div>
+                </div>
+                <div className="text-right">
+                  <div className="text-[28px] font-bold text-white tracking-tight mb-1 font-mono">
+                    46,920
+                  </div>
+                  <div className="text-[9px] text-[#71717a] font-mono tracking-[0.2em] uppercase">
+                    Trades - 72% Longs
+                  </div>
+                </div>
+              </div>
+
+              {/* Trades List */}
+              <div className="space-y-3">
+                {/* Trade 1 */}
+                <div className="flex items-center justify-between px-4 py-3 rounded-2xl bg-[#141414] border border-white/[0.02] group">
+                  <div className="flex items-center gap-3">
+                    <span className="text-white/90 font-mono text-sm font-bold tracking-wide">SOL-PERP</span>
+                    <span className="px-2 py-0.5 rounded-md bg-[#00FFCC]/10 text-[#00FFCC] text-[9px] font-bold font-mono tracking-wider">
+                      10x LONG
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-4 font-mono">
+                    <span className="text-[#71717a] text-[11px]">$540K</span>
+                    <span className="text-[#00FFCC] text-[11px] font-bold">+142.8%</span>
+                    <span className="px-2.5 py-1 rounded-full bg-[#1a1a1a] text-[#71717a] text-[10px] font-medium border border-white/[0.02]">
+                      312 copies
+                    </span>
+                  </div>
+                </div>
+
+                {/* Trade 2 */}
+                <div className="flex items-center justify-between px-4 py-3 rounded-2xl bg-[#141414] border border-white/[0.02] group">
+                  <div className="flex items-center gap-3">
+                    <span className="text-white/90 font-mono text-sm font-bold tracking-wide">BTC-PERP</span>
+                    <span className="px-2 py-0.5 rounded-md bg-[#00FFCC]/10 text-[#00FFCC] text-[9px] font-bold font-mono tracking-wider">
+                      20x LONG
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-4 font-mono">
+                    <span className="text-[#71717a] text-[11px]">$1.2M</span>
+                    <span className="text-[#00FFCC] text-[11px] font-bold">+88.4%</span>
+                    <span className="px-2.5 py-1 rounded-full bg-[#1a1a1a] text-[#71717a] text-[10px] font-medium border border-white/[0.02]">
+                      488 copies
+                    </span>
+                  </div>
+                </div>
+
+                {/* Trade 3 */}
+                <div className="flex items-center justify-between px-4 py-3 rounded-2xl bg-[#141414] border border-white/[0.02] group">
+                  <div className="flex items-center gap-3">
+                    <span className="text-white/90 font-mono text-sm font-bold tracking-wide">ETH-PERP</span>
+                    <span className="px-2 py-0.5 rounded-md bg-red-500/10 text-red-500 text-[9px] font-bold font-mono tracking-wider">
+                      5x SHORT
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-4 font-mono">
+                    <span className="text-[#71717a] text-[11px]">$380K</span>
+                    <span className="text-red-500 text-[11px] font-bold">+34.6%</span>
+                    <span className="px-2.5 py-1 rounded-full bg-[#1a1a1a] text-[#71717a] text-[10px] font-medium border border-white/[0.02]">
+                      195 copies
+                    </span>
+                  </div>
+                </div>
+
+                {/* Trade 4 */}
+                <div className="flex items-center justify-between px-4 py-3 rounded-2xl bg-[#141414] border border-white/[0.02] group">
+                  <div className="flex items-center gap-3">
+                    <span className="text-white/90 font-mono text-sm font-bold tracking-wide">SUI-PERP</span>
+                    <span className="px-2 py-0.5 rounded-md bg-[#00FFCC]/10 text-[#00FFCC] text-[9px] font-bold font-mono tracking-wider">
+                      15x LONG
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-4 font-mono">
+                    <span className="text-[#71717a] text-[11px]">$210K</span>
+                    <span className="text-[#00FFCC] text-[11px] font-bold">+62.1%</span>
+                    <span className="px-2.5 py-1 rounded-full bg-[#1a1a1a] text-[#71717a] text-[10px] font-medium border border-white/[0.02]">
+                      140 copies
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Left Column Text Block */}
+            <div className="pl-1 pr-6 py-1">
+              <h3 className="text-white font-bold text-base mb-1.5 uppercase tracking-wide font-sans">
+                THE GROUP DOESN'T STOP TRADING.
+              </h3>
+              <p className="text-[#71717a] text-[13px] leading-relaxed">
+                See positions as they hit the group, who's going Long or Short, and which trades are getting copied.
+              </p>
+            </div>
+
+          </div>
+
+          {/* RIGHT COLUMN */}
+          <div className="lg:col-span-7 flex flex-col gap-6">
+            
+            {/* Card 2: Live Position Focus */}
+            <div className="rounded-3xl p-8 bg-[#0d0d0d] border border-white/[0.03] shadow-lg flex flex-col sm:flex-row justify-between items-start sm:items-center gap-8">
+              
+              <div>
+                <div className="text-[56px] font-black text-[#60a5fa] bg-clip-text text-transparent bg-gradient-to-r from-[#00FFCC] to-[#3b82f6] tracking-tighter mb-1 leading-none font-mono">
+                  +142.8%
+                </div>
+                <div className="text-[10px] text-[#71717a] font-mono tracking-[0.2em] uppercase mt-2">
+                  Live Position PNL
+                </div>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-[#141414] border border-white/[0.02] min-w-[220px]">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-white/90 font-bold font-mono text-xs">SOL-PERP</span>
+                  <span className="px-2 py-0.5 rounded-md bg-[#00FFCC]/10 text-[#00FFCC] text-[8px] font-bold font-mono tracking-wider">
+                    LONG - 10x
+                  </span>
+                </div>
+                <div className="flex flex-col gap-1 mb-4 font-mono text-[9px] text-[#71717a] tracking-wider uppercase">
+                  <div>ENTRY $178.40 SIZE $540,000</div>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-[9px] text-[#71717a] font-mono">Social Execution</span>
+                  <span className="text-[9px] text-[#60a5fa] font-bold font-mono px-2 py-0.5 bg-[#3b82f6]/10 rounded-md border border-[#3b82f6]/20">
+                    COPIED 312x
+                  </span>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Right Column Top Text Block */}
+            <div className="pl-1 pr-6 py-1">
+              <h3 className="text-white font-bold text-base mb-1.5 uppercase tracking-wide font-sans">
+                SEE IT. LIKE IT. COPY IT.
+              </h3>
+              <p className="text-[#71717a] text-[13px] leading-relaxed max-w-xl">
+                Check the position, leverage and live PnL. Like the setup? Copy it with your own size and risk.
+              </p>
+            </div>
+
+            {/* Bottom 2 Cards Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-1">
+              
+              {/* Card 3 (Bottom Left) */}
+              <div className="rounded-3xl p-7 bg-[#0d0d0d] border border-white/[0.03] shadow-lg flex flex-col justify-between">
+                <div>
+                  <div className="text-[32px] font-bold text-white mb-2 font-mono leading-none">
+                    8,920
+                  </div>
+                  <div className="text-[9px] text-[#00FFCC] font-mono tracking-[0.15em] uppercase font-bold mt-2">
+                    Active Alpha Traders <span className="text-[#71717a] ml-1">· 2,450 TODAY</span>
+                  </div>
+                </div>
+                <div className="mt-6 pt-5 border-t border-white/[0.04]">
+                  <h3 className="text-white font-bold text-sm mb-1.5 uppercase tracking-wide font-sans">
+                    COPY. COUNTER. OR SCROLL.
+                  </h3>
+                  <p className="text-[#71717a] text-xs leading-relaxed">
+                    See what the group is trading and choose how you want to play it.
+                  </p>
+                </div>
+              </div>
+
+              {/* Card 4 (Bottom Right) */}
+              <div className="rounded-3xl p-7 bg-[#0d0d0d] border border-white/[0.03] shadow-lg flex flex-col justify-between">
+                <div>
+                  <div className="text-[32px] font-bold text-[#00FFCC] mb-2 font-mono leading-none">
+                    $194.5K
+                  </div>
+                  <div className="text-[9px] text-[#71717a] font-mono tracking-[0.15em] uppercase font-bold mt-2">
+                    Rewards Earned & Distributed
+                  </div>
+                </div>
+                <div className="mt-6 pt-5 border-t border-white/[0.04]">
+                  <h3 className="text-white font-bold text-sm mb-1.5 uppercase tracking-wide font-sans">
+                    BRING THE CREW. GET REWARDED.
+                  </h3>
+                  <p className="text-[#71717a] text-xs leading-relaxed">
+                    Share your referral, bring traders into Alpha Trade, and earn rewards.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
       </div>
     </section>
   );

@@ -303,7 +303,7 @@ export function LeaderboardConviction() {
                     $194.5K
                   </span>
                   <span className="text-[10px] font-mono text-white/50 uppercase tracking-wider block mt-1">
-                    REWARDS EARNED & PAID
+                    REWARDS EARNED & DISTRIBUTED
                   </span>
                 </div>
 
