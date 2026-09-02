@@ -25,7 +25,7 @@ export interface ClanCardProps {
 
 export const CourseDesignCard: React.FC<ClanCardProps> = ({ data }) => {
   const {
-    rank,
+
     rankText,
     rankColor,
     title,

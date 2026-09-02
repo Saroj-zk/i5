@@ -5,8 +5,7 @@ import { TradeEveryMarketHero } from './sections/TradeEveryMarketHero';
 import { TelegramHyperliquidBanner } from './sections/TelegramHyperliquidBanner';
 import { BannerSection } from './sections/banner-section';
 import { MarketIntelligence } from './sections/MarketIntelligence';
-import { WallStreetStack } from './sections/WallStreetStack';
-import { CoreFeatures } from './sections/CoreFeatures';
+
 import { LeaderboardConviction } from './sections/LeaderboardConviction';
 import { SmartMoneyConviction } from './sections/SmartMoneyConviction';
 import { SocialTradingClans } from './sections/SocialTradingClans';

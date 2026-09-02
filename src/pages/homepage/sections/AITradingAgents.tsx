@@ -2,16 +2,10 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Lightning, 
-  ShieldCheck, 
   CheckCircle,
   PaperPlaneTilt,
   ArrowsClockwise,
-  ArrowRight,
-  Sparkle,
-  Cpu,
-  Checks,
-  Broadcast,
-  TrendUp
+  Checks
 } from '@phosphor-icons/react';
 
 interface ChatMessage {
