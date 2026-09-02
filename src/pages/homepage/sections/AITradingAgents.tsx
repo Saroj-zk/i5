@@ -117,7 +117,7 @@ export function AITradingAgents() {
 
   // Automatic Natural Live Conversation Flow Animation
   useEffect(() => {
-    let timer: NodeJS.Timeout;
+    let timer: ReturnType<typeof setTimeout>;
 
     if (visibleCount < FULL_CONVERSATION_SCRIPT.length) {
       const nextMsg = FULL_CONVERSATION_SCRIPT[visibleCount];

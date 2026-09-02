@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import { 
-  Copy, Check, MagnifyingGlass, Wallet,
-  ChartLineUp, Target, Cpu, Broadcast,
-  GitFork, UsersThree, Coins, ChartBar,
-  PaperPlaneTilt, ShieldCheck, ArrowUpRight,
-  Flame, CheckCircle
+  MagnifyingGlass,
+  ChartLineUp, Target, Cpu,
+  GitFork, UsersThree,
+  ShieldCheck
 } from '@phosphor-icons/react';
 
 export function RevenueEngine() {

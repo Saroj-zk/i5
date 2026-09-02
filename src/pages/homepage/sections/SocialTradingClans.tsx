@@ -1,4 +1,4 @@
-import React from 'react';
+
 import CourseDesignCard, { type ClanCardData } from '@/components/ui/course-design-cards';
 
 const CLANS_DATA: ClanCardData[] = [

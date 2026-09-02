@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ArrowRight, Broadcast, CaretUp, CaretDown } from '@phosphor-icons/react';
 
 interface LeaderboardEntry {
@@ -198,7 +198,7 @@ export function SmartMoneyConviction() {
           };
 
           // Mark the row pushed down as decreased rank
-          const shifted = next.map((item, idx) => {
+          const shifted: LeaderboardEntry[] = next.map((item, idx) => {
             if (idx >= targetIdx) {
               return {
                 ...item,
